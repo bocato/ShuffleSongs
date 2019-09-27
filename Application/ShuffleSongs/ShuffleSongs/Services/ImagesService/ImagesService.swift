@@ -66,7 +66,11 @@ final class ImagesService: ImagesServiceProvider, NetworkingService {
             if let cachedData = try? cacheResult.get() {
                 completion(.success(cachedData))
             } else {
-                requestToken = self?.requestImageDataFromNetwork(url: url, completion: completion)
+                requestToken = self?.requestImageDataFromNetwork(
+                    urlString: urlString,
+                    url: url,
+                    completion: completion
+                )
             }
         }
         
@@ -74,16 +78,19 @@ final class ImagesService: ImagesServiceProvider, NetworkingService {
         
     }
     
-    private func requestImageDataFromNetwork(url: URL,
+    private func requestImageDataFromNetwork(
+        urlString: String,
+        url: URL,
         completion: @escaping (Result<Data, ImagesServiceError>) -> Void
     ) -> URLRequestToken? {
         let request = SimpleURLRequest(url: url)
-        return dispatcher.execute(request: request) { (networkResult) in
+        return dispatcher.execute(request: request) { [cacheService] networkResult in
             do {
                 guard let data = try networkResult.get() else {
                     completion(.failure(.emptyData))
                     return
                 }
+                cacheService.save(data: data, key: urlString, completion: nil)
                 completion(.success(data))
             } catch {
                 completion(.failure(.network(error)))

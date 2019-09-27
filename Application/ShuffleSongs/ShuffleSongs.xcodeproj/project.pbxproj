@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E558E047233E9FBB008550A7 /* MusicListTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E558E046233E9FBB008550A7 /* MusicListTableViewCellViewModel.swift */; };
+		E558E049233EADFE008550A7 /* ProjectImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E558E048233EADFE008550A7 /* ProjectImages.swift */; };
+		E558E064233EBC10008550A7 /* CacheHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E558E063233EBC10008550A7 /* CacheHolding.swift */; };
 		E5835B43233CE7C900125140 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835B42233CE7C900125140 /* AppDelegate.swift */; };
 		E5835B4C233CE7CC00125140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5835B4B233CE7CC00125140 /* Assets.xcassets */; };
 		E5835B4F233CE7CC00125140 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5835B4D233CE7CC00125140 /* LaunchScreen.storyboard */; };
@@ -90,6 +93,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E558E046233E9FBB008550A7 /* MusicListTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		E558E048233EADFE008550A7 /* ProjectImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectImages.swift; sourceTree = "<group>"; };
+		E558E063233EBC10008550A7 /* CacheHolding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheHolding.swift; sourceTree = "<group>"; };
 		E5835B3F233CE7C900125140 /* ShuffleSongs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShuffleSongs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5835B42233CE7C900125140 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5835B4B233CE7CC00125140 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -171,6 +177,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E558E065233EBC71008550A7 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				E558E063233EBC10008550A7 /* CacheHolding.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		E5835B36233CE7C900125140 = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +254,7 @@
 		E5835B73233CE88700125140 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				E558E065233EBC71008550A7 /* Other */,
 				E5835B75233CE8C000125140 /* Models */,
 				E5835B74233CE8B700125140 /* Extensions */,
 			);
@@ -302,6 +317,7 @@
 				E5835B92233CE9A600125140 /* Typography */,
 				E5835B99233CEA0500125140 /* Metrics.swift */,
 				E5835B9A233CEA0600125140 /* ProjectColors.swift */,
+				E558E048233EADFE008550A7 /* ProjectImages.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -428,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				E5835C0B233E369D00125140 /* MusicListTableViewCell.swift */,
+				E558E046233E9FBB008550A7 /* MusicListTableViewCellViewModel.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -438,8 +455,6 @@
 				E5835CC7233E7B8E00125140 /* Other */,
 				E5835CC6233E7B8100125140 /* UseCases */,
 				E5835C10233E395D00125140 /* Models */,
-				E5835CBA233E67DE00125140 /* ArrayShuffler.swift */,
-				E5835CBC233E72AB00125140 /* MusicListViewDataConverter.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -489,6 +504,8 @@
 		E5835CC7233E7B8E00125140 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				E5835CBA233E67DE00125140 /* ArrayShuffler.swift */,
+				E5835CBC233E72AB00125140 /* MusicListViewDataConverter.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -635,7 +652,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E558E047233E9FBB008550A7 /* MusicListTableViewCellViewModel.swift in Sources */,
 				E5835CAF233E529A00125140 /* ShuffleSongsNavigationController.swift in Sources */,
+				E558E064233EBC10008550A7 /* CacheHolding.swift in Sources */,
 				E5835B96233CE9B600125140 /* Typography.swift in Sources */,
 				E5835BFC233DA1C400125140 /* Environment.swift in Sources */,
 				E5835C0E233E36A700125140 /* MusicListView.swift in Sources */,
@@ -646,6 +665,7 @@
 				E5835CC0233E77D800125140 /* UITableViewExtension.swift in Sources */,
 				E5835B83233CE93000125140 /* CustomViewController.swift in Sources */,
 				E5835BFE233DA1FF00125140 /* ArtistLookupService.swift in Sources */,
+				E558E049233EADFE008550A7 /* ProjectImages.swift in Sources */,
 				E5835B97233CE9B600125140 /* UIFont+Quiz.swift in Sources */,
 				E5835B78233CE8E600125140 /* UseCaseEvent.swift in Sources */,
 				E5835CBB233E67DE00125140 /* ArrayShuffler.swift in Sources */,

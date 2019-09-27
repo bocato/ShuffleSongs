@@ -18,16 +18,16 @@ public enum Typography {
     
     // MARK: - Types
     
-    case largeTitle
-    case body
+    case cellTitle
+    case cellSubtitle
     
     // MARK: - Properties
     
     var font: UIFont {
         switch self {
-        case .largeTitle:
-            return UIFont.sfPro(ofSize: 34, weight: .bold)
-        case .body:
+        case .cellTitle:
+            return UIFont.sfPro(ofSize: 17, weight: .semibold)
+        case .cellSubtitle:
             return UIFont.sfPro(ofSize: 17, weight: .regular)
         }
     }

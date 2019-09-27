@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import Caching
 
-final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate, CacheHolding {
 
     var window: UIWindow?
+    var cache: CacheServiceProvider?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        resetCaches()
         setupRootViewController(windowScene: windowScene)
     }
     

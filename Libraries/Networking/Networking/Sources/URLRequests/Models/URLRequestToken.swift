@@ -27,7 +27,7 @@ public final class URLRequestToken {
     // MARK: - Functions
     
     /// Cancels the data task.
-    func cancel() {
+    public func cancel() {
         task?.cancel()
     }
     

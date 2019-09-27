@@ -8,6 +8,7 @@
 
 import UIKit
 import Networking
+import Caching
 
 // This could be done elsewere, but since it's a simple application, i'll put it here for now.
 // Also, we could implement a more intricate system/strategy for dependency injection with containers or something else.
@@ -20,7 +21,18 @@ extension SceneDelegate: MusicListConfigurator {
         
         let fetchShuffledMusicListUseCase = FetchShuffledMusicListUseCase(artistLookupService: artistLookupService)
         
-        let viewModel = MusicListViewModel(fetchShuffledMusicListUseCase: fetchShuffledMusicListUseCase)
+        let cacheService = CacheService(cacheDirectoryName: "ShuffleSongsArtwork")
+        cache = cacheService
+        
+        let imagesService = ImagesService(
+            dispatcher: urlSessionDispatcher,
+            cacheService: cacheService
+        )
+        
+        let viewModel = MusicListViewModel(
+            fetchShuffledMusicListUseCase: fetchShuffledMusicListUseCase,
+            imagesService: imagesService
+        )
         
         let viewController = MusicListViewController(viewModel: viewModel)
         viewModel.viewStateRenderer = viewController

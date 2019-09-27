@@ -7,14 +7,11 @@
 //
 
 import Foundation
+
 /// Defines a binding protocol between the viewModel and the ViewController
 protocol MusicListViewModelBinding: AnyObject {
-    
     // MARK: - Property Bindings
     func viewTitleDidChange(_ title: String?)
-    
-    // MARK: - Action Related Bindings
-    
 }
 
 /// Defines the display logic for `MusicListViewController`
@@ -30,11 +27,14 @@ protocol MusicListDisplayLogic {
     ///
     /// - Parameter index: some index
     /// - Returns: nil, if the index does not exist, `MusicInfoItem` otherwise
-    func musicInfoItemViewData(at index: Int) -> MusicListItemViewData
+    func musicListCellViewModel(at index: Int) -> MusicListTableViewCellViewModel
 }
 
 /// Defines the business logic for `MusicListViewController`
-protocol MusicListBusinessLogic {}
+protocol MusicListBusinessLogic {
+    /// Fetches a music list, shuffled
+    func fetchMusicList()
+}
 
 // Defines an interface for the `MusicListViewModel`
 protocol MusicListViewModelProtocol: MusicListDisplayLogic, MusicListBusinessLogic {}
@@ -43,7 +43,9 @@ final class MusicListViewModel: MusicListViewModelProtocol {
     
     // MARK: - Dependencies
     
-    let fetchShuffledMusicListUseCase: FetchShuffledMusicListUseCaseProvider
+    private let fetchShuffledMusicListUseCase: FetchShuffledMusicListUseCaseProvider
+    private let musicListViewDataConverter: MusicListViewDataConverting
+    private let imagesService: ImagesServiceProvider
     
     // MARK: - Binding
     
@@ -52,9 +54,7 @@ final class MusicListViewModel: MusicListViewModelProtocol {
     
     // MARK: - Private Properties
     
-    private var musicItems = [MusicListItemViewData]()
-    
-    // MARK: - Computed Properties
+    private var cellViewModels = [MusicListTableViewCellViewModel]()
     
     // MARK: - View Properties / Binding
     
@@ -66,8 +66,14 @@ final class MusicListViewModel: MusicListViewModelProtocol {
     
     // MARK: - Initialization
     
-    init(fetchShuffledMusicListUseCase: FetchShuffledMusicListUseCaseProvider) {
+    init(
+        fetchShuffledMusicListUseCase: FetchShuffledMusicListUseCaseProvider,
+        musicListViewDataConverter: MusicListViewDataConverting = MusicListViewDataConverter(),
+        imagesService: ImagesServiceProvider
+    ) {
         self.fetchShuffledMusicListUseCase = fetchShuffledMusicListUseCase
+        self.musicListViewDataConverter = musicListViewDataConverter
+        self.imagesService = imagesService
     }
     
 }
@@ -77,14 +83,15 @@ extension MusicListViewModel: MusicListDisplayLogic {
     
     func onViewDidLoad() {
         viewTitle = "Shuffle Songs"
+        fetchMusicList()
     }
 
     var numberOfMusicItems: Int {
-        return 0
+        return cellViewModels.count
     }
-
-    func musicInfoItemViewData(at index: Int) -> MusicListItemViewData {
-        return musicItems[index]
+    
+    func musicListCellViewModel(at index: Int) -> MusicListTableViewCellViewModel {
+        return cellViewModels[index]
     }
     
 }
@@ -92,5 +99,37 @@ extension MusicListViewModel: MusicListDisplayLogic {
 
 // MARK: - MusicListViewModelBusinessLogic
 extension MusicListViewModel: MusicListBusinessLogic {
+    
+    func fetchMusicList() {
+        fetchShuffledMusicListUseCase.execute { [weak self] event in
+            switch event.status {
+            case .loading:
+                self?.viewStateRenderer?.render(.loading)
+            case let .serviceError(error):
+                self?.handleServiceError(error)
+            case let .data(list):
+                self?.handleShuffledList(list)
+            default:
+                return
+            }
+        }
+    }
+    
+    // MARK: - FetchMusicList Handlers
+    
+    private func handleShuffledList(_ list: [MusicInfoItem]) {
+        let viewDataItems = musicListViewDataConverter.convert(list)
+        cellViewModels = viewDataItems.map {
+            MusicListTableViewCellViewModel(
+                dataModel: $0,
+                imagesService: imagesService)
+        }
+        viewStateRenderer?.render(.content)
+    }
+    
+    private func handleServiceError(_ error: Error) {
+        let filler = ViewFiller(title: "Ooops!", subtitle: "Something wrong has happened")
+        viewStateRenderer?.render(.error(withFiller: filler))
+    }
     
 }

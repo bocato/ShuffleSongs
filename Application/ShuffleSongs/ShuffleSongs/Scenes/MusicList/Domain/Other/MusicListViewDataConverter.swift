@@ -32,11 +32,11 @@ final class MusicListViewDataConverter: MusicListViewDataConverting {
     }
     
     private func generateTitle(for item: MusicInfoItem) -> String {
-        return
+        return item.trackName ?? ""
     }
     
     private func generateSubTitle(for item: MusicInfoItem) -> String {
-        
+        return item.artistName + "(" + item.primaryGenreName + ")"
     }
     
 }

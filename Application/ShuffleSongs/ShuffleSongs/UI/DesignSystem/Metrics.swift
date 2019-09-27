@@ -30,18 +30,7 @@ public struct Metrics {
         public static let top: CGFloat = 44.0
         
         /// 4 points of spacing
-        public static let tiny: CGFloat = 4.0
-    }
-    
-    public struct Height {
-        
-        private init() {}
-        
-        /// Default button height, 54 points
-        public static let fatButton: CGFloat = 54.0
-        
-        // Default TextField height, 60 points
-        public static let textField: CGFloat = 54.0
+        public static let tiny: CGFloat = 2.0
     }
     
 }

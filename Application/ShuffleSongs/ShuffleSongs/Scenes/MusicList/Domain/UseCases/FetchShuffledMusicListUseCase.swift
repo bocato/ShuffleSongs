@@ -24,9 +24,9 @@ final class FetchShuffledMusicListUseCase: FetchShuffledMusicListUseCaseProvider
     
     // MARK: - Dependencies
     
-    let artistIDs: [String]
-    let artistLookupService: ArtistLookupServiceProvider
-    let arrayShuffler: ArrayShuffling
+    private let artistIDs: [String]
+    private let artistLookupService: ArtistLookupServiceProvider
+    private let arrayShuffler: ArrayShuffling
     
     // MARK: - Initialization
     

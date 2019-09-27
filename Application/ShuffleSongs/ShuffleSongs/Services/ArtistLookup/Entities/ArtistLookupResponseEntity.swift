@@ -14,11 +14,11 @@ struct ArtistLookupResponseEntity: Codable {
 }
 extension ArtistLookupResponseEntity {
     struct Result: Codable {
-        let id: Int?
-        let wrapperType: WrapperType?
+        let id: Int
+        let wrapperType: WrapperType
         let artistType: String?
-        let primaryGenreName: String?
-        let artistName: String?
+        let primaryGenreName: String
+        let artistName: String
         let country: String?
         let artworkURL, releaseDate: String?
         let artistID, trackTimeMillis: Int?
