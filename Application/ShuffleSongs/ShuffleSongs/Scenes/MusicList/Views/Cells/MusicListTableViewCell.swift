@@ -12,6 +12,16 @@ final class MusicListTableViewCell: UITableViewCell {
     
     // MARK: - UI
     
+    private lazy var artworkImageView: UIImageView = {
+        let imageView = UIImageView(frame: .zero)
+        imageView.isHidden = true
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 12
+        imageView.clipsToBounds = true
+        imageView.layer.masksToBounds = true
+        return imageView
+    }()
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 1
@@ -35,27 +45,6 @@ final class MusicListTableViewCell: UITableViewCell {
                 subtitleLabel
             ]
             $0.spacing = Metrics.Margin.tiny
-            $0.axis = .vertical
-            $0.distribution = .fill
-        }.build()
-    }()
-    
-    private lazy var artworkImageView: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
-        imageView.isHidden = true
-        imageView.contentMode = .scaleAspectFit
-        imageView.layer.cornerRadius = 12
-        imageView.clipsToBounds = true
-        imageView.layer.masksToBounds = true
-        return imageView
-    }()
-    
-    private lazy var contentStackView: UIStackView = {
-        return StackViewBuilder {
-            $0.arrangedSubviews = [
-                textStackView
-            ]
-            $0.spacing = Metrics.Margin.default
             $0.axis = .vertical
             $0.distribution = .fill
         }.build()
@@ -105,6 +94,11 @@ final class MusicListTableViewCell: UITableViewCell {
     }
     
     private func setupViewData() {
+        fetchImage()
+        setupLabels()
+    }
+    
+    private func fetchImage() {
         viewModel?.fetchImage{ [artworkImageView] image in
             UIView.transition(
                 with: artworkImageView,
@@ -115,10 +109,20 @@ final class MusicListTableViewCell: UITableViewCell {
         }
     }
     
+    private func setupLabels() {
+        
+    }
+    
     // MARK: - Layout
     
     private func addSubViews() {
+        constrainImageView()
         constrainStackView()
+    }
+    
+    private func constrainImageView() {
+        contentView.addSubview(artworkImageView)
+//        artworkImageView.
     }
     
     private func constrainStackView() {

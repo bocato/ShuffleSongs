@@ -15,7 +15,7 @@ final class MusicListView: UIView {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.allowsSelection = false
-        tableView.estimatedRowHeight = 50.0
+        tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .singleLine
         tableView.isHidden = true
