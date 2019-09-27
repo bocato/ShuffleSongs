@@ -10,12 +10,6 @@ import Foundation
 
 /// Defines an API service.
 public protocol NetworkingService {
-    
     /// The dispatcher to take care of the network requests.
     var dispatcher: URLRequestDispatching { get }
-    
-    /// Intializer to inject the dispatcher.
-    ///
-    /// - Parameter dispatcher: The dispatcher to take care of the network requests.
-    init(dispatcher: URLRequestDispatching)
 }

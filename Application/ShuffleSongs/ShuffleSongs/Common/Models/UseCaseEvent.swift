@@ -10,22 +10,22 @@ import Foundation
 
 /// Represents events that encapsulate results and errors.
 /// These events will be how you will consume `UseCase`s
-struct UseCaseEvent<Data, Error: Swift.Error> {
+public struct UseCaseEvent<Data, Error: Swift.Error> {
     
     /// Event status.
-    let status: Status<Data, Error>
+    public let status: Status<Data, Error>
     
     /// Factory function for `loading` use case event.
     ///
     /// - Returns: Returns a UseCaseEvent with `.loading` status.
-    static func loading() -> UseCaseEvent {
+    public static func loading() -> UseCaseEvent {
         return UseCaseEvent(status: .loading)
     }
     
     /// Factory function for `idle` use case event.
     ///
     /// - Returns: Returns a UseCaseEvent with `.idle` status.
-    static func idle() -> UseCaseEvent {
+    public static func idle() -> UseCaseEvent {
         return UseCaseEvent(status: .idle)
     }
     
@@ -33,7 +33,7 @@ struct UseCaseEvent<Data, Error: Swift.Error> {
     ///
     /// - Parameter error: An error that represents why the use case event failed.
     /// - Returns: Returns a UseCaseEvent with `.businessError` status.
-    static func businessError(_ error: Error) -> UseCaseEvent {
+    public  func businessError(_ error: Error) -> UseCaseEvent {
         return UseCaseEvent(status: .businessError(error))
     }
     
@@ -41,7 +41,7 @@ struct UseCaseEvent<Data, Error: Swift.Error> {
     ///
     /// - Parameter error: An error that represents why use case event failed.
     /// - Returns: returns a UseCaseEvent with `.serviceError` status.
-    static func serviceError(_ error: Swift.Error) -> UseCaseEvent {
+    public static func serviceError(_ error: Swift.Error) -> UseCaseEvent {
         return UseCaseEvent(status: .serviceError(error))
     }
     
@@ -49,7 +49,7 @@ struct UseCaseEvent<Data, Error: Swift.Error> {
     ///
     /// - Parameter data: An object that represents `data`.
     /// - Returns: Returns an Event with `.data` status.
-    static func data(_ data: Data) -> UseCaseEvent {
+    public static func data(_ data: Data) -> UseCaseEvent {
         return UseCaseEvent(status: .data(data))
     }
     
@@ -62,7 +62,7 @@ extension UseCaseEvent {
     /// - loading: Some requests started to happen.
     /// - data: Request was succeeded. The response is provided by its parameter.
     /// - error: Some error hapenned. For more information check out its parameter.
-    enum Status<Data, Error: Swift.Error> {
+    public enum Status<Data, Error: Swift.Error> {
         case idle
         case loading
         case data(Data)

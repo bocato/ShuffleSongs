@@ -11,7 +11,7 @@ import Foundation
 extension NSObject {
     
     /// Returns the classes name 
-    static var className: String {
+    public static var className: String {
         return String(describing: self)
     }
     

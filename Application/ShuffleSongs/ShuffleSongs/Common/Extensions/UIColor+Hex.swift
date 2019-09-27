@@ -11,7 +11,7 @@ import UIKit
 extension UIColor {
     
     /// Creates a UIColor for it's red, green, and blue values
-    convenience init(red: Int, green: Int, blue: Int) {
+    public convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
         assert(green >= 0 && green <= 255, "Invalid green component")
         assert(blue >= 0 && blue <= 255, "Invalid blue component")
@@ -21,7 +21,7 @@ extension UIColor {
     
     
     /// Creates a UIColor from a hexadecimal representation
-    convenience init(from hexValue: String) {
+    public convenience init(from hexValue: String) {
         
         // Remove # if existis
         let tempHex = hexValue.replacingOccurrences(of: "#", with: "")

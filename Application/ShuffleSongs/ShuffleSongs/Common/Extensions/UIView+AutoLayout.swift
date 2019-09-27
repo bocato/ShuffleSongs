@@ -16,7 +16,8 @@ extension UIView {
     ///   - leftConstant: current view's left anchor margin
     ///   - bottomConstant: current view's bottom anchor margin
     ///   - rightConstant: current view's right anchor margin
-    @available(iOS 9, *) public func anchorToSafeArea(topConstant: CGFloat = 0,
+    @available(iOS 9, *)
+    public func anchorToSafeArea(topConstant: CGFloat = 0,
                                                           leftConstant: CGFloat = 0,
                                                           bottomConstant: CGFloat = 0,
                                                           rightConstant: CGFloat = 0) {
@@ -44,7 +45,9 @@ extension UIView {
     ///   - widthConstant: current view's width
     ///   - heightConstant: current view's height
     /// - Returns: array of newly added constraints (if applicable).
-    @available(iOS 9, *) @discardableResult public func anchor(
+    @available(iOS 9, *)
+    @discardableResult
+    public func anchor(
         top: NSLayoutYAxisAnchor? = nil,
         left: NSLayoutXAxisAnchor? = nil,
         bottom: NSLayoutYAxisAnchor? = nil,
@@ -92,7 +95,8 @@ extension UIView {
     /// Anchor center X into current view's superview with a constant margin value.
     ///
     /// - Parameter constant: constant of the anchor constraint (default is 0).
-    @available(iOS 9, *) public func anchorCenterXToSuperview(constant: CGFloat = 0) {
+    @available(iOS 9, *)
+    public func anchorCenterXToSuperview(constant: CGFloat = 0) {
         translatesAutoresizingMaskIntoConstraints = false
         if let anchor = superview?.centerXAnchor {
             centerXAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
@@ -102,7 +106,8 @@ extension UIView {
     /// Anchor center Y into current view's superview with a constant margin value.
     ///
     /// - Parameter withConstant: constant of the anchor constraint (default is 0).
-    @available(iOS 9, *) public func anchorCenterYToSuperview(constant: CGFloat = 0) {
+    @available(iOS 9, *)
+    public func anchorCenterYToSuperview(constant: CGFloat = 0) {
         translatesAutoresizingMaskIntoConstraints = false
         if let anchor = superview?.centerYAnchor {
             centerYAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
@@ -110,13 +115,14 @@ extension UIView {
     }
     
     /// Anchor center X and Y into current view's superview
-    @available(iOS 9, *) public func anchorCenterSuperview() {
+    @available(iOS 9, *)
+    public func anchorCenterSuperview() {
         anchorCenterXToSuperview()
         anchorCenterYToSuperview()
     }
     
     /// Safe area Top Anchor
-    var safeTopAnchor: NSLayoutYAxisAnchor {
+    public var safeTopAnchor: NSLayoutYAxisAnchor {
         if #available(iOS 11.0, *) {
             return self.safeAreaLayoutGuide.topAnchor
         }
@@ -124,7 +130,7 @@ extension UIView {
     }
     
     /// Safe area Left Anchor
-    var safeLeftAnchor: NSLayoutXAxisAnchor {
+    public var safeLeftAnchor: NSLayoutXAxisAnchor {
         if #available(iOS 11.0, *){
             return self.safeAreaLayoutGuide.leftAnchor
         }
@@ -132,7 +138,7 @@ extension UIView {
     }
     
     /// Safe area Right Anchor
-    var safeRightAnchor: NSLayoutXAxisAnchor {
+    public var safeRightAnchor: NSLayoutXAxisAnchor {
         if #available(iOS 11.0, *){
             return self.safeAreaLayoutGuide.rightAnchor
         }
@@ -140,7 +146,7 @@ extension UIView {
     }
     
     /// Safe area Bottom Anchor
-    var safeBottomAnchor: NSLayoutYAxisAnchor {
+    public var safeBottomAnchor: NSLayoutYAxisAnchor {
         if #available(iOS 11.0, *) {
             return self.safeAreaLayoutGuide.bottomAnchor
         }
@@ -148,7 +154,7 @@ extension UIView {
     }
     
     /// Returns the bottom constraint, and updates when it is changed
-    var bottomConstraint: NSLayoutConstraint? {
+    public var bottomConstraint: NSLayoutConstraint? {
         get {
             return constraints.first(where: { $0.firstAttribute == .bottom && $0.relation == .equal })
         }
@@ -156,7 +162,7 @@ extension UIView {
     }
     
     /// Returns the top constraint, and updates when changes
-    var topConstraint: NSLayoutConstraint? {
+    public var topConstraint: NSLayoutConstraint? {
         get {
             return constraints.first(where: { $0.firstAttribute == .top && $0.relation == .equal })
         }
@@ -164,7 +170,7 @@ extension UIView {
     }
     
     /// Returns the right constraint, and updates when it is changed
-    var rightConstraint: NSLayoutConstraint? {
+    public var rightConstraint: NSLayoutConstraint? {
         get {
             return constraints.first(where: { $0.firstAttribute == .right && $0.relation == .equal })
         }
@@ -172,7 +178,7 @@ extension UIView {
     }
     
     /// Returns the left constraint, and updates when it is changed
-    var leftConstraint: NSLayoutConstraint? {
+    public var leftConstraint: NSLayoutConstraint? {
         get {
             return constraints.first(where: { $0.firstAttribute == .left && $0.relation == .equal })
         }

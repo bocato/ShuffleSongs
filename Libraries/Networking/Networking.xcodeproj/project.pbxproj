@@ -303,6 +303,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = E5CE429E23344DC900295277;
 			productRefGroup = E5CE42A923344DC900295277 /* Products */;

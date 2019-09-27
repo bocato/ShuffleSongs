@@ -30,16 +30,18 @@ protocol MusicListDisplayLogic {
     ///
     /// - Parameter index: some index
     /// - Returns: nil, if the index does not exist, `MusicInfoItem` otherwise
-    func musicInfoItem(at index: Int) -> MusicInfoItem?
+    func musicInfoItemViewData(at index: Int) -> MusicListItemViewData
 }
 
 /// Defines the business logic for MusicListViewController
 protocol MusicListBusinessLogic {
+    
 }
-
 final class MusicListViewModel: MusicListDisplayLogic {
     
     // MARK: - Dependencies
+    
+    let fetchShuffledMusicListUseCase: FetchShuffledMusicListUseCaseProvider
     
     // MARK: - Binding
     
@@ -48,7 +50,7 @@ final class MusicListViewModel: MusicListDisplayLogic {
     
     // MARK: - Private Properties
     
-    private var musicItems = [MusicInfoItem]()
+    private var musicItems = [MusicListItemViewData]()
     
     // MARK: - Computed Properties
     
@@ -62,7 +64,9 @@ final class MusicListViewModel: MusicListDisplayLogic {
     
     // MARK: - Initialization
     
-    init() {}
+    init(fetchShuffledMusicListUseCase: FetchShuffledMusicListUseCaseProvider) {
+        self.fetchShuffledMusicListUseCase = fetchShuffledMusicListUseCase
+    }
     
     // MARK: - Display Logic
     
@@ -74,7 +78,7 @@ final class MusicListViewModel: MusicListDisplayLogic {
         return 0
     }
     
-    func musicInfoItem(at index: Int) -> MusicInfoItem? {
+    func musicInfoItemViewData(at index: Int) -> MusicListItemViewData {
         return musicItems[index]
     }
     

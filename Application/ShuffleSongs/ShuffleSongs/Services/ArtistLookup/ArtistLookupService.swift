@@ -36,14 +36,14 @@ final class ArtistLookupService: ArtistLookupServiceProvider, CodableRequesting 
     
     // MARK: - Initialization
     
-    init(dispatcher: URLRequestDispatching = URLSessionDispatcher()) {
+    init(dispatcher: URLRequestDispatching) {
         self.dispatcher = dispatcher
     }
     
     // MARK: - ArtistLookupServiceProvider
     
     func lookupArtistsWithIDs(
-        _ ids: [String] = ["909253", "1171421960", "358714030" , "1419227", "264111789"], // TODO: MOVE TO ANOTHER PLACE
+        _ ids: [String],
         completion: @escaping (Result<[ArtistLookupResponseEntity.Result], ArtistLookupServiceError>
     ) -> Void) {
         

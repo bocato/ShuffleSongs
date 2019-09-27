@@ -17,7 +17,7 @@ extension UIFont {
     ///   - fontSize: Font size
     ///   - weight: Font weight
     /// - Returns: SF Pro Font with specified parameters
-    class func sfPro(ofSize fontSize: CGFloat, weight: UIFont.SFProWeight) -> UIFont {
+   public class func sfPro(ofSize fontSize: CGFloat, weight: UIFont.SFProWeight) -> UIFont {
         guard let sfProFont = UIFont(name: weight.fontName, size: fontSize) else {
             debugPrint("Failed to load SF Pro Font.")
             return UIFont.systemFont(ofSize: fontSize, weight: weight.asUIFontWeight)
@@ -35,7 +35,7 @@ extension UIFont {
     /// - regular: Regular weight
     /// - bold: Bold Font
     /// - semibold: Semibold weight
-    enum SFProWeight {
+    public enum SFProWeight {
         
         // MARK: - Types
         

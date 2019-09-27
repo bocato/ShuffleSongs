@@ -18,9 +18,9 @@ public struct SimpleURLRequest: URLRequestProtocol {
     public var parameters: URLRequestParameters? = nil
     public var headers: [String : Any]? = nil
     
-    init(baseURL: URL,
+    public init(url: URL,
          method: HTTPMethod = .get) {
-        self.baseURL = baseURL
+        self.baseURL = url
         self.method = method
     }
     

@@ -14,14 +14,15 @@ final class MusicListTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle = .default, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: nil)
-        setupLayout()
+        setup()
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupLayout()
+        setup()
     }
     
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -30,7 +31,6 @@ final class MusicListTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        textLabel?.text = nil
     }
     
     // MARK: - Configuration
@@ -40,9 +40,20 @@ final class MusicListTableViewCell: UITableViewCell {
         
     }
     
+    // MARK: - Setup
+    
+    private func setup() {
+        backgroundColor = .darkPurple
+        addSubViews()
+    }
+    
     // MARK: - Layout
     
-    private func setupLayout() {
+    private func addSubViews() {
+        constrainStackView()
+    }
+    
+    private func constrainStackView() {
         
     }
     

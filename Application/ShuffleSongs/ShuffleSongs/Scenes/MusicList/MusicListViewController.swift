@@ -118,16 +118,8 @@ extension MusicListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: MusicListTableViewCell.className,
-            for: indexPath
-        ) as? MusicListTableViewCell,
-        let musicInfo = viewModel.musicInfoItem(at: indexPath.row) else {
-            return UITableViewCell()
-        }
-        
-        cell.configure(with: musicInfo)
+        let cell = tableView.dequeueReusableCell(ofType: MusicListTableViewCell.self, for: indexPath)
+        // TODO: Configure cell
         return cell
     }
 

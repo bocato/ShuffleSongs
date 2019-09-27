@@ -15,7 +15,7 @@ extension UILabel {
     /// - Parameters:
     ///   - typography: The Typography type.
     ///   - color: The color of the text.
-    func apply(typography: Typography, with color: UIColor) {
+    public func apply(typography: Typography, with color: UIColor) {
         font = typography.font
         textColor = color
     }

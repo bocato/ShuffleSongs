@@ -8,4 +8,9 @@
 
 import Foundation
 
-struct MusicInfoItem {}
+struct MusicInfoItem {
+    let artworkURL: String?
+    let trackName: String?
+    let artistName: String
+    let primaryGenreName: String
+}
