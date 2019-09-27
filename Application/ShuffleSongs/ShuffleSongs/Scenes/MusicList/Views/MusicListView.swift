@@ -43,7 +43,7 @@ final class MusicListView: UIView {
     // MARK: - Setup
     
     private func setup() {
-        backgroundColor = .black
+        backgroundColor = .darkPurple
         addSubViews()
     }
     

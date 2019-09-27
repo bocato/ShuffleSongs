@@ -46,6 +46,8 @@
 		E5835CAC233E4F0800125140 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5835BA1233CEA5500125140 /* SF-Pro-Display-Regular.otf */; };
 		E5835CAD233E4F0800125140 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5835BA2233CEA5500125140 /* SF-Pro-Display-Semibold.otf */; };
 		E5835CAF233E529A00125140 /* ShuffleSongsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835CAE233E529A00125140 /* ShuffleSongsNavigationController.swift */; };
+		E5835CB1233E590300125140 /* LoadingPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835CB0233E590300125140 /* LoadingPresentable.swift */; };
+		E5835CB3233E592000125140 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835CB2233E592000125140 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +126,8 @@
 		E5835C17233E3F8700125140 /* RootViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewConfigurator.swift; sourceTree = "<group>"; };
 		E5835C19233E43EC00125140 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E5835CAE233E529A00125140 /* ShuffleSongsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShuffleSongsNavigationController.swift; sourceTree = "<group>"; };
+		E5835CB0233E590300125140 /* LoadingPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPresentable.swift; sourceTree = "<group>"; };
+		E5835CB2233E592000125140 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,7 +262,8 @@
 		E5835B7A233CE90C00125140 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				E5835CAE233E529A00125140 /* ShuffleSongsNavigationController.swift */,
+				E5835CB7233E5FD500125140 /* Navigation */,
+				E5835CB6233E5FC900125140 /* Views */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				E5835B7E233CE93000125140 /* CustomViewController.swift */,
+				E5835CB0233E590300125140 /* LoadingPresentable.swift */,
 				E5835B80233CE93000125140 /* ModalHelper.swift */,
 				E5835B7C233CE93000125140 /* StackViewBuilder.swift */,
 				E5835B7F233CE93000125140 /* ViewStateRendering.swift */,
@@ -426,6 +432,22 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E5835CB6233E5FC900125140 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E5835CB2233E592000125140 /* LoadingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E5835CB7233E5FD500125140 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				E5835CAE233E529A00125140 /* ShuffleSongsNavigationController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -583,8 +605,10 @@
 				E5835C14233E3E4400125140 /* SceneDelegate+Factories.swift in Sources */,
 				E5835B43233CE7C900125140 /* AppDelegate.swift in Sources */,
 				E5835C12233E397E00125140 /* MusicInfoItem.swift in Sources */,
+				E5835CB3233E592000125140 /* LoadingView.swift in Sources */,
 				E5835C05233E366600125140 /* MusicListViewController.swift in Sources */,
 				E5835C03233DA62E00125140 /* ArtistLookupResponseEntity.swift in Sources */,
+				E5835CB1233E590300125140 /* LoadingPresentable.swift in Sources */,
 				E5835C18233E3F8700125140 /* RootViewConfigurator.swift in Sources */,
 				E5835C01233DA28600125140 /* ArtistLookupRequest.swift in Sources */,
 				E5835B85233CE93000125140 /* ModalHelper.swift in Sources */,

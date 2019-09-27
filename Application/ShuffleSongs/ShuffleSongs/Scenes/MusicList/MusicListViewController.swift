@@ -67,21 +67,21 @@ final class MusicListViewController: UIViewController, CustomViewController {
 }
 
 // MARK: - ViewStateRendering
-extension MusicListViewController: ViewStateRendering {
+extension MusicListViewController: ViewStateRendering, LoadingPresenting {
     
     func render(_ state: ViewState) {
         switch state {
-//        case .loading:
-//            showLoading()
+        case .loading:
+            showLoading()
         case .content:
-//            hideLoading()
+            hideLoading()
             DispatchQueue.main.async {
                 self.customView.reloadTableView()
                 self.customView.showTableView()
             }
-//        case let .error(filler):
-//            hideLoading()
-//            renderError(filler)
+        case let .error(filler):
+            hideLoading()
+            renderError(filler)
         default:
             return
         }

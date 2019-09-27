@@ -23,7 +23,7 @@ extension SceneDelegate: RootViewConfigurator {
     
     func setupRootViewController(windowScene: UIWindowScene) {
         let musicListViewController = makeMusicListViewController()
-        let rootViewController = UINavigationController(rootViewController: musicListViewController)
+        let rootViewController = ShuffleSongsNavigationController(rootViewController: musicListViewController)
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = rootViewController

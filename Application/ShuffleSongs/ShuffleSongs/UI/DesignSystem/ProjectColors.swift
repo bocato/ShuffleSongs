@@ -11,10 +11,10 @@ import UIKit
 /// Defines the color for the project, naming them
 extension UIColor {
 
-    /// Returns a UIColor, repreenting the #FF8300 in hex colors
-    static let quizOrange = UIColor(from: "#FF8300")
+    /// Returns a UIColor, repreenting the #372637 in hex colors
+    static let darkPurple = UIColor(from: "#372637")
     
-    /// Returns a UIColor, repreenting the #F5F5F5 in hex colors
-    static let quizGray = UIColor(from: "#F5F5F5")
+    /// Returns a UIColor, repreenting the #BC5B69 in hex colors
+    static let reddish = UIColor(from: "#BC5B69")
     
 }

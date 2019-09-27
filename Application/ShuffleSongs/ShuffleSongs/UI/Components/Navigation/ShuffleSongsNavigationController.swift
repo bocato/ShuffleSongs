@@ -8,10 +8,21 @@
 
 import UIKit
 
+/// Defines a customized layout NavigationController
 final class ShuffleSongsNavigationController: UINavigationController {
-
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+    }
+    
+    // MARK: - Setup
+    
+    private func setup() {
+        navigationBar.barStyle = .black
+        navigationBar.isTranslucent = true
+        navigationBar.tintColor = .darkPurple
     }
 
 }

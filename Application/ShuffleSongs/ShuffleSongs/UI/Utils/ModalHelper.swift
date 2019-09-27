@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Defines a model for the data that will be presented on a modal
 struct SimpleModalViewData {
     let title: String
     let subtitle: String
