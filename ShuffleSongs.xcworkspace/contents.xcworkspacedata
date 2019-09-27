@@ -7,6 +7,9 @@
       <FileRef
          location = "group:Libraries/Networking/Networking.xcodeproj">
       </FileRef>
+      <FileRef
+         location = "group:Libraries/Caching/Caching.xcodeproj">
+      </FileRef>
    </Group>
    <Group
       location = "container:"

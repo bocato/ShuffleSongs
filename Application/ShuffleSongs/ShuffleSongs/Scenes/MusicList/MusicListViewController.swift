@@ -16,13 +16,13 @@ final class MusicListViewController: UIViewController, CustomViewController {
     
     // MARK: - Properties
     
-    let viewModel: MusicListDisplayLogic & MusicListBusinessLogic
+    let viewModel: MusicListViewModelProtocol
     let modalHelper: ModalHelperProtocol
     
     // MARK: - Initialization
     
     init(
-        viewModel: MusicListDisplayLogic & MusicListBusinessLogic,
+        viewModel: MusicListViewModelProtocol,
         modalHelper: ModalHelperProtocol = ModalHelper()
     ) {
         self.viewModel = viewModel

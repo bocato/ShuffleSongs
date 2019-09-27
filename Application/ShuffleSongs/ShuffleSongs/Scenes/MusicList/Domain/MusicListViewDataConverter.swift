@@ -21,8 +21,22 @@ protocol MusicListViewDataConverting {
 final class MusicListViewDataConverter: MusicListViewDataConverting {
     
     func convert(_ musicItems: [MusicInfoItem]) -> [MusicListItemViewData] {
-//        let viewDataItems = musicItems.map
-        return []
+        let viewDataItems = musicItems.map {
+            MusicListItemViewData(
+                imageURL: $0.artworkURL,
+                title: generateTitle(for: $0),
+                subtitle: generateSubTitle(for: $0)
+            )
+        }
+        return viewDataItems
+    }
+    
+    private func generateTitle(for item: MusicInfoItem) -> String {
+        return
+    }
+    
+    private func generateSubTitle(for item: MusicInfoItem) -> String {
+        
     }
     
 }

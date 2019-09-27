@@ -52,9 +52,9 @@
 		E5835CBB233E67DE00125140 /* ArrayShuffler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835CBA233E67DE00125140 /* ArrayShuffler.swift */; };
 		E5835CBD233E72AB00125140 /* MusicListViewDataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835CBC233E72AB00125140 /* MusicListViewDataConverter.swift */; };
 		E5835CC0233E77D800125140 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835CBF233E77D800125140 /* UITableViewExtension.swift */; };
-		E5835CC3233E7A0F00125140 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835CC2233E7A0F00125140 /* CacheService.swift */; };
-		E5835CC5233E7A6B00125140 /* String+Encription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835CC4233E7A6B00125140 /* String+Encription.swift */; };
 		E5D710B5233E821F0026E111 /* ImagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D710B4233E821F0026E111 /* ImagesService.swift */; };
+		E5D710E6233E99ED0026E111 /* Caching.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D710E5233E99ED0026E111 /* Caching.framework */; };
+		E5D710E7233E99ED0026E111 /* Caching.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5D710E5233E99ED0026E111 /* Caching.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +81,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				E5D710E7233E99ED0026E111 /* Caching.framework in Embed Frameworks */,
 				E5835BB4233CEC1300125140 /* Networking.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -139,9 +140,8 @@
 		E5835CBA233E67DE00125140 /* ArrayShuffler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayShuffler.swift; sourceTree = "<group>"; };
 		E5835CBC233E72AB00125140 /* MusicListViewDataConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListViewDataConverter.swift; sourceTree = "<group>"; };
 		E5835CBF233E77D800125140 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
-		E5835CC2233E7A0F00125140 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
-		E5835CC4233E7A6B00125140 /* String+Encription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Encription.swift"; sourceTree = "<group>"; };
 		E5D710B4233E821F0026E111 /* ImagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesService.swift; sourceTree = "<group>"; };
+		E5D710E5233E99ED0026E111 /* Caching.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Caching.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5D710E6233E99ED0026E111 /* Caching.framework in Frameworks */,
 				E5835BB3233CEC1300125140 /* Networking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,7 +198,6 @@
 				E5835B72233CE84900125140 /* Application */,
 				E5835B73233CE88700125140 /* Common */,
 				E5835B79233CE8FE00125140 /* UI */,
-				E5835CC1233E79FB00125140 /* Persistency */,
 				E5835B9D233CEA1500125140 /* Services */,
 				E5835B9E233CEA2600125140 /* Scenes */,
 				E5835B9F233CEA3C00125140 /* Resources */,
@@ -253,7 +253,6 @@
 				E5835B88233CE97200125140 /* UIColor+Hex.swift */,
 				E5835B8B233CE97300125140 /* UIView+AutoLayout.swift */,
 				E5835CBF233E77D800125140 /* UITableViewExtension.swift */,
-				E5835CC4233E7A6B00125140 /* String+Encription.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -390,6 +389,7 @@
 		E5835BB1233CEC1300125140 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5D710E5233E99ED0026E111 /* Caching.framework */,
 				E5835BB2233CEC1300125140 /* Networking.framework */,
 			);
 			name = Frameworks;
@@ -476,14 +476,6 @@
 				E5835C00233DA28600125140 /* ArtistLookupRequest.swift */,
 			);
 			path = ArtistLookup;
-			sourceTree = "<group>";
-		};
-		E5835CC1233E79FB00125140 /* Persistency */ = {
-			isa = PBXGroup;
-			children = (
-				E5835CC2233E7A0F00125140 /* CacheService.swift */,
-			);
-			path = Persistency;
 			sourceTree = "<group>";
 		};
 		E5835CC6233E7B8100125140 /* UseCases */ = {
@@ -664,7 +656,6 @@
 				E5835B98233CE9B600125140 /* UIKit+Typography.swift in Sources */,
 				E5835B8D233CE97300125140 /* UIColor+Hex.swift in Sources */,
 				E5835B84233CE93000125140 /* ViewStateRendering.swift in Sources */,
-				E5835CC3233E7A0F00125140 /* CacheService.swift in Sources */,
 				E5835B9B233CEA0600125140 /* Metrics.swift in Sources */,
 				E5835C0C233E369D00125140 /* MusicListTableViewCell.swift in Sources */,
 				E5835C14233E3E4400125140 /* SceneDelegate+Factories.swift in Sources */,
@@ -679,7 +670,6 @@
 				E5D710B5233E821F0026E111 /* ImagesService.swift in Sources */,
 				E5835CBD233E72AB00125140 /* MusicListViewDataConverter.swift in Sources */,
 				E5835B85233CE93000125140 /* ModalHelper.swift in Sources */,
-				E5835CC5233E7A6B00125140 /* String+Encription.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

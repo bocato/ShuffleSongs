@@ -101,12 +101,8 @@
 		E5CE42AA23344DC900295277 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				E5CE43072334508A00295277 /* Extensions */,
-				E5CE42C823344DF600295277 /* Service */,
-				E5CE42C923344E0D00295277 /* Dispatcher */,
-				E5CE42CA23344E1600295277 /* URLRequests */,
-				E5CE42AB23344DC900295277 /* Networking.h */,
-				E5CE42AC23344DC900295277 /* Info.plist */,
+				E5D710DC233E99280026E111 /* Sources */,
+				E5D710DD233E99320026E111 /* Resources */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -225,6 +221,26 @@
 				E5CE4310233456CF00295277 /* CodableRequesting.swift */,
 			);
 			path = Serialization;
+			sourceTree = "<group>";
+		};
+		E5D710DC233E99280026E111 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				E5CE43072334508A00295277 /* Extensions */,
+				E5CE42C823344DF600295277 /* Service */,
+				E5CE42C923344E0D00295277 /* Dispatcher */,
+				E5CE42CA23344E1600295277 /* URLRequests */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		E5D710DD233E99320026E111 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E5CE42AB23344DC900295277 /* Networking.h */,
+				E5CE42AC23344DC900295277 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -508,8 +524,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Networking/Info.plist;
+				INFOPLIST_FILE = Networking/Resources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -518,9 +535,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bocato.Networking;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -535,8 +553,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Networking/Info.plist;
+				INFOPLIST_FILE = Networking/Resources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -545,8 +564,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bocato.Networking;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

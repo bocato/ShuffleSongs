@@ -7,6 +7,7 @@
 //
 
 import Networking
+import Caching
 
 enum ImagesServiceError: Error {
     case invalidURL(String)

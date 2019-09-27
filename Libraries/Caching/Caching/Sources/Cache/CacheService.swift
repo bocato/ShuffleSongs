@@ -133,7 +133,6 @@ public final class CacheService: CacheServiceProvider {
     }
     
     public func clear(completion: ((_ result: Result<Data, CacheServiceError>) -> Void)? = nil) {
-        
         serialQueue.async {
             self.memory.removeAllObjects()
             do {

@@ -17,7 +17,7 @@ protocol MusicListViewModelBinding: AnyObject {
     
 }
 
-/// Defines the display logic for MusicListViewController
+/// Defines the display logic for `MusicListViewController`
 protocol MusicListDisplayLogic {
     
     /// Defines operations to be done on viewDidLoad, normally initializations and setups
@@ -33,11 +33,13 @@ protocol MusicListDisplayLogic {
     func musicInfoItemViewData(at index: Int) -> MusicListItemViewData
 }
 
-/// Defines the business logic for MusicListViewController
-protocol MusicListBusinessLogic {
-    
-}
-final class MusicListViewModel: MusicListDisplayLogic {
+/// Defines the business logic for `MusicListViewController`
+protocol MusicListBusinessLogic {}
+
+// Defines an interface for the `MusicListViewModel`
+protocol MusicListViewModelProtocol: MusicListDisplayLogic, MusicListBusinessLogic {}
+
+final class MusicListViewModel: MusicListViewModelProtocol {
     
     // MARK: - Dependencies
     
@@ -68,21 +70,25 @@ final class MusicListViewModel: MusicListDisplayLogic {
         self.fetchShuffledMusicListUseCase = fetchShuffledMusicListUseCase
     }
     
-    // MARK: - Display Logic
+}
+
+// MARK: - Display Logic
+extension MusicListViewModel: MusicListDisplayLogic {
     
     func onViewDidLoad() {
         viewTitle = "Shuffle Songs"
     }
-    
+
     var numberOfMusicItems: Int {
         return 0
     }
-    
+
     func musicInfoItemViewData(at index: Int) -> MusicListItemViewData {
         return musicItems[index]
     }
     
 }
+
 
 // MARK: - MusicListViewModelBusinessLogic
 extension MusicListViewModel: MusicListBusinessLogic {

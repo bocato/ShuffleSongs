@@ -11,3 +11,4 @@
 
 ## Notes
 - DarkMode is disable to simplify the implementation for now.
+- Since the app is very simple and has only one Scene, there was no need to create something to deal with Routing or multiple flows. 
