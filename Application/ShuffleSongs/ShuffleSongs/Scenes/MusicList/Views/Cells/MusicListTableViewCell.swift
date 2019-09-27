@@ -10,11 +10,14 @@ import UIKit
 
 final class MusicListTableViewCell: UITableViewCell {
     
+    // MARK: - Constants
+    
+    private let imageViewSide: CGFloat = 72
+    
     // MARK: - UI
     
     private lazy var artworkImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
-        imageView.isHidden = true
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 12
         imageView.clipsToBounds = true
@@ -38,7 +41,7 @@ final class MusicListTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var textStackView: UIStackView = {
+    private lazy var labelsStackView: UIStackView = {
         return StackViewBuilder {
             $0.arrangedSubviews = [
                 titleLabel,
@@ -56,8 +59,8 @@ final class MusicListTableViewCell: UITableViewCell {
     
     // MARK: - Initialization
     
-    override init(style: UITableViewCell.CellStyle = .default, reuseIdentifier: String?) {
-        super.init(style: .default, reuseIdentifier: nil)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupLayout()
     }
     
@@ -100,17 +103,22 @@ final class MusicListTableViewCell: UITableViewCell {
     
     private func fetchImage() {
         viewModel?.fetchImage{ [artworkImageView] image in
-            UIView.transition(
-                with: artworkImageView,
-                duration: 0.25, options: [.curveEaseIn],
-                animations: {
-                    artworkImageView.image = image
-            })
+            DispatchQueue.main.async {
+                UIView.transition(
+                    with: artworkImageView,
+                    duration: 0.25, options: [.curveEaseIn],
+                    animations: {
+                        artworkImageView.image = image
+                })
+            }
         }
     }
     
     private func setupLabels() {
-        
+        DispatchQueue.main.async { [viewModel, titleLabel, subtitleLabel] in
+            titleLabel.text = viewModel?.title
+            subtitleLabel.text = viewModel?.subtitle
+        }
     }
     
     // MARK: - Layout
@@ -122,11 +130,30 @@ final class MusicListTableViewCell: UITableViewCell {
     
     private func constrainImageView() {
         contentView.addSubview(artworkImageView)
-//        artworkImageView.
+        artworkImageView.anchor(
+            left: contentView.leftAnchor,
+            leftConstant: Metrics.Margin.default,
+            widthConstant: imageViewSide,
+            heightConstant: imageViewSide
+        )
+        artworkImageView.anchorCenterYToSuperview()
     }
     
     private func constrainStackView() {
-        
+        contentView.addSubview(labelsStackView)
+        labelsStackView.anchor(
+            left: artworkImageView.rightAnchor,
+            right: contentView.rightAnchor,
+            leftConstant: Metrics.Margin.default,
+            rightConstant: Metrics.Margin.default
+        )
+        labelsStackView.centerYAnchor.constraint(
+            equalTo: artworkImageView.centerYAnchor
+        ).isActive = true
+        labelsStackView.heightAnchor.constraint(
+            equalTo: artworkImageView.heightAnchor,
+            multiplier: 0.75
+        ).isActive = true
     }
     
 }

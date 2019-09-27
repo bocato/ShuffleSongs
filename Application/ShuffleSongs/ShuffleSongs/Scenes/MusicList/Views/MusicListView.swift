@@ -14,10 +14,11 @@ final class MusicListView: UIView {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.backgroundColor = .darkPurple
         tableView.allowsSelection = false
-        tableView.estimatedRowHeight = 100.0
-        tableView.rowHeight = UITableView.automaticDimension
+        tableView.rowHeight = 100.0
         tableView.separatorStyle = .singleLine
+        tableView.separatorColor = .lightGray
         tableView.isHidden = true
         tableView.register(MusicListTableViewCell.self, forCellReuseIdentifier: MusicListTableViewCell.className)
         return tableView

@@ -26,25 +26,25 @@ final class FetchShuffledMusicListUseCase: FetchShuffledMusicListUseCaseProvider
     
     private let artistIDs: [String]
     private let artistLookupService: ArtistLookupServiceProvider
-    private let arrayShuffler: ArrayShuffling
+    private let musicShuffler: MusicShuffling
     
     // MARK: - Initialization
     
     init(
         artistIDs: [String] = ["909253", "1171421960", "358714030" , "1419227", "264111789"],
         artistLookupService: ArtistLookupServiceProvider,
-        arrayShuffler: ArrayShuffling = DefaultArrayShuffler()
+        musicShuffler: MusicShuffling = DefaultMusicShuffler()
     ) {
         self.artistIDs = artistIDs
         self.artistLookupService = artistLookupService
-        self.arrayShuffler = arrayShuffler
+        self.musicShuffler = musicShuffler
     }
     
     // MARK: - Public Functions
     
     func execute(completion: @escaping (UseCaseEvent<[MusicInfoItem], FetchShuffledMusicListUseCaseError>) -> Void) {
         completion(.loading())
-        artistLookupService.lookupArtistsWithIDs(artistIDs) { [arrayShuffler] (result) in
+        artistLookupService.lookupArtistsWithIDs(artistIDs) { [musicShuffler] (result) in
             
             do {
                 let response = try result.get()
@@ -58,7 +58,7 @@ final class FetchShuffledMusicListUseCase: FetchShuffledMusicListUseCaseProvider
                             primaryGenreName: $0.primaryGenreName
                         )
                     }
-                let shuffledItems = arrayShuffler.shuffle(items)
+                let shuffledItems = musicShuffler.shuffle(items)
                 completion(.data(shuffledItems))
             } catch {
                completion(.serviceError(error))

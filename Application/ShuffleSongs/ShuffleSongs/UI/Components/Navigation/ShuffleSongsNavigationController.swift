@@ -20,7 +20,7 @@ final class ShuffleSongsNavigationController: UINavigationController {
     // MARK: - Setup
     
     private func setup() {
-        navigationBar.barStyle = .black
+        navigationBar.barStyle = .default
         navigationBar.isTranslucent = true
         navigationBar.tintColor = .darkPurple
     }

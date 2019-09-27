@@ -119,7 +119,8 @@ extension MusicListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(ofType: MusicListTableViewCell.self, for: indexPath)
-        // TODO: Configure cell
+        let cellViewModel = viewModel.musicListCellViewModel(at: indexPath.row)
+        cell.configure(with: cellViewModel)
         return cell
     }
 

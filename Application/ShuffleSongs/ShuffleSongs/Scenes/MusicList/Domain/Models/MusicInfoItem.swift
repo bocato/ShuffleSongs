@@ -14,3 +14,11 @@ struct MusicInfoItem {
     let artistName: String
     let primaryGenreName: String
 }
+extension MusicInfoItem: Equatable {
+    static func == (lhs: MusicInfoItem, rhs: MusicInfoItem) -> Bool {
+        return lhs.artworkURL == rhs.artworkURL
+            && lhs.trackName == rhs.trackName
+            && lhs.artistName == rhs.artistName
+            && lhs.primaryGenreName == rhs.primaryGenreName
+    }
+}
