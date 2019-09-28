@@ -31,6 +31,14 @@ final class LoadingView: UIView {
         return view
     }()
     
+    // MARK: - Properties
+    
+    /// Exposes the `ActivityIndicator.Style`
+    var activityIndicatorStyle: UIActivityIndicatorView.Style {
+        set { activityIndicator.style = newValue }
+        get { return activityIndicator.style }
+    }
+    
     // MARK: - Life Cycle
     
     override func awakeFromNib() {

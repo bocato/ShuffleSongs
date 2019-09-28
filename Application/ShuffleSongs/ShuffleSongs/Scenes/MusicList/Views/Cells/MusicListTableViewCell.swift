@@ -16,7 +16,7 @@ final class MusicListTableViewCell: UITableViewCell {
     
     // MARK: - UI
     
-    private lazy var artworkImageView: UIImageView = {
+    fileprivate lazy var artworkImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 12
@@ -102,7 +102,7 @@ final class MusicListTableViewCell: UITableViewCell {
     }
     
     private func fetchImage() {
-        viewModel?.fetchImage{ [artworkImageView] image in
+        viewModel?.fetchImage{ [weak self, artworkImageView] image in
             DispatchQueue.main.async {
                 UIView.transition(
                     with: artworkImageView,
