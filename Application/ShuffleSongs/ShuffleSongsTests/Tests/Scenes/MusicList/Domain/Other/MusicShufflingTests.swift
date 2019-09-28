@@ -50,6 +50,7 @@ final class MusicShufflingTests: XCTestCase {
     
     func test_whenSufflingAnArrayWithOddNumberOfArtists_itShouldReturnAShuffledArrayPossiblyWithNeighbors() {
         // Given
+        let expectedOrder = ["1", "2", "1"]
         let musicItems: [MusicInfoItem] = [
             MusicInfoItem(artworkURL: nil, trackName: "trackName 1", artistName: "1", primaryGenreName: "primaryGenreName 1"),
             MusicInfoItem(artworkURL: nil, trackName: "trackName 2", artistName: "1", primaryGenreName: "primaryGenreName 1"),
@@ -64,6 +65,7 @@ final class MusicShufflingTests: XCTestCase {
         let shuffledArtistNamesOrder = shuffled.map { $0.artistName }
         let originalArtistNamesOrder = musicItems.map { $0.artistName }
         XCTAssertNotEqual(shuffledArtistNamesOrder, originalArtistNamesOrder, "Expected the arrays to be the different.")
+        XCTAssertEqual(expectedOrder, shuffledArtistNamesOrder)
     }
     
 }

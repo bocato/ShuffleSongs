@@ -14,4 +14,3 @@ struct MusicInfoItem {
     let artistName: String
     let primaryGenreName: String
 }
-

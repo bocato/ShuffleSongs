@@ -12,6 +12,7 @@ extension UIView {
 
     /// Shows a loading view on top of some View
     func showLoading(activityIndicatorStyle: UIActivityIndicatorView.Style = .medium) {
+        viewWithTag(LoadingView.tag)?.removeFromSuperview() // ensure that we have no other loadingView here
         let loadingView = LoadingView(frame: frame)
         loadingView.activityIndicatorStyle = activityIndicatorStyle
         addSubview(loadingView)

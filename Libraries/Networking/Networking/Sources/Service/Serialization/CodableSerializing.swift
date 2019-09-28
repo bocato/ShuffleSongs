@@ -55,7 +55,6 @@ extension CodableSerializing {
             let serializedResponse = try JSONDecoder().decode(responseType.self, from: data)
             completion(.success(serializedResponse))
         } catch {
-            debugPrint(error)
             completion(.failure(.serializationError(error)))
         }
     }
