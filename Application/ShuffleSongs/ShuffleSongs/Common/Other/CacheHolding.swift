@@ -15,13 +15,6 @@ protocol CacheHolding {
 }
 extension CacheHolding {
     func resetCaches() {
-        cache?.clear { result in
-            switch result {
-            case .success:
-                debugPrint("All caches are cleaned!")
-            case let .failure(error):
-                debugPrint("Caches could not be cleaned because of:\n \(error.localizedDescription)")
-            }
-        }
+        cache?.clear(nil)
     }
 }

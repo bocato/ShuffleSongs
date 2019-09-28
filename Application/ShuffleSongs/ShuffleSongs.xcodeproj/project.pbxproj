@@ -634,6 +634,7 @@
 			isa = PBXGroup;
 			children = (
 				E5D23089233FE4E500E32346 /* DesignSystem */,
+				E5D23090233FFB1800E32346 /* Utils */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -659,6 +660,13 @@
 				E5D2308C233FEA0200E32346 /* ImagesServiceTests.swift */,
 			);
 			path = ImagesService;
+			sourceTree = "<group>";
+		};
+		E5D23090233FFB1800E32346 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		E5D710B3233E81D50026E111 /* ImagesService */ = {

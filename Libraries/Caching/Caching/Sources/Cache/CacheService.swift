@@ -49,7 +49,7 @@ public protocol CacheServiceProvider {
     /// Clears the cache.
     ///
     /// - Parameter completion: Returns whether the cache could be clearedor not.
-    func clear(completion: ((_ result: Result<Data, CacheServiceError>) -> Void)?)
+    func clear(_ completion: ((Result<Data, CacheServiceError>) -> Void)?)
     
 }
 
@@ -132,7 +132,7 @@ public final class CacheService: CacheServiceProvider {
         
     }
     
-    public func clear(completion: ((_ result: Result<Data, CacheServiceError>) -> Void)? = nil) {
+    public func clear(_ completion: ((Result<Data, CacheServiceError>) -> Void)? = nil) {
         serialQueue.async {
             self.memory.removeAllObjects()
             do {

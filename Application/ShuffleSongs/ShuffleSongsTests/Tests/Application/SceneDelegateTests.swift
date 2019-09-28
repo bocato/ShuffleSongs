@@ -84,18 +84,37 @@ final class SceneDelegateTests: XCTestCase {
 
 // MARK: - Testing Helpers
 
-private final class CacheServiceProviderSpy: CacheServiceProvider {
+final class CacheServiceProviderSpy: CacheServiceProvider {
     
     init() {}
     
-    init(fileManager: FileManager, cacheDirectoryName: String) {}
+    private(set) var initCalled = false
+    private(set) var fileManagerPassed: FileManager?
+    private(set) var cacheDirectoryNamePassed: String?
+    init(fileManager: FileManager, cacheDirectoryName: String) {
+        initCalled = true
+        fileManagerPassed = fileManager
+        cacheDirectoryNamePassed = cacheDirectoryName
+    }
     
-    func save(data: Data, key: String, completion: ((Result<Void, CacheServiceError>) -> Void)?) {}
+    private(set) var saveCalled = false
+    private(set) var dataPassed: Data?
+    private(set) var keyPassedToSave: String?
+    func save(data: Data, key: String, completion: ((Result<Void, CacheServiceError>) -> Void)?) {
+        saveCalled = true
+        dataPassed = data
+        keyPassedToSave = key
+    }
     
-    func loadData(from key: String, completion: ((Result<Data, CacheServiceError>) -> Void)) {}
+    private(set) var loadDataCalled = false
+    private(set) var keyPassedToLoadData: String?
+    func loadData(from key: String, completion: ((Result<Data, CacheServiceError>) -> Void)) {
+        loadDataCalled = true
+        keyPassedToSave = key
+    }
     
     private(set) var clearCalled = false
-    func clear(completion: ((Result<Data, CacheServiceError>) -> Void)?) {
+    func clear(_ completion: ((Result<Data, CacheServiceError>) -> Void)?) {
         clearCalled = true
     }
     

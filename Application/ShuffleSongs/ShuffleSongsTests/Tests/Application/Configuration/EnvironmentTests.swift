@@ -29,4 +29,16 @@ final class EnvironmentTests: XCTestCase {
         XCTAssertEqual(baseURL, expectedBaseURL, "The baseURL's should the same.")
     }
     
+    func test_whenCurrentEnvironment_isSetItShouldUpdateItsValues() {
+        // Given
+        let expectedCurrentEnviroment: EnvironmentType = .development
+        var sut: EnvironmentProvider = Environment.shared
+        
+        // When
+        sut.currentEnvironment = .development
+        
+        // Then
+        XCTAssertEqual(expectedCurrentEnviroment.rawValue, sut.currentEnvironment.rawValue, "The Environments should the same.")
+    }
+    
 }

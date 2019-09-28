@@ -12,25 +12,22 @@ import UIKit
 /// The main idea here is to have descritive names and standardization of the
 /// values used through the project, and make it simple/centralized updates
 /// when changes to the DesignSystem occours
-public struct Metrics {
+struct Metrics {
     
     private init() {}
     
-    public struct Margin {
+    struct Margin {
         
         private init() {}
         
         /// 0 points of spacing.
-        public static let none: CGFloat = 0
+        static let none: CGFloat = 0
         
         /// 16 points of spacing.
-        public static let `default`: CGFloat = 16.0
-        
-        /// 44 points of spacing.
-        public static let top: CGFloat = 44.0
+        static let `default`: CGFloat = 16.0
         
         /// 4 points of spacing
-        public static let tiny: CGFloat = 2.0
+        static let tiny: CGFloat = 2.0
     }
     
 }
