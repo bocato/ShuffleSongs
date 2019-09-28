@@ -103,28 +103,29 @@ final class MusicListTableViewCell: UITableViewCell {
     }
     
     private func fetchImage() {
-        artworkImageView.alpha = 0
+        artworkImageView.showLoading()
         viewModel?.fetchImage{ [artworkImageView] image in
             DispatchQueue.main.async {
                 artworkImageView.image = image
-                UIView.animate(withDuration: 0.25) {
-                    artworkImageView.alpha = 1
-                }
+                artworkImageView.hideLoading()
             }
         }
     }
     
     private func setupLabels() {
-        DispatchQueue.main.async { [viewModel, titleLabel, subtitleLabel] in
-            titleLabel.text = viewModel?.title
-            subtitleLabel.text = viewModel?.subtitle
+        DispatchQueue.main.async { [weak self] in
+            self?.titleLabel.text = self?.viewModel?.title
+            self?.subtitleLabel.text = self?.viewModel?.subtitle
         }
     }
     
     private func resetViewContent() {
-        artworkImageView.image = nil
-        titleLabel.text = nil
-        subtitleLabel.text = nil
+        DispatchQueue.main.async { [weak self] in
+            self?.artworkImageView.image = nil
+            self?.titleLabel.text = nil
+            self?.subtitleLabel.text = nil
+            self?.artworkImageView.hideLoading()
+        }
     }
     
     // MARK: - Layout

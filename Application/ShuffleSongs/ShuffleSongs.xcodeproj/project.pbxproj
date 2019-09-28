@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E546D51A233ED577006C1679 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D519233ED577006C1679 /* CollectionExtension.swift */; };
+		E546D522233F08E6006C1679 /* UIView+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D521233F08E6006C1679 /* UIView+Loading.swift */; };
+		E546D524233F0C47006C1679 /* LoadingPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546D523233F0C47006C1679 /* LoadingPresenting.swift */; };
 		E558E047233E9FBB008550A7 /* MusicListTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E558E046233E9FBB008550A7 /* MusicListTableViewCellViewModel.swift */; };
 		E558E049233EADFE008550A7 /* ProjectImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E558E048233EADFE008550A7 /* ProjectImages.swift */; };
 		E558E064233EBC10008550A7 /* CacheHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E558E063233EBC10008550A7 /* CacheHolding.swift */; };
@@ -50,7 +51,6 @@
 		E5835CAC233E4F0800125140 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5835BA1233CEA5500125140 /* SF-Pro-Display-Regular.otf */; };
 		E5835CAD233E4F0800125140 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5835BA2233CEA5500125140 /* SF-Pro-Display-Semibold.otf */; };
 		E5835CAF233E529A00125140 /* ShuffleSongsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835CAE233E529A00125140 /* ShuffleSongsNavigationController.swift */; };
-		E5835CB1233E590300125140 /* LoadingPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835CB0233E590300125140 /* LoadingPresenting.swift */; };
 		E5835CB3233E592000125140 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835CB2233E592000125140 /* LoadingView.swift */; };
 		E5835CB9233E674D00125140 /* FetchShuffledMusicListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835CB8233E674D00125140 /* FetchShuffledMusicListUseCase.swift */; };
 		E5835CBB233E67DE00125140 /* MusicShuffler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835CBA233E67DE00125140 /* MusicShuffler.swift */; };
@@ -94,7 +94,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E546D519233ED577006C1679 /* CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
+		E546D521233F08E6006C1679 /* UIView+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loading.swift"; sourceTree = "<group>"; };
+		E546D523233F0C47006C1679 /* LoadingPresenting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingPresenting.swift; sourceTree = "<group>"; };
 		E558E046233E9FBB008550A7 /* MusicListTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		E558E048233EADFE008550A7 /* ProjectImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectImages.swift; sourceTree = "<group>"; };
 		E558E063233EBC10008550A7 /* CacheHolding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheHolding.swift; sourceTree = "<group>"; };
@@ -142,7 +143,6 @@
 		E5835C17233E3F8700125140 /* RootViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewConfigurator.swift; sourceTree = "<group>"; };
 		E5835C19233E43EC00125140 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E5835CAE233E529A00125140 /* ShuffleSongsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShuffleSongsNavigationController.swift; sourceTree = "<group>"; };
-		E5835CB0233E590300125140 /* LoadingPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPresenting.swift; sourceTree = "<group>"; };
 		E5835CB2233E592000125140 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E5835CB8233E674D00125140 /* FetchShuffledMusicListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchShuffledMusicListUseCase.swift; sourceTree = "<group>"; };
 		E5835CBA233E67DE00125140 /* MusicShuffler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicShuffler.swift; sourceTree = "<group>"; };
@@ -270,7 +270,7 @@
 				E5835B88233CE97200125140 /* UIColor+Hex.swift */,
 				E5835B8B233CE97300125140 /* UIView+AutoLayout.swift */,
 				E5835CBF233E77D800125140 /* UITableViewExtension.swift */,
-				E546D519233ED577006C1679 /* CollectionExtension.swift */,
+				E546D521233F08E6006C1679 /* UIView+Loading.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -306,10 +306,10 @@
 			isa = PBXGroup;
 			children = (
 				E5835B7E233CE93000125140 /* CustomViewController.swift */,
-				E5835CB0233E590300125140 /* LoadingPresenting.swift */,
 				E5835B80233CE93000125140 /* ModalHelper.swift */,
 				E5835B7C233CE93000125140 /* StackViewBuilder.swift */,
 				E5835B7F233CE93000125140 /* ViewStateRendering.swift */,
+				E546D523233F0C47006C1679 /* LoadingPresenting.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -656,13 +656,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E558E047233E9FBB008550A7 /* MusicListTableViewCellViewModel.swift in Sources */,
+				E546D522233F08E6006C1679 /* UIView+Loading.swift in Sources */,
 				E5835CAF233E529A00125140 /* ShuffleSongsNavigationController.swift in Sources */,
 				E558E064233EBC10008550A7 /* CacheHolding.swift in Sources */,
 				E5835B96233CE9B600125140 /* Typography.swift in Sources */,
 				E5835BFC233DA1C400125140 /* Environment.swift in Sources */,
-				E546D51A233ED577006C1679 /* CollectionExtension.swift in Sources */,
 				E5835C0E233E36A700125140 /* MusicListView.swift in Sources */,
 				E5835B8F233CE97300125140 /* NSObjectExtension.swift in Sources */,
+				E546D524233F0C47006C1679 /* LoadingPresenting.swift in Sources */,
 				E5835B9C233CEA0600125140 /* ProjectColors.swift in Sources */,
 				E5835B90233CE97300125140 /* UIView+AutoLayout.swift in Sources */,
 				E5835C08233E367B00125140 /* MusicListViewModel.swift in Sources */,
@@ -688,7 +689,6 @@
 				E5835CB3233E592000125140 /* LoadingView.swift in Sources */,
 				E5835C05233E366600125140 /* MusicListViewController.swift in Sources */,
 				E5835C03233DA62E00125140 /* ArtistLookupResponseEntity.swift in Sources */,
-				E5835CB1233E590300125140 /* LoadingPresenting.swift in Sources */,
 				E5835C18233E3F8700125140 /* RootViewConfigurator.swift in Sources */,
 				E5835C01233DA28600125140 /* ArtistLookupRequest.swift in Sources */,
 				E5D710B5233E821F0026E111 /* ImagesService.swift in Sources */,

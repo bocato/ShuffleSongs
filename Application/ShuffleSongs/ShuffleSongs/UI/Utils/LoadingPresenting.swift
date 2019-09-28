@@ -18,24 +18,12 @@ extension LoadingPresenting where Self: UIViewController {
 
     /// Shows a loading view on top of some ViewControler
     func showLoading() {
-        let loadingView = LoadingView(frame: view.frame)
-        loadingView.activityIndicatorStyle = .large
-        view.addSubview(loadingView)
-        loadingView.startAnimating()
+        view.showLoading(activityIndicatorStyle: .large)
     }
     
+    /// Tries to hide the loadingView that is visible
     func hideLoading() {
-        DispatchQueue.main.async { [weak self] in
-            let loadingView = self?.view.viewWithTag(LoadingView.tag)
-            UIView.animate(withDuration: 0.25, animations: {
-                loadingView?.alpha = 0
-            }, completion: { completed in
-                if completed {
-                    (loadingView as? LoadingView)?.stopAnimating()
-                    loadingView?.removeFromSuperview()
-                }
-            })
-        }
+        view.hideLoading()
     }
 
 }

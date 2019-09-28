@@ -86,22 +86,29 @@ final class MusicListViewController: UIViewController, CustomViewController {
 extension MusicListViewController: ViewStateRendering, LoadingPresenting {
     
     func render(_ state: ViewState) {
-        switch state {
-        case .loading:
-            showLoading()
-        case .content:
-            hideLoading()
-            DispatchQueue.main.async { [weak self] in
-                self?.customView.reloadTableView()
-                self?.customView.showTableView()
+        DispatchQueue.main.async { [weak self] in
+            switch state {
+            case .loading:
+                self?.showLoading()
+            case .content:
+                self?.handleContent()
+            case let .error(filler):
+                self?.handleError(with: filler)
+            default:
+                return
             }
-        case let .error(filler):
-            hideLoading()
-            renderError(filler)
-        default:
-            return
         }
-        
+    }
+    
+    private func handleContent() {
+        hideLoading()
+        customView.reloadTableView()
+        customView.showTableView()
+    }
+    
+    private func handleError(with filler: ViewFiller?) {
+        hideLoading()
+        renderError(filler)
     }
     
     private func renderError(_ filler: ViewFiller?) {
