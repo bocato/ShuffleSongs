@@ -27,6 +27,35 @@ final class FetchShuffledMusicListUseCaseTests: XCTestCase {
         XCTAssertEqual(expectedArtistIDs, idsPassed, "Expected \(expectedArtistIDs), but got \(idsPassed ?? [])")
     }
     
+    func test_whenInitIsCalledWithoutPassingMaxPermutationAtemptsParameter_theArtistLookupServiceShouldReceiveDefaultArtistIDsWhenCalled() {
+        // Given
+        let expectedMaxPermutationAtempts = 10
+        let itemsToReturn: [ArtistLookupResponseEntity.Result] = [
+            ArtistLookupResponseEntity.Result.fixture(
+                wrapperType: .track,
+                primaryGenreName: "primaryGenreName 1",
+                artistName: "artistName 1",
+                trackName: "trackName 1"
+            )
+        ]
+        let artistLookupServiceProviderStub = ArtistLookupServiceProviderStub(
+            resultToReturn: .success(itemsToReturn)
+        )
+        let musicShufflingSpy = MusicShufflingSpy()
+        let sut = FetchShuffledMusicListUseCase(
+            artistLookupService: artistLookupServiceProviderStub,
+            musicShuffler: musicShufflingSpy
+        )
+        
+        // When
+        sut.execute { _ in }
+        
+        // Then
+        XCTAssertTrue(musicShufflingSpy.shuffleCalled, "`shuffle` should have been called.")
+        let maxPermutationAtemptsPassed = musicShufflingSpy.maxPermutationAtemptsPassed
+        XCTAssertEqual(expectedMaxPermutationAtempts, maxPermutationAtemptsPassed, "Expected \(expectedMaxPermutationAtempts), but got \(maxPermutationAtemptsPassed ?? 0)")
+    }
+    
     func test_whenArtistLookupServiceFails_theUseCaseShouldReturnTheExpectedStates() {
         // Given
         let artistLookupServiceProviderStub = ArtistLookupServiceProviderStub(
@@ -175,6 +204,20 @@ private final class ArtistLookupServiceProviderSpy: ArtistLookupServiceProvider 
     func lookupArtistsWithIDs(_ ids: [String], completion: @escaping (Result<[ArtistLookupResponseEntity.Result], ArtistLookupServiceError>) -> Void) {
         lookupArtistsWithIDsCalled = true
         idsPassed = ids
+    }
+    
+}
+
+private final class MusicShufflingSpy: MusicShuffling {
+    
+    private(set) var shuffleCalled = false
+    private(set) var arrayPassed: [MusicInfoItem]?
+    private(set) var maxPermutationAtemptsPassed: Int?
+    func shuffle(_ array: [MusicInfoItem], maxPermutationAtempts: Int) -> [MusicInfoItem] {
+        shuffleCalled = true
+        arrayPassed = array
+        maxPermutationAtemptsPassed = maxPermutationAtempts
+        return []
     }
     
 }

@@ -25,6 +25,7 @@ final class FetchShuffledMusicListUseCase: FetchShuffledMusicListUseCaseProvider
     // MARK: - Dependencies
     
     private let artistIDs: [String]
+    private let maxPermutationAtempts: Int
     private let artistLookupService: ArtistLookupServiceProvider
     private let musicShuffler: MusicShuffling
     
@@ -32,10 +33,12 @@ final class FetchShuffledMusicListUseCase: FetchShuffledMusicListUseCaseProvider
     
     init(
         artistIDs: [String] = ["909253", "1171421960", "358714030" , "1419227", "264111789"],
+        maxPermutationAtempts: Int = 10,
         artistLookupService: ArtistLookupServiceProvider,
         musicShuffler: MusicShuffling = DefaultMusicShuffler()
     ) {
         self.artistIDs = artistIDs
+        self.maxPermutationAtempts = maxPermutationAtempts
         self.artistLookupService = artistLookupService
         self.musicShuffler = musicShuffler
     }
@@ -44,7 +47,7 @@ final class FetchShuffledMusicListUseCase: FetchShuffledMusicListUseCaseProvider
     
     func execute(completion: @escaping (UseCaseEvent<[MusicInfoItem], FetchShuffledMusicListUseCaseError>) -> Void) {
         completion(.loading())
-        artistLookupService.lookupArtistsWithIDs(artistIDs) { [musicShuffler] (result) in
+        artistLookupService.lookupArtistsWithIDs(artistIDs) { [musicShuffler, maxPermutationAtempts] (result) in
             
             do {
                 let response = try result.get()
@@ -58,7 +61,7 @@ final class FetchShuffledMusicListUseCase: FetchShuffledMusicListUseCaseProvider
                             primaryGenreName: $0.primaryGenreName
                         )
                     }
-                let shuffledItems = musicShuffler.shuffle(items)
+                let shuffledItems = musicShuffler.shuffle(items, maxPermutationAtempts: maxPermutationAtempts)
                 completion(.data(shuffledItems))
             } catch {
                completion(.serviceError(error))

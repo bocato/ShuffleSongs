@@ -14,12 +14,12 @@ protocol MusicShuffling {
     
     /// Shuffles an array of type MusicInfoItem, returning a suffled version of the provided array
     /// - Parameter array: some array
-    func shuffle(_ array: [MusicInfoItem]) -> [MusicInfoItem]
+    func shuffle(_ array: [MusicInfoItem], maxPermutationAtempts: Int) -> [MusicInfoItem]
 }
 
 final class DefaultMusicShuffler: MusicShuffling {
     
-    func shuffle(_ array: [MusicInfoItem]) -> [MusicInfoItem] {
+    func shuffle(_ array: [MusicInfoItem], maxPermutationAtempts: Int) -> [MusicInfoItem] {
 
         // If the array has 2 items, there is no point in shuffling it
         if array.count <= 2 {
@@ -30,9 +30,11 @@ final class DefaultMusicShuffler: MusicShuffling {
         // we first need to shuffle them a little
         let shuffled = knuthShuffle(array)
 
-        // Now we try to find a permutation, for some time (max size of the array),
-        // if we cant find one in the maxAttempts defined, we return the shuffle result
-        let permutationResult = findPermutation(shuffled, maxAtempts: array.count) ?? shuffled
+        // Now we try to find a permutation, for some time if we cant find one
+        // in the maxAttempts defined, we return the simple shuffle result
+        guard let permutationResult = findPermutation(shuffled, maxAtempts: maxPermutationAtempts) else {
+            return shuffled
+        }
         
         return permutationResult
     }
@@ -40,9 +42,14 @@ final class DefaultMusicShuffler: MusicShuffling {
     /// This is an adaptation from the Backtracking algorithm proposed by @LuccaAngeletti on:
     /// https://stackoverflow.com/questions/39170398/is-there-a-way-to-shuffle-an-array-so-that-no-two-consecutive-values-are-the-sam
     func findPermutation(_ unusedElments: [MusicInfoItem], sequence: [MusicInfoItem] = [], maxAtempts: Int) -> [MusicInfoItem]? {
+        
+        // Continue if the current sequence doesn't contain adjacent equal elms
         guard !Array(zip(sequence.dropFirst(), sequence)).contains(where: { $0.0.artistName == $0.1.artistName }) else { return nil }
+        
+        // Continue if there are more elms to add
         guard !unusedElments.isEmpty else { return sequence }
 
+        // Try to find a solution, until we have attempts left
         for i in 0..<unusedElments.count {
             var unusedElms = unusedElments
             let newElm = unusedElms.remove(at: i)

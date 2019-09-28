@@ -77,7 +77,7 @@ public final class URLSessionDispatcher: URLRequestDispatching {
             guard 400...499 ~= statusCode, let data = dataTaskResponse.data, let jsonString = String(data: data, encoding: .utf8) else {
                 return .unknown
             }
-            
+            debugPrint(jsonString)
             return .withData(data, dataTaskResponse.error)
         }
         return nil

@@ -27,7 +27,7 @@
 		E5835B8F233CE97300125140 /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835B8A233CE97200125140 /* NSObjectExtension.swift */; };
 		E5835B90233CE97300125140 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835B8B233CE97300125140 /* UIView+AutoLayout.swift */; };
 		E5835B96233CE9B600125140 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835B93233CE9B500125140 /* Typography.swift */; };
-		E5835B97233CE9B600125140 /* UIFont+Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835B94233CE9B600125140 /* UIFont+Quiz.swift */; };
+		E5835B97233CE9B600125140 /* UIFont+ShuffleSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835B94233CE9B600125140 /* UIFont+ShuffleSongs.swift */; };
 		E5835B98233CE9B600125140 /* UIKit+Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835B95233CE9B600125140 /* UIKit+Typography.swift */; };
 		E5835B9B233CEA0600125140 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835B99233CEA0500125140 /* Metrics.swift */; };
 		E5835B9C233CEA0600125140 /* ProjectColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835B9A233CEA0600125140 /* ProjectColors.swift */; };
@@ -66,6 +66,7 @@
 		E5D23087233FE3E600E32346 /* ArtistLookupServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D23086233FE3E600E32346 /* ArtistLookupServiceTests.swift */; };
 		E5D2308D233FEA0200E32346 /* ImagesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D2308C233FEA0200E32346 /* ImagesServiceTests.swift */; };
 		E5D2308F233FEA4300E32346 /* UIViewLoadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D2308E233FEA4300E32346 /* UIViewLoadingTests.swift */; };
+		E5D230922340234800E32346 /* UILabelTypographyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D230912340234800E32346 /* UILabelTypographyTests.swift */; };
 		E5D710B5233E821F0026E111 /* ImagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D710B4233E821F0026E111 /* ImagesService.swift */; };
 		E5D710E6233E99ED0026E111 /* Caching.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D710E5233E99ED0026E111 /* Caching.framework */; };
 		E5D710E7233E99ED0026E111 /* Caching.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5D710E5233E99ED0026E111 /* Caching.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -121,7 +122,7 @@
 		E5835B8A233CE97200125140 /* NSObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		E5835B8B233CE97300125140 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		E5835B93233CE9B500125140 /* Typography.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
-		E5835B94233CE9B600125140 /* UIFont+Quiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Quiz.swift"; sourceTree = "<group>"; };
+		E5835B94233CE9B600125140 /* UIFont+ShuffleSongs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+ShuffleSongs.swift"; sourceTree = "<group>"; };
 		E5835B95233CE9B600125140 /* UIKit+Typography.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Typography.swift"; sourceTree = "<group>"; };
 		E5835B99233CEA0500125140 /* Metrics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
 		E5835B9A233CEA0600125140 /* ProjectColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectColors.swift; sourceTree = "<group>"; };
@@ -159,6 +160,7 @@
 		E5D23086233FE3E600E32346 /* ArtistLookupServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistLookupServiceTests.swift; sourceTree = "<group>"; };
 		E5D2308C233FEA0200E32346 /* ImagesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesServiceTests.swift; sourceTree = "<group>"; };
 		E5D2308E233FEA4300E32346 /* UIViewLoadingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewLoadingTests.swift; sourceTree = "<group>"; };
+		E5D230912340234800E32346 /* UILabelTypographyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelTypographyTests.swift; sourceTree = "<group>"; };
 		E5D710B4233E821F0026E111 /* ImagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesService.swift; sourceTree = "<group>"; };
 		E5D710E5233E99ED0026E111 /* Caching.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Caching.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -364,7 +366,7 @@
 			isa = PBXGroup;
 			children = (
 				E5835B93233CE9B500125140 /* Typography.swift */,
-				E5835B94233CE9B600125140 /* UIFont+Quiz.swift */,
+				E5835B94233CE9B600125140 /* UIFont+ShuffleSongs.swift */,
 				E5835B95233CE9B600125140 /* UIKit+Typography.swift */,
 			);
 			path = Typography;
@@ -650,6 +652,7 @@
 		E5D2308A233FE4ED00E32346 /* Typography */ = {
 			isa = PBXGroup;
 			children = (
+				E5D230912340234800E32346 /* UILabelTypographyTests.swift */,
 			);
 			path = Typography;
 			sourceTree = "<group>";
@@ -797,7 +800,7 @@
 				E5835B83233CE93000125140 /* CustomViewController.swift in Sources */,
 				E5835BFE233DA1FF00125140 /* ArtistLookupService.swift in Sources */,
 				E558E049233EADFE008550A7 /* ProjectImages.swift in Sources */,
-				E5835B97233CE9B600125140 /* UIFont+Quiz.swift in Sources */,
+				E5835B97233CE9B600125140 /* UIFont+ShuffleSongs.swift in Sources */,
 				E5835B78233CE8E600125140 /* UseCaseEvent.swift in Sources */,
 				E5835CBB233E67DE00125140 /* MusicShuffling.swift in Sources */,
 				E5835C1A233E43EC00125140 /* SceneDelegate.swift in Sources */,
@@ -838,6 +841,7 @@
 				E5D2307E233FD1BA00E32346 /* ArtistLookupResponseEntityResult+Fixtures.swift in Sources */,
 				E546D531233F1436006C1679 /* SceneDelegateTests.swift in Sources */,
 				E5D23072233FAA7F00E32346 /* CollectionExtension.swift in Sources */,
+				E5D230922340234800E32346 /* UILabelTypographyTests.swift in Sources */,
 				E5D2307A233FCCE900E32346 /* FetchShuffledMusicListUseCaseTests.swift in Sources */,
 				E5D23081233FD7E200E32346 /* MusicListViewDataConverterTests.swift in Sources */,
 				E5D2308D233FEA0200E32346 /* ImagesServiceTests.swift in Sources */,

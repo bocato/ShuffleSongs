@@ -21,10 +21,48 @@ final class MusicShufflingTests: XCTestCase {
         let sut = DefaultMusicShuffler()
         
         // When
-        let shuffled = sut.shuffle(musicItems)
+        let shuffled = sut.shuffle(musicItems, maxPermutationAtempts: 10)
         
         // Then
         XCTAssertEqual(shuffled, musicItems, "Expected the arrays to be the same.")
+    }
+    
+    func test_suffle_whenAttemptsAreOutAndNoResultWasFound_itShouldReturnShuffled() {
+        // Given
+        let musicItems: [MusicInfoItem] = [
+            MusicInfoItem(artworkURL: nil, trackName: "trackName 1", artistName: "artistName 1", primaryGenreName: "primaryGenreName 1"),
+            MusicInfoItem(artworkURL: nil, trackName: "trackName 2", artistName: "artistName 2", primaryGenreName: "primaryGenreName 2"),
+            MusicInfoItem(artworkURL: nil, trackName: "trackName 3", artistName: "artistName 3", primaryGenreName: "primaryGenreName 3"),
+            MusicInfoItem(artworkURL: nil, trackName: "trackName 1", artistName: "artistName 1", primaryGenreName: "primaryGenreName 1"),
+            MusicInfoItem(artworkURL: nil, trackName: "trackName 2", artistName: "artistName 2", primaryGenreName: "primaryGenreName 2"),
+            MusicInfoItem(artworkURL: nil, trackName: "trackName 3", artistName: "artistName 3", primaryGenreName: "primaryGenreName 3"),
+            MusicInfoItem(artworkURL: nil, trackName: "trackName 1", artistName: "artistName 1", primaryGenreName: "primaryGenreName 1"),
+            MusicInfoItem(artworkURL: nil, trackName: "trackName 2", artistName: "artistName 2", primaryGenreName: "primaryGenreName 2"),
+            MusicInfoItem(artworkURL: nil, trackName: "trackName 3", artistName: "artistName 3", primaryGenreName: "primaryGenreName 3")
+        ]
+        let sut = DefaultMusicShuffler()
+        
+        // When
+        let shuffled = sut.shuffle(musicItems, maxPermutationAtempts: 0)
+        
+        // Then
+        XCTAssertNotEqual(shuffled, musicItems, "Expected the arrays to be the diferent.")
+    }
+    
+    func test_suffle_whenThere_itShouldReturnShuffled() {
+        // Given
+        let musicItems: [MusicInfoItem] = [
+            MusicInfoItem(artworkURL: nil, trackName: "trackName 1", artistName: "artistName 1", primaryGenreName: "primaryGenreName 1"),
+            MusicInfoItem(artworkURL: nil, trackName: "trackName 1", artistName: "artistName 1", primaryGenreName: "primaryGenreName 1"),
+            MusicInfoItem(artworkURL: nil, trackName: "trackName 1", artistName: "artistName 1", primaryGenreName: "primaryGenreName 1")
+        ]
+        let sut = DefaultMusicShuffler()
+
+        // When
+        let shuffled = sut.shuffle(musicItems, maxPermutationAtempts: 10)
+
+        // Then
+        XCTAssertEqual(shuffled, musicItems, "Expected the arrays to be the same, and no permutation to be found.")
     }
     
     func test_whenSufflingAnArrayWithEvenNumberOfArtists_itShouldReturnAnArrayAvoidingNeighbors() {
@@ -39,7 +77,7 @@ final class MusicShufflingTests: XCTestCase {
         let expectArtistNamesOrder = [["1", "2", "1", "2"], ["2", "1", "2", "1"]]
         
         // When
-        let shuffled = sut.shuffle(musicItems)
+        let shuffled = sut.shuffle(musicItems, maxPermutationAtempts: 10)
         
         // Then
         let shuffledArtistNamesOrder = shuffled.map { $0.artistName }
@@ -59,7 +97,7 @@ final class MusicShufflingTests: XCTestCase {
         let sut = DefaultMusicShuffler()
         
         // When
-        let shuffled = sut.shuffle(musicItems)
+        let shuffled = sut.shuffle(musicItems, maxPermutationAtempts: 10)
         
         // Then
         let shuffledArtistNamesOrder = shuffled.map { $0.artistName }
