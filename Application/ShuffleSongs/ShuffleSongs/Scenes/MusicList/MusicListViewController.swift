@@ -44,6 +44,7 @@ final class MusicListViewController: UIViewController, CustomViewController {
     
     override func loadView() {
         setupCustomView()
+        setupShuffleButton()
     }
     
     // MARK: - Setup
@@ -52,6 +53,21 @@ final class MusicListViewController: UIViewController, CustomViewController {
         view = CustomView(
             tableViewDataSource: self
         )
+    }
+    
+    private func setupShuffleButton() {
+        let shuffleButton = UIBarButtonItem(
+            image: .shuffle,
+            style: .plain,
+            target: self,
+            action: #selector(shuffleButtonDidReceiveTouchUpInside))
+        navigationItem.rightBarButtonItem = shuffleButton
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func shuffleButtonDidReceiveTouchUpInside() {
+        viewModel.fetchMusicList()
     }
     
     // MARK: - Helpers
@@ -75,9 +91,9 @@ extension MusicListViewController: ViewStateRendering, LoadingPresenting {
             showLoading()
         case .content:
             hideLoading()
-            DispatchQueue.main.async {
-                self.customView.reloadTableView()
-                self.customView.showTableView()
+            DispatchQueue.main.async { [weak self] in
+                self?.customView.reloadTableView()
+                self?.customView.showTableView()
             }
         case let .error(filler):
             hideLoading()

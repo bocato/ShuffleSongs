@@ -24,7 +24,6 @@ extension LoadingPresenting where Self: UIViewController {
         loadingView.startAnimating()
     }
     
-    /// Tries to hide the loadingView that is visible
     func hideLoading() {
         DispatchQueue.main.async { [weak self] in
             let loadingView = self?.view.viewWithTag(LoadingView.tag)

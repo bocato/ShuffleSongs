@@ -14,13 +14,12 @@ final class LoadingView: UIView {
     // MARK: - Constants
     
     static let tag = 11111
-    private let activityIndicatorSide: CGFloat = 100
     
     // MARK: - UI
     
     private lazy var blurView: UIView = {
         let view = UIView(frame: frame)
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         view.alpha = 0.25
         return view
     }()
@@ -83,8 +82,14 @@ final class LoadingView: UIView {
     private func constrainActivityIndicator() {
         addSubview(activityIndicator)
         activityIndicator.anchorCenterSuperview()
-        activityIndicator.heightAnchor.constraint(equalToConstant: activityIndicatorSide).isActive = true
-        activityIndicator.widthAnchor.constraint(equalToConstant: activityIndicatorSide).isActive = true
+        activityIndicator.heightAnchor.constraint(
+            equalTo: widthAnchor,
+            multiplier: 0.2
+        ).isActive = true
+        activityIndicator.widthAnchor.constraint(
+            equalTo: activityIndicator.heightAnchor,
+            constant: 1.0
+        ).isActive = true
     }
     
     // MARK: - Public Functions

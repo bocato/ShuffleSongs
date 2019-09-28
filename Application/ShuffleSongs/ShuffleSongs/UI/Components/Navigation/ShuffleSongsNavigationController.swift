@@ -22,7 +22,11 @@ final class ShuffleSongsNavigationController: UINavigationController {
     private func setup() {
         navigationBar.barStyle = .default
         navigationBar.isTranslucent = true
-        navigationBar.tintColor = .darkPurple
+        navigationBar.tintColor = .white
+        navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.white
+        ]
+        navigationBar.barTintColor = .darkPurple
     }
 
 }

@@ -79,6 +79,7 @@ final class MusicListTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         viewModel?.cancelImageRequest()
+        resetViewContent()
     }
     
     // MARK: - Configuration
@@ -102,14 +103,13 @@ final class MusicListTableViewCell: UITableViewCell {
     }
     
     private func fetchImage() {
-        viewModel?.fetchImage{ [weak self, artworkImageView] image in
+        artworkImageView.alpha = 0
+        viewModel?.fetchImage{ [artworkImageView] image in
             DispatchQueue.main.async {
-                UIView.transition(
-                    with: artworkImageView,
-                    duration: 0.25, options: [.curveEaseIn],
-                    animations: {
-                        artworkImageView.image = image
-                })
+                artworkImageView.image = image
+                UIView.animate(withDuration: 0.25) {
+                    artworkImageView.alpha = 1
+                }
             }
         }
     }
@@ -119,6 +119,12 @@ final class MusicListTableViewCell: UITableViewCell {
             titleLabel.text = viewModel?.title
             subtitleLabel.text = viewModel?.subtitle
         }
+    }
+    
+    private func resetViewContent() {
+        artworkImageView.image = nil
+        titleLabel.text = nil
+        subtitleLabel.text = nil
     }
     
     // MARK: - Layout
