@@ -16,7 +16,6 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate, CacheHolding {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        resetCaches()
         setupRootViewController(windowScene: windowScene)
     }
     
@@ -24,13 +23,18 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate, CacheHolding {
 // MARK: - RootViewConfigurator
 extension SceneDelegate: RootViewConfigurator {
     
-    func setupRootViewController(windowScene: UIWindowScene) {
+    func setupRootViewController(windowScene: UIWindowScene?) {
+        
+        resetCaches()
+        
         let musicListViewController = makeMusicListViewController()
         let rootViewController = ShuffleSongsNavigationController(rootViewController: musicListViewController)
-        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        let frame = windowScene?.coordinateSpace.bounds ?? UIScreen.main.bounds
+        window = UIWindow(frame: frame)
         window?.windowScene = windowScene
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
+        
     }
     
 }

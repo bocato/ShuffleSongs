@@ -1,15 +1,14 @@
 //
-//  ShuffleSongsTests.swift
+//  MusicListViewDataConverterTests.swift
 //  ShuffleSongsTests
 //
-//  Created by Eduardo Sanches Bocato on 27/09/19.
+//  Created by Eduardo Sanches Bocato on 28/09/19.
 //  Copyright © 2019 Bocato. All rights reserved.
 //
 
 import XCTest
-@testable import ShuffleSongs
 
-class ShuffleSongsTests: XCTestCase {
+class MusicListViewDataConverterTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

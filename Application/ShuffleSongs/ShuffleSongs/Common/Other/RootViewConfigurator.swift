@@ -9,5 +9,5 @@
 import UIKit
 
 protocol RootViewConfigurator {
-    func setupRootViewController(windowScene: UIWindowScene)
+    func setupRootViewController(windowScene: UIWindowScene?)
 }
