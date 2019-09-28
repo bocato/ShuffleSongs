@@ -29,11 +29,9 @@ extension UIView {
         let loadingView = viewWithTag(LoadingView.tag)
         UIView.animate(withDuration: 0.25, animations: {
             loadingView?.alpha = 0
-        }, completion: { completed in
-            if completed {
-                (loadingView as? LoadingView)?.stopAnimating()
-                loadingView?.removeFromSuperview()
-            }
+        }, completion: { _ in
+            (loadingView as? LoadingView)?.stopAnimating()
+            loadingView?.removeFromSuperview()
         })
     }
 

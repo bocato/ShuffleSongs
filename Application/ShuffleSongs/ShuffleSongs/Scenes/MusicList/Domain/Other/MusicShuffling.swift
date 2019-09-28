@@ -21,6 +21,11 @@ final class DefaultMusicShuffler: MusicShuffling {
     
     func shuffle(_ array: Array<MusicInfoItem>) -> Array<MusicInfoItem> {
         
+        // If the array has 2 items, there is no point in shuffling it
+        if array.count <= 2 {
+            return array
+        }
+        
         // Since the backend sends the elements clustered by artistName
         // we first need to shuffle them a little
         let shuffled = knuthShuffle(array)
@@ -47,12 +52,8 @@ final class DefaultMusicShuffler: MusicShuffling {
         return shuffled
     }
     
-    /// This function tries to minimize de adjacent neighbors that have the same artistName
+    /// This function TRIES to minimize de adjacent neighbors that have the same artistName
     private func minimizeNeighbors(in array: [MusicInfoItem]) -> [MusicInfoItem] {
-        
-        if array.count < 2 {
-            return array
-        }
         
         var output = [MusicInfoItem?]()
         var stack = array
@@ -75,6 +76,9 @@ final class DefaultMusicShuffler: MusicShuffling {
             stack.remove(at: 0)
             output.append(nextItem)
             lastItem = nextItem
+            
+            debugPrint("stack.count = \(stack.count)")
+            debugPrint("output = \(output.compactMap { $0?.artistName } .debugDescription)")
             
         }
         
