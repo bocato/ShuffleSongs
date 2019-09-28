@@ -39,13 +39,13 @@ extension ArtistLookupResponseEntity {
         }
     }
 }
-extension ArtistLookupResponseEntity {
+extension ArtistLookupResponseEntity.Result {
     enum TrackExplicitness: String, Codable {
         case explicit = "explicit"
         case notExplicit = "notExplicit"
     }
 }
-extension ArtistLookupResponseEntity {
+extension ArtistLookupResponseEntity.Result {
     enum WrapperType: String, Codable {
         case artist = "artist"
         case track = "track"

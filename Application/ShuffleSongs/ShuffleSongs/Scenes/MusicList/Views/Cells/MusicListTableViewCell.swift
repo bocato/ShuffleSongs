@@ -104,7 +104,7 @@ final class MusicListTableViewCell: UITableViewCell {
     
     private func fetchImage() {
         artworkImageView.showLoading()
-        viewModel?.fetchImage{ [artworkImageView] image in
+        viewModel?.fetchImage { [artworkImageView] image in
             DispatchQueue.main.async {
                 artworkImageView.image = image
                 artworkImageView.hideLoading()
@@ -113,18 +113,18 @@ final class MusicListTableViewCell: UITableViewCell {
     }
     
     private func setupLabels() {
-        DispatchQueue.main.async { [weak self] in
-            self?.titleLabel.text = self?.viewModel?.title
-            self?.subtitleLabel.text = self?.viewModel?.subtitle
+        DispatchQueue.main.async {
+            self.titleLabel.text = self.viewModel?.title
+            self.subtitleLabel.text = self.viewModel?.subtitle
         }
     }
     
     private func resetViewContent() {
-        DispatchQueue.main.async { [weak self] in
-            self?.artworkImageView.image = nil
-            self?.titleLabel.text = nil
-            self?.subtitleLabel.text = nil
-            self?.artworkImageView.hideLoading()
+        DispatchQueue.main.async {
+            self.artworkImageView.image = nil
+            self.titleLabel.text = nil
+            self.subtitleLabel.text = nil
+            self.artworkImageView.hideLoading()
         }
     }
     

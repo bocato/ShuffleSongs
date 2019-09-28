@@ -104,7 +104,7 @@ extension MusicListViewModel: MusicListBusinessLogic {
         fetchShuffledMusicListUseCase.execute { [weak self] event in
             switch event.status {
             case .loading:
-                self?.viewStateRenderer?.render(.loading)
+                self?.handleLoading()
             case let .serviceError(error):
                 self?.handleServiceError(error)
             case let .data(list):
@@ -116,6 +116,10 @@ extension MusicListViewModel: MusicListBusinessLogic {
     }
     
     // MARK: - FetchMusicList Handlers
+    
+    private func handleLoading() {
+        viewStateRenderer?.render(.loading)
+    }
     
     private func handleShuffledList(_ list: [MusicInfoItem]) {
         let viewDataItems = musicListViewDataConverter.convert(list)

@@ -1,5 +1,5 @@
 //
-//  ArrayShuffler.swift
+//  MusicShuffling.swift
 //  ShuffleSongs
 //
 //  Created by Eduardo Sanches Bocato on 27/09/19.

@@ -14,6 +14,16 @@ final class MusicListViewController: UIViewController, CustomViewController {
     
     typealias CustomView = MusicListView
     
+    // MARK: - UI
+    private lazy var shuffleButton: UIBarButtonItem = {
+        return UIBarButtonItem(
+            image: .shuffle,
+            style: .plain,
+            target: self,
+            action: #selector(shuffleButtonDidReceiveTouchUpInside)
+        )
+    }()
+    
     // MARK: - Properties
     
     let viewModel: MusicListViewModelProtocol
@@ -56,11 +66,6 @@ final class MusicListViewController: UIViewController, CustomViewController {
     }
     
     private func setupShuffleButton() {
-        let shuffleButton = UIBarButtonItem(
-            image: .shuffle,
-            style: .plain,
-            target: self,
-            action: #selector(shuffleButtonDidReceiveTouchUpInside))
         navigationItem.rightBarButtonItem = shuffleButton
     }
     
@@ -86,29 +91,36 @@ final class MusicListViewController: UIViewController, CustomViewController {
 extension MusicListViewController: ViewStateRendering, LoadingPresenting {
     
     func render(_ state: ViewState) {
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.main.async {
             switch state {
             case .loading:
-                self?.showLoading()
+                self.handleLoading()
             case .content:
-                self?.handleContent()
+                self.handleContent()
             case let .error(filler):
-                self?.handleError(with: filler)
+                self.handleError(with: filler)
             default:
                 return
             }
         }
     }
     
+    private func handleLoading() {
+        showLoading()
+        shuffleButton.isEnabled = false
+    }
+    
     private func handleContent() {
         hideLoading()
         customView.reloadTableView()
         customView.showTableView()
+        shuffleButton.isEnabled = true
     }
     
     private func handleError(with filler: ViewFiller?) {
         hideLoading()
         renderError(filler)
+        shuffleButton.isEnabled = true
     }
     
     private func renderError(_ filler: ViewFiller?) {
@@ -121,10 +133,6 @@ extension MusicListViewController: ViewStateRendering, LoadingPresenting {
 
 // MARK: - MusicListViewModelBinding
 extension MusicListViewController: MusicListViewModelBinding {
-    
-    func showErrorModalWithData(_ modalData: SimpleModalViewData) {
-        showErrorModal(modalData)
-    }
     
     func viewTitleDidChange(_ title: String?) {
         DispatchQueue.main.async {

@@ -54,7 +54,7 @@ public final class URLSessionDispatcher: URLRequestDispatching {
                     completion(.success(data))
                 }
             }
-            urlRequestToken = URLRequestToken(task: dataTask)
+            urlRequestToken = URLRequestTokenHolder(task: dataTask)
             dataTask.resume()
             
         } catch {

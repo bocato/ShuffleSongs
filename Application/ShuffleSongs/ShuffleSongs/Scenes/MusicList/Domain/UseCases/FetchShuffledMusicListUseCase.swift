@@ -49,7 +49,7 @@ final class FetchShuffledMusicListUseCase: FetchShuffledMusicListUseCaseProvider
             do {
                 let response = try result.get()
                 let items = response
-                    .filter { $0.wrapperType == .track }
+                    .filter { $0.wrapperType == .track && $0.trackName != nil }
                     .map {
                         MusicInfoItem(
                             artworkURL: $0.artworkURL,

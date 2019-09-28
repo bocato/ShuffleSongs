@@ -9,6 +9,7 @@
 import XCTest
 @testable import ShuffleSongs
 import Caching
+import Networking
 
 final class SceneDelegateTests: XCTestCase {
     
@@ -36,7 +37,7 @@ final class SceneDelegateTests: XCTestCase {
         sceneDelegate.setupRootViewController(windowScene: nil)
         
         // Then
-        XCTAssertTrue(cacheServiceProviderSpy.clearCalled, "The caches should have been cleaned.")
+        XCTAssertTrue(cacheServiceProviderSpy.clearCalled, "The caches should have been cleared.")
     }
     
     func test_whenMakeKeywordsViewController_itShouldHaveTheCorrectPropertiesSet() {
@@ -46,22 +47,35 @@ final class SceneDelegateTests: XCTestCase {
         // When
         let sut = sceneDelegate.makeMusicListViewController()
 
-        // -> KeywordsViewController Dependencies <-
         let musicListViewControllerMirror = Mirror(reflecting: sut)
         guard let viewModel = musicListViewControllerMirror.firstChild(of: MusicListViewModel.self) else {
             XCTFail("Could not find MusicListViewModel.")
             return
         }
 
-        // -> KeywordsViewModel Dependencies <-
         let viewModelMirror = Mirror(reflecting: viewModel)
         
-        let fetchShuffledMusicListUseCase = viewModelMirror.firstChild(of: FetchShuffledMusicListUseCase.self)
-        let imagesService = viewModelMirror.firstChild(of: ImagesService.self)
+        guard let fetchShuffledMusicListUseCase = viewModelMirror.firstChild(of: FetchShuffledMusicListUseCase.self)
+        else {
+            XCTFail("A `FetchShuffledMusicListUseCase` should have been provided.")
+            return
+        }
+        let fetchShuffledMusicListUseCaseMirror = Mirror(reflecting: fetchShuffledMusicListUseCase)
+        let artistLookupService = fetchShuffledMusicListUseCaseMirror.firstChild(of: ArtistLookupService.self)
+        
+        guard let imagesService = viewModelMirror.firstChild(of: ImagesService.self)
+        else {
+            XCTFail("An `ImagesService` should have been provided.")
+            return
+        }
+        let imagesServiceMirror = Mirror(reflecting: imagesService)
+        let cacheService = imagesServiceMirror.firstChild(of: CacheService.self)
 
         // Then
-        XCTAssertNotNil(fetchShuffledMusicListUseCase, "A `FetchShuffledMusicListUseCase` should have been provided.")
-        XCTAssertNotNil(imagesService, "An `ImagesService` should have been provided.")
+        XCTAssertNotNil(artistLookupService, "An `ArtistLookupService` should have been provided.")
+        XCTAssertTrue(artistLookupService?.dispatcher is URLSessionDispatcher, "`artistLookupService.dispatcher` should be an URLSessionDispatcher.")
+        XCTAssertTrue(imagesService.dispatcher is URLSessionDispatcher, "`imagesService.dispatcher` should be an URLSessionDispatcher.")
+        XCTAssertNotNil(cacheService, "A `CacheService` should have been provided.")
         XCTAssertNotNil(viewModel.viewStateRenderer, "The `viewStateRenderer` should not be nil.")
         XCTAssertNotNil(viewModel.viewModelBinder, "The `viewModelBinder` should not be nil.")
     }

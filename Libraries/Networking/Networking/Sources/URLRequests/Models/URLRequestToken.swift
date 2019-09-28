@@ -9,7 +9,12 @@
 import Foundation
 
 /// Task abstraction in order to make the request cancelable without exposing the URLSessionDataTask.
-public final class URLRequestToken {
+public protocol URLRequestToken {
+    func cancel()
+}
+
+/// Task abstraction in order to make the request cancelable without exposing the URLSessionDataTask.
+final class URLRequestTokenHolder: URLRequestToken {
     
     // MARK: - Properties
     

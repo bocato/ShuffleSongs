@@ -39,10 +39,6 @@ final class MusicListTableViewCellViewModel: MusicListTableViewCellViewModelProt
     private let dataModel: MusicListItemViewData
     private let imagesService: ImagesServiceProvider
     
-    // MARK: - Binding
-    
-    weak var viewModelBinding: ViewStateRendering?
-    
     // MARK: - Private Properties
     
     private var imageRequestToken: URLRequestToken?
@@ -80,7 +76,7 @@ extension MusicListTableViewCellViewModel: MusicListCellDisplayLogic {
             return
         }
         
-        imagesService.getImageDataFromURL(imageURLString) { (result) in
+        imageRequestToken = imagesService.getImageDataFromURL(imageURLString) { (result) in
             
             guard let imageData = try? result.get(),
                 let image = UIImage(data: imageData)
