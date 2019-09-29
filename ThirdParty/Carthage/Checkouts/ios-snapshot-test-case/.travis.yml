@@ -1,0 +1,6 @@
+language: objective-c
+osx_image: xcode11
+before_script:
+  - gem install cocoapods -v 1.8.0 --no-document
+script:
+  ./build.sh

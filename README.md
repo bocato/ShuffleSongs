@@ -8,6 +8,9 @@
 - MultiProject setup concept
 - XCTests
 
+## How to Run
+- Got to the `ThirdParty` folder and install testing dependencies with:
+`carthage update --platform iOS`
 
 ## Notes
 - DarkMode is disable to simplify the implementation for now.

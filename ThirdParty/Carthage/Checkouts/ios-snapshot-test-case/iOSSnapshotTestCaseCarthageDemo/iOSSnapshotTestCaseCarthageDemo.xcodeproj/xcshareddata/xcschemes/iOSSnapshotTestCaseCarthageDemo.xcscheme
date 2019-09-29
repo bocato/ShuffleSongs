@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1100"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E5835B3E233CE7C900125140"
-               BuildableName = "ShuffleSongs.app"
-               BlueprintName = "ShuffleSongs"
-               ReferencedContainer = "container:ShuffleSongs.xcodeproj">
+               BlueprintIdentifier = "E793D49E21ED6CB3001039B0"
+               BuildableName = "iOSSnapshotTestCaseCarthageDemo.app"
+               BlueprintName = "iOSSnapshotTestCaseCarthageDemo"
+               ReferencedContainer = "container:iOSSnapshotTestCaseCarthageDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,20 +26,42 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      shouldUseLaunchSchemeArgsEnv = "NO">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E5835B54233CE7CC00125140"
-               BuildableName = "ShuffleSongsTests.xctest"
-               BlueprintName = "ShuffleSongsTests"
-               ReferencedContainer = "container:ShuffleSongs.xcodeproj">
+               BlueprintIdentifier = "E7E942DB21ED6EE1005BC62E"
+               BuildableName = "iOSSnapshotTestCaseCarthageDemoSwiftTests.xctest"
+               BlueprintName = "iOSSnapshotTestCaseCarthageDemoSwiftTests"
+               ReferencedContainer = "container:iOSSnapshotTestCaseCarthageDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E7E942DB21ED6EE1005BC62E"
+            BuildableName = "iOSSnapshotTestCaseCarthageDemoSwiftTests.xctest"
+            BlueprintName = "iOSSnapshotTestCaseCarthageDemoSwiftTests"
+            ReferencedContainer = "container:iOSSnapshotTestCaseCarthageDemo.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "FB_REFERENCE_IMAGE_DIR"
+            value = "$(SOURCE_ROOT)/$(PROJECT_NAME)SwiftTests/ReferenceImages"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "IMAGE_DIFF_DIR"
+            value = "$(SOURCE_ROOT)/$(PROJECT_NAME)SwiftTests/FailedSnapshotImages"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -55,24 +77,14 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E5835B3E233CE7C900125140"
-            BuildableName = "ShuffleSongs.app"
-            BlueprintName = "ShuffleSongs"
-            ReferencedContainer = "container:ShuffleSongs.xcodeproj">
+            BlueprintIdentifier = "E793D49E21ED6CB3001039B0"
+            BuildableName = "iOSSnapshotTestCaseCarthageDemo.app"
+            BlueprintName = "iOSSnapshotTestCaseCarthageDemo"
+            ReferencedContainer = "container:iOSSnapshotTestCaseCarthageDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "FB_REFERENCE_IMAGE_DIR"
-            value = "$(SOURCE_ROOT)/$(PROJECT_NAME)Tests/ReferenceImages"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "IMAGE_DIFF_DIR"
-            value = "$(SOURCE_ROOT)/$(PROJECT_NAME)Tests/FailureDiffs"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -84,10 +96,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E5835B3E233CE7C900125140"
-            BuildableName = "ShuffleSongs.app"
-            BlueprintName = "ShuffleSongs"
-            ReferencedContainer = "container:ShuffleSongs.xcodeproj">
+            BlueprintIdentifier = "E793D49E21ED6CB3001039B0"
+            BuildableName = "iOSSnapshotTestCaseCarthageDemo.app"
+            BlueprintName = "iOSSnapshotTestCaseCarthageDemo"
+            ReferencedContainer = "container:iOSSnapshotTestCaseCarthageDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

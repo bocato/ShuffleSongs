@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1100"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E5835B3E233CE7C900125140"
-               BuildableName = "ShuffleSongs.app"
-               BlueprintName = "ShuffleSongs"
-               ReferencedContainer = "container:ShuffleSongs.xcodeproj">
+               BlueprintIdentifier = "827137791C63AB6F00354E42"
+               BuildableName = "FBSnapshotTestCase.framework"
+               BlueprintName = "FBSnapshotTestCase tvOS"
+               ReferencedContainer = "container:FBSnapshotTestCase.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,20 +26,30 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E5835B54233CE7CC00125140"
-               BuildableName = "ShuffleSongsTests.xctest"
-               BlueprintName = "ShuffleSongsTests"
-               ReferencedContainer = "container:ShuffleSongs.xcodeproj">
+               BlueprintIdentifier = "827137821C63AB7000354E42"
+               BuildableName = "FBSnapshotTestCase tvOS Tests.xctest"
+               BlueprintName = "FBSnapshotTestCase tvOS Tests"
+               ReferencedContainer = "container:FBSnapshotTestCase.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "827137791C63AB6F00354E42"
+            BuildableName = "FBSnapshotTestCase.framework"
+            BlueprintName = "FBSnapshotTestCase tvOS"
+            ReferencedContainer = "container:FBSnapshotTestCase.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -51,28 +61,17 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E5835B3E233CE7C900125140"
-            BuildableName = "ShuffleSongs.app"
-            BlueprintName = "ShuffleSongs"
-            ReferencedContainer = "container:ShuffleSongs.xcodeproj">
+            BlueprintIdentifier = "827137791C63AB6F00354E42"
+            BuildableName = "FBSnapshotTestCase.framework"
+            BlueprintName = "FBSnapshotTestCase tvOS"
+            ReferencedContainer = "container:FBSnapshotTestCase.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "FB_REFERENCE_IMAGE_DIR"
-            value = "$(SOURCE_ROOT)/$(PROJECT_NAME)Tests/ReferenceImages"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "IMAGE_DIFF_DIR"
-            value = "$(SOURCE_ROOT)/$(PROJECT_NAME)Tests/FailureDiffs"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
+      </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -80,16 +79,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E5835B3E233CE7C900125140"
-            BuildableName = "ShuffleSongs.app"
-            BlueprintName = "ShuffleSongs"
-            ReferencedContainer = "container:ShuffleSongs.xcodeproj">
+            BlueprintIdentifier = "827137791C63AB6F00354E42"
+            BuildableName = "FBSnapshotTestCase.framework"
+            BlueprintName = "FBSnapshotTestCase tvOS"
+            ReferencedContainer = "container:FBSnapshotTestCase.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -71,6 +71,7 @@
 		E5D230972340CA3600E32346 /* MusicListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D230962340CA3600E32346 /* MusicListViewControllerTests.swift */; };
 		E5D230992340D0D600E32346 /* MusicListTableViewCellViewModel+Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D230982340D0D600E32346 /* MusicListTableViewCellViewModel+Fixtures.swift */; };
 		E5D2309B2340E3B400E32346 /* MusicListTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D2309A2340E3B400E32346 /* MusicListTableViewCellTests.swift */; };
+		E5D230B62340E91400E32346 /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D230B52340E91400E32346 /* FBSnapshotTestCase.framework */; };
 		E5D710B5233E821F0026E111 /* ImagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D710B4233E821F0026E111 /* ImagesService.swift */; };
 		E5D710E6233E99ED0026E111 /* Caching.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D710E5233E99ED0026E111 /* Caching.framework */; };
 		E5D710E7233E99ED0026E111 /* Caching.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5D710E5233E99ED0026E111 /* Caching.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -169,6 +170,7 @@
 		E5D230962340CA3600E32346 /* MusicListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListViewControllerTests.swift; sourceTree = "<group>"; };
 		E5D230982340D0D600E32346 /* MusicListTableViewCellViewModel+Fixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicListTableViewCellViewModel+Fixtures.swift"; sourceTree = "<group>"; };
 		E5D2309A2340E3B400E32346 /* MusicListTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListTableViewCellTests.swift; sourceTree = "<group>"; };
+		E5D230B52340E91400E32346 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = ../../ThirdParty/Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
 		E5D710B4233E821F0026E111 /* ImagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesService.swift; sourceTree = "<group>"; };
 		E5D710E5233E99ED0026E111 /* Caching.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Caching.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -187,6 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5D230B62340E91400E32346 /* FBSnapshotTestCase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +464,7 @@
 		E5835BB1233CEC1300125140 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5D230B52340E91400E32346 /* FBSnapshotTestCase.framework */,
 				E5D710E5233E99ED0026E111 /* Caching.framework */,
 				E5835BB2233CEC1300125140 /* Networking.framework */,
 			);
@@ -728,6 +732,7 @@
 				E5835B51233CE7CC00125140 /* Sources */,
 				E5835B52233CE7CC00125140 /* Frameworks */,
 				E5835B53233CE7CC00125140 /* Resources */,
+				E5D230B42340E87F00E32346 /* Carthage Run Script */,
 			);
 			buildRules = (
 			);
@@ -798,6 +803,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E5D230B42340E87F00E32346 /* Carthage Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../../ThirdParty/Carthage/Build/iOS/FBSnapshotTestCase.framework",
+			);
+			name = "Carthage Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E5835B3B233CE7C900125140 /* Sources */ = {
@@ -1051,6 +1078,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YKYJK8YBGT;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/../../ThirdParty/Carthage/Build/iOS/";
 				INFOPLIST_FILE = ShuffleSongsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
