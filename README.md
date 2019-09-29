@@ -7,6 +7,7 @@
 - CleanArchitecture concepts
 - MultiProject setup concept
 - XCTests
+- SnapshotTests
 
 ## How to Run
 - Got to the `ThirdParty` folder and install testing dependencies with:

@@ -167,7 +167,7 @@ final class MusicListTableViewCellViewModelTests: XCTestCase {
 
 // MARK: - Testing Helpers
 
-private final class ImagesServiceProviderStub: ImagesServiceProvider {
+final class ImagesServiceProviderStub: ImagesServiceProvider {
     
     let resultToReturn: Result<Data, ImagesServiceError>
     let urlRequestTokenSpy = URLRequestTokenSpy()
@@ -183,7 +183,7 @@ private final class ImagesServiceProviderStub: ImagesServiceProvider {
     
 }
 
-private final class URLRequestTokenSpy: URLRequestToken {
+final class URLRequestTokenSpy: URLRequestToken {
     private(set) var cancelCalled = false
     func cancel() {
         cancelCalled = true

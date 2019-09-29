@@ -72,6 +72,8 @@
 		E5D230992340D0D600E32346 /* MusicListTableViewCellViewModel+Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D230982340D0D600E32346 /* MusicListTableViewCellViewModel+Fixtures.swift */; };
 		E5D2309B2340E3B400E32346 /* MusicListTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D2309A2340E3B400E32346 /* MusicListTableViewCellTests.swift */; };
 		E5D230B62340E91400E32346 /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D230B52340E91400E32346 /* FBSnapshotTestCase.framework */; };
+		E5D230B82340EB7800E32346 /* TraitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D230B72340EB7800E32346 /* TraitController.swift */; };
+		E5D230BA2340ED4F00E32346 /* MusicListTableViewCellSnaptshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D230B92340ED4F00E32346 /* MusicListTableViewCellSnaptshotTests.swift */; };
 		E5D710B5233E821F0026E111 /* ImagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D710B4233E821F0026E111 /* ImagesService.swift */; };
 		E5D710E6233E99ED0026E111 /* Caching.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D710E5233E99ED0026E111 /* Caching.framework */; };
 		E5D710E7233E99ED0026E111 /* Caching.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5D710E5233E99ED0026E111 /* Caching.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -171,6 +173,8 @@
 		E5D230982340D0D600E32346 /* MusicListTableViewCellViewModel+Fixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicListTableViewCellViewModel+Fixtures.swift"; sourceTree = "<group>"; };
 		E5D2309A2340E3B400E32346 /* MusicListTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListTableViewCellTests.swift; sourceTree = "<group>"; };
 		E5D230B52340E91400E32346 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = ../../ThirdParty/Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
+		E5D230B72340EB7800E32346 /* TraitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitController.swift; sourceTree = "<group>"; };
+		E5D230B92340ED4F00E32346 /* MusicListTableViewCellSnaptshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListTableViewCellSnaptshotTests.swift; sourceTree = "<group>"; };
 		E5D710B4233E821F0026E111 /* ImagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesService.swift; sourceTree = "<group>"; };
 		E5D710E5233E99ED0026E111 /* Caching.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Caching.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -583,6 +587,7 @@
 			children = (
 				E5D23075233FC50400E32346 /* MusicListTableViewCellViewModelTests.swift */,
 				E5D2309A2340E3B400E32346 /* MusicListTableViewCellTests.swift */,
+				E5D230B92340ED4F00E32346 /* MusicListTableViewCellSnaptshotTests.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -692,6 +697,7 @@
 			isa = PBXGroup;
 			children = (
 				E5D230942340C9B800E32346 /* ViewControllerTestingLoader.swift */,
+				E5D230B72340EB7800E32346 /* TraitController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -889,6 +895,8 @@
 				E5D23076233FC50400E32346 /* MusicListTableViewCellViewModelTests.swift in Sources */,
 				E5D2307E233FD1BA00E32346 /* ArtistLookupResponseEntityResult+Fixtures.swift in Sources */,
 				E546D531233F1436006C1679 /* SceneDelegateTests.swift in Sources */,
+				E5D230B82340EB7800E32346 /* TraitController.swift in Sources */,
+				E5D230BA2340ED4F00E32346 /* MusicListTableViewCellSnaptshotTests.swift in Sources */,
 				E5D23072233FAA7F00E32346 /* CollectionExtension.swift in Sources */,
 				E5D2309B2340E3B400E32346 /* MusicListTableViewCellTests.swift in Sources */,
 				E5D230922340234800E32346 /* UILabelTypographyTests.swift in Sources */,
