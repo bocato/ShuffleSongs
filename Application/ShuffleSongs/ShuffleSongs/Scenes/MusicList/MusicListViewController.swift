@@ -26,8 +26,8 @@ final class MusicListViewController: UIViewController, CustomViewController {
     
     // MARK: - Properties
     
-    let viewModel: MusicListViewModelProtocol
-    let modalHelper: ModalHelperProtocol
+    private let viewModel: MusicListViewModelProtocol
+    private let modalHelper: ModalHelperProtocol
     
     // MARK: - Initialization
     

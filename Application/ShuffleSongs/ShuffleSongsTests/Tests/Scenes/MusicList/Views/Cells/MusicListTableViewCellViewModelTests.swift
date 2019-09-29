@@ -189,4 +189,3 @@ private final class URLRequestTokenSpy: URLRequestToken {
         cancelCalled = true
     }
 }
-

@@ -12,7 +12,6 @@ protocol MusicListViewProtocol {
     func reloadTableView()
     func showTableView(_ show: Bool)
 }
-
 final class MusicListView: UIView, MusicListViewProtocol {
    
     // MARK: UI

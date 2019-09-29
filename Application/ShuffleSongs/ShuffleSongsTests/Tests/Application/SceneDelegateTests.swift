@@ -52,6 +52,7 @@ final class SceneDelegateTests: XCTestCase {
             XCTFail("Could not find MusicListViewModel.")
             return
         }
+        let modalHelper = musicListViewControllerMirror.firstChild(of: ModalHelper.self)
 
         let viewModelMirror = Mirror(reflecting: viewModel)
         
@@ -72,6 +73,7 @@ final class SceneDelegateTests: XCTestCase {
         let cacheService = imagesServiceMirror.firstChild(of: CacheService.self)
 
         // Then
+        XCTAssertNotNil(modalHelper, "A `ModalHelper` should have been provided.")
         XCTAssertNotNil(artistLookupService, "An `ArtistLookupService` should have been provided.")
         XCTAssertTrue(artistLookupService?.dispatcher is URLSessionDispatcher, "`artistLookupService.dispatcher` should be an URLSessionDispatcher.")
         XCTAssertTrue(imagesService.dispatcher is URLSessionDispatcher, "`imagesService.dispatcher` should be an URLSessionDispatcher.")
