@@ -28,15 +28,18 @@ final class MusicListViewController: UIViewController, CustomViewController {
     
     private let viewModel: MusicListViewModelProtocol
     private let modalHelper: ModalHelperProtocol
+    private let mainQueue: Dispatching
     
     // MARK: - Initialization
     
     init(
         viewModel: MusicListViewModelProtocol,
-        modalHelper: ModalHelperProtocol = ModalHelper()
+        modalHelper: ModalHelperProtocol = ModalHelper(),
+        mainQueue: Dispatching = AsyncQueue.main
     ) {
         self.viewModel = viewModel
         self.modalHelper = modalHelper
+        self.mainQueue = mainQueue
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -91,7 +94,7 @@ final class MusicListViewController: UIViewController, CustomViewController {
 extension MusicListViewController: ViewStateRendering, LoadingPresenting {
     
     func render(_ state: ViewState) {
-        DispatchQueue.main.async {
+        mainQueue.dispatch {
             switch state {
             case .loading:
                 self.handleLoading()
@@ -124,8 +127,8 @@ extension MusicListViewController: ViewStateRendering, LoadingPresenting {
     }
     
     private func renderError(_ filler: ViewFiller?) {
-        guard let title = filler?.title, let subtitle = filler?.subtitle else { return }
-        let data = SimpleModalViewData(title: title, subtitle: subtitle)
+        let title = filler?.title ?? "Unknown error!"
+        let data = SimpleModalViewData(title: title, subtitle: filler?.subtitle)
         showErrorModal(data)
     }
     
@@ -135,7 +138,7 @@ extension MusicListViewController: ViewStateRendering, LoadingPresenting {
 extension MusicListViewController: MusicListViewModelBinding {
     
     func viewTitleDidChange(_ title: String?) {
-        DispatchQueue.main.async {
+        mainQueue.dispatch {
             self.title = title
         }
     }

@@ -214,7 +214,7 @@ private final class ViewStateRenderingSpy: ViewStateRendering {
     
 }
 
-private final class FetchShuffledMusicListUseCaseProviderStub: FetchShuffledMusicListUseCaseProvider {
+final class FetchShuffledMusicListUseCaseProviderStub: FetchShuffledMusicListUseCaseProvider {
     var resultsToReturn = [UseCaseEvent<[MusicInfoItem], FetchShuffledMusicListUseCaseError>]()
     func execute(completion: @escaping (UseCaseEvent<[MusicInfoItem], FetchShuffledMusicListUseCaseError>) -> Void) {
         resultsToReturn.forEach {

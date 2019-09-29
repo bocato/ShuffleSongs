@@ -56,10 +56,18 @@ final class MusicListTableViewCell: UITableViewCell {
     // MARK: - Dependencies
     
     private var viewModel: MusicListTableViewCellViewModelProtocol?
+    private let mainQueue: Dispatching
     
     // MARK: - Initialization
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        self.mainQueue = AsyncQueue.main
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupLayout()
+    }
+    
+    init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, mainQueue: Dispatching = AsyncQueue.main) {
+        self.mainQueue = mainQueue
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupLayout()
     }
@@ -104,8 +112,8 @@ final class MusicListTableViewCell: UITableViewCell {
     
     private func fetchImage() {
         artworkImageView.showLoading()
-        viewModel?.fetchImage { [artworkImageView] image in
-            DispatchQueue.main.async {
+        viewModel?.fetchImage { [artworkImageView, mainQueue] image in
+            mainQueue.dispatch {
                 artworkImageView.image = image
                 artworkImageView.hideLoading()
             }
@@ -113,14 +121,14 @@ final class MusicListTableViewCell: UITableViewCell {
     }
     
     private func setupLabels() {
-        DispatchQueue.main.async {
+        mainQueue.dispatch {
             self.titleLabel.text = self.viewModel?.title
             self.subtitleLabel.text = self.viewModel?.subtitle
         }
     }
     
     private func resetViewContent() {
-        DispatchQueue.main.async {
+        mainQueue.dispatch {
             self.artworkImageView.image = nil
             self.titleLabel.text = nil
             self.subtitleLabel.text = nil

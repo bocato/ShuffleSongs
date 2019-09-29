@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import XCTest
 
 enum Device: CaseIterable {
     case phone4inch // iPhone SE, 5, 5S, 5C
@@ -152,4 +153,12 @@ func traitControllers<V: UIViewController>(
     }
     
     return (parent, child)
+}
+
+extension XCTestCase {
+    var deviceSizes: [(Device, CGSize)] {
+        return Device.allCases.map {
+            ($0, frameAndTraits(for: $0, at: .portrait).0.size)
+        }
+    }
 }

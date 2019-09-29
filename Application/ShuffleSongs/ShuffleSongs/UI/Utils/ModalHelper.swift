@@ -11,12 +11,12 @@ import UIKit
 /// Defines a model for the data that will be presented on a modal
 struct SimpleModalViewData {
     let title: String
-    let subtitle: String
+    let subtitle: String?
     let buttonText: String?
     
     init(
         title: String,
-        subtitle: String,
+        subtitle: String? = nil,
         buttonText: String? = nil
     ) {
         self.title = title
@@ -70,9 +70,7 @@ final class ModalHelper: ModalHelperProtocol {
         
         alert.addAction(buttonAction)
         
-        DispatchQueue.main.async {
-            controller?.present(alert, animated: true, completion: presentationCompletion)
-        }
+        controller?.present(alert, animated: true, completion: presentationCompletion)
         
     }
     

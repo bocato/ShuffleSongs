@@ -23,10 +23,10 @@ final class ShuffleSongsNavigationController: UINavigationController {
         navigationBar.barStyle = .default
         navigationBar.isTranslucent = true
         navigationBar.tintColor = .white
+        navigationBar.barTintColor = .darkPurple
         navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.white
         ]
-        navigationBar.barTintColor = .darkPurple
     }
 
 }

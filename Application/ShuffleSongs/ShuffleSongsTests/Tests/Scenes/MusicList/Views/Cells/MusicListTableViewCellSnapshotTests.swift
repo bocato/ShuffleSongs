@@ -1,5 +1,5 @@
 //
-//  MusicListTableViewCellSnaptshotTests.swift
+//  MusicListTableViewCellSnapshotTests.swift
 //  ShuffleSongsTests
 //
 //  Created by Eduardo Sanches Bocato on 29/09/19.
@@ -10,7 +10,7 @@ import XCTest
 import FBSnapshotTestCase
 @testable import ShuffleSongs
 
-final class MusicListTableViewCellSnaptshotTests: FBSnapshotTestCase {
+final class MusicListTableViewCellSnapshotTests: FBSnapshotTestCase {
     
     // MARK: - Tests
     
@@ -63,7 +63,7 @@ final class MusicListTableViewCellSnaptshotTests: FBSnapshotTestCase {
             wait(for: [loadingViewWasRemovedExpectation], timeout: 0.5)
             
             // Then
-            let snapshotName = "MusicListTableViewCell_configured_\(device)"
+            let snapshotName = "music_list_table_view_cell_configured_\(device)"
             FBSnapshotVerifyView(sut, identifier: snapshotName, overallTolerance: 0.01)
         }
     }
@@ -84,12 +84,6 @@ final class MusicListTableViewCellSnaptshotTests: FBSnapshotTestCase {
         }
         let imagesServiceProviderStub = ImagesServiceProviderStub(resultToReturn: .success(expectedImageData))
         return .init(dataModel: dataModel, imagesService: imagesServiceProviderStub)
-    }
-    
-    private var deviceSizes: [(Device, CGSize)] {
-        return Device.allCases.map {
-            ($0, frameAndTraits(for: $0, at: .portrait).0.size)
-        }
     }
     
     private func configureView(_ sut: MusicListTableViewCell, device: Device, size: CGSize, viewModel: MusicListTableViewCellViewModel) {

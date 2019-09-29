@@ -57,6 +57,10 @@
 		E5835CBB233E67DE00125140 /* MusicShuffling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835CBA233E67DE00125140 /* MusicShuffling.swift */; };
 		E5835CBD233E72AB00125140 /* MusicListViewDataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835CBC233E72AB00125140 /* MusicListViewDataConverter.swift */; };
 		E5835CC0233E77D800125140 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5835CBF233E77D800125140 /* UITableViewExtension.swift */; };
+		E598D7A223413B3300CFAABD /* StackViewBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E598D7A123413B3300CFAABD /* StackViewBuilderTests.swift */; };
+		E598D7A423413DC200CFAABD /* ModalHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E598D7A323413DC200CFAABD /* ModalHelperTests.swift */; };
+		E598D7AA234145F200CFAABD /* DispatchingQueues.swift in Sources */ = {isa = PBXBuildFile; fileRef = E598D7A9234145F200CFAABD /* DispatchingQueues.swift */; };
+		E598D7AD2341515100CFAABD /* ShuffleSongsNavigationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E598D7AC2341515100CFAABD /* ShuffleSongsNavigationControllerTests.swift */; };
 		E5D23072233FAA7F00E32346 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D23071233FAA7F00E32346 /* CollectionExtension.swift */; };
 		E5D23076233FC50400E32346 /* MusicListTableViewCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D23075233FC50400E32346 /* MusicListTableViewCellViewModelTests.swift */; };
 		E5D2307A233FCCE900E32346 /* FetchShuffledMusicListUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D23079233FCCE900E32346 /* FetchShuffledMusicListUseCaseTests.swift */; };
@@ -73,7 +77,7 @@
 		E5D2309B2340E3B400E32346 /* MusicListTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D2309A2340E3B400E32346 /* MusicListTableViewCellTests.swift */; };
 		E5D230B62340E91400E32346 /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D230B52340E91400E32346 /* FBSnapshotTestCase.framework */; };
 		E5D230B82340EB7800E32346 /* TraitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D230B72340EB7800E32346 /* TraitController.swift */; };
-		E5D230BA2340ED4F00E32346 /* MusicListTableViewCellSnaptshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D230B92340ED4F00E32346 /* MusicListTableViewCellSnaptshotTests.swift */; };
+		E5D230BA2340ED4F00E32346 /* MusicListTableViewCellSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D230B92340ED4F00E32346 /* MusicListTableViewCellSnapshotTests.swift */; };
 		E5D710B5233E821F0026E111 /* ImagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D710B4233E821F0026E111 /* ImagesService.swift */; };
 		E5D710E6233E99ED0026E111 /* Caching.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D710E5233E99ED0026E111 /* Caching.framework */; };
 		E5D710E7233E99ED0026E111 /* Caching.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5D710E5233E99ED0026E111 /* Caching.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -158,6 +162,10 @@
 		E5835CBA233E67DE00125140 /* MusicShuffling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicShuffling.swift; sourceTree = "<group>"; };
 		E5835CBC233E72AB00125140 /* MusicListViewDataConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListViewDataConverter.swift; sourceTree = "<group>"; };
 		E5835CBF233E77D800125140 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		E598D7A123413B3300CFAABD /* StackViewBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewBuilderTests.swift; sourceTree = "<group>"; };
+		E598D7A323413DC200CFAABD /* ModalHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHelperTests.swift; sourceTree = "<group>"; };
+		E598D7A9234145F200CFAABD /* DispatchingQueues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchingQueues.swift; sourceTree = "<group>"; };
+		E598D7AC2341515100CFAABD /* ShuffleSongsNavigationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShuffleSongsNavigationControllerTests.swift; sourceTree = "<group>"; };
 		E5D23071233FAA7F00E32346 /* CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
 		E5D23075233FC50400E32346 /* MusicListTableViewCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListTableViewCellViewModelTests.swift; sourceTree = "<group>"; };
 		E5D23079233FCCE900E32346 /* FetchShuffledMusicListUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchShuffledMusicListUseCaseTests.swift; sourceTree = "<group>"; };
@@ -174,7 +182,7 @@
 		E5D2309A2340E3B400E32346 /* MusicListTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListTableViewCellTests.swift; sourceTree = "<group>"; };
 		E5D230B52340E91400E32346 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = ../../ThirdParty/Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
 		E5D230B72340EB7800E32346 /* TraitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitController.swift; sourceTree = "<group>"; };
-		E5D230B92340ED4F00E32346 /* MusicListTableViewCellSnaptshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListTableViewCellSnaptshotTests.swift; sourceTree = "<group>"; };
+		E5D230B92340ED4F00E32346 /* MusicListTableViewCellSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListTableViewCellSnapshotTests.swift; sourceTree = "<group>"; };
 		E5D710B4233E821F0026E111 /* ImagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesService.swift; sourceTree = "<group>"; };
 		E5D710E5233E99ED0026E111 /* Caching.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Caching.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -309,6 +317,7 @@
 		E5835B73233CE88700125140 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				E598D7A82341459D00CFAABD /* Util */,
 				E558E065233EBC71008550A7 /* Other */,
 				E5835B75233CE8C000125140 /* Models */,
 				E5835B74233CE8B700125140 /* Extensions */,
@@ -574,6 +583,22 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		E598D7A82341459D00CFAABD /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				E598D7A9234145F200CFAABD /* DispatchingQueues.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		E598D7AB2341510F00CFAABD /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E598D7AC2341515100CFAABD /* ShuffleSongsNavigationControllerTests.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		E5D23073233FC4D500E32346 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,7 +612,7 @@
 			children = (
 				E5D23075233FC50400E32346 /* MusicListTableViewCellViewModelTests.swift */,
 				E5D2309A2340E3B400E32346 /* MusicListTableViewCellTests.swift */,
-				E5D230B92340ED4F00E32346 /* MusicListTableViewCellSnaptshotTests.swift */,
+				E5D230B92340ED4F00E32346 /* MusicListTableViewCellSnapshotTests.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -656,6 +681,7 @@
 		E5D23088233FE4B200E32346 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E598D7AB2341510F00CFAABD /* Components */,
 				E5D23089233FE4E500E32346 /* DesignSystem */,
 				E5D23090233FFB1800E32346 /* Utils */,
 			);
@@ -689,6 +715,8 @@
 		E5D23090233FFB1800E32346 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E598D7A123413B3300CFAABD /* StackViewBuilderTests.swift */,
+				E598D7A323413DC200CFAABD /* ModalHelperTests.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -837,6 +865,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E598D7AA234145F200CFAABD /* DispatchingQueues.swift in Sources */,
 				E558E047233E9FBB008550A7 /* MusicListTableViewCellViewModel.swift in Sources */,
 				E546D522233F08E6006C1679 /* UIView+Loading.swift in Sources */,
 				E5835CAF233E529A00125140 /* ShuffleSongsNavigationController.swift in Sources */,
@@ -888,6 +917,8 @@
 				E5835BA8233CEA7B00125140 /* MirrorExtension.swift in Sources */,
 				E5D23087233FE3E600E32346 /* ArtistLookupServiceTests.swift in Sources */,
 				E5D2308F233FEA4300E32346 /* UIViewLoadingTests.swift in Sources */,
+				E598D7A223413B3300CFAABD /* StackViewBuilderTests.swift in Sources */,
+				E598D7A423413DC200CFAABD /* ModalHelperTests.swift in Sources */,
 				E5835BB0233CEAAF00125140 /* NSObjectExtensionTests.swift in Sources */,
 				E5D230972340CA3600E32346 /* MusicListViewControllerTests.swift in Sources */,
 				E546D527233F12BA006C1679 /* EnvironmentTests.swift in Sources */,
@@ -896,11 +927,12 @@
 				E5D2307E233FD1BA00E32346 /* ArtistLookupResponseEntityResult+Fixtures.swift in Sources */,
 				E546D531233F1436006C1679 /* SceneDelegateTests.swift in Sources */,
 				E5D230B82340EB7800E32346 /* TraitController.swift in Sources */,
-				E5D230BA2340ED4F00E32346 /* MusicListTableViewCellSnaptshotTests.swift in Sources */,
+				E5D230BA2340ED4F00E32346 /* MusicListTableViewCellSnapshotTests.swift in Sources */,
 				E5D23072233FAA7F00E32346 /* CollectionExtension.swift in Sources */,
 				E5D2309B2340E3B400E32346 /* MusicListTableViewCellTests.swift in Sources */,
 				E5D230922340234800E32346 /* UILabelTypographyTests.swift in Sources */,
 				E5D2307A233FCCE900E32346 /* FetchShuffledMusicListUseCaseTests.swift in Sources */,
+				E598D7AD2341515100CFAABD /* ShuffleSongsNavigationControllerTests.swift in Sources */,
 				E5D23081233FD7E200E32346 /* MusicListViewDataConverterTests.swift in Sources */,
 				E5D230992340D0D600E32346 /* MusicListTableViewCellViewModel+Fixtures.swift in Sources */,
 				E5D2308D233FEA0200E32346 /* ImagesServiceTests.swift in Sources */,
