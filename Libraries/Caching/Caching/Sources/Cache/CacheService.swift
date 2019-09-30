@@ -8,51 +8,6 @@
 
 import Foundation
 
-/// Defines the CacheService errors.
-///
-/// - encryptionFailed: The key encription has failed.
-/// - couldNotSaveData: The data could not be saved.
-/// - couldNotLoadData: The data could not be loaded.
-/// - raw: Some system error not previously defined.
-public enum CacheServiceError: Error {
-    case encryptionFailed
-    case couldNotSaveData
-    case couldNotLoadData
-    case raw(Error)
-}
-
-/// Defines a cache service.
-public protocol CacheServiceProvider {
-    
-    /// Initializes a cache service.
-    ///
-    /// - Parameter fileManager: The file manager for the service, for checking if file or directory exists in a specified path.
-    ///   - documentDirectoryPath: The path of the document directory.
-    init(fileManager: FileManager, cacheDirectoryName: String)
-    
-    /// Saves some data in a key.
-    ///
-    /// - Parameters:
-    ///   - data: The data to be saved.
-    ///   - key: The key to save/retrieve the data.
-    ///   - completion: Completion block with a result.
-    /// - Returns: Void if successful, otherwise an error.
-    func save(data: Data, key: String, completion: ((_ result: Result<Void, CacheServiceError>) -> Void)?)
-    
-    /// Loads the data from the cache (disk or memory).
-    ///
-    /// - Parameters:
-    ///   - key: The key to fetch the data.
-    ///   - completion: Completion block to get its result.
-    func loadData(from key: String, completion: ((_ result: Result<Data, CacheServiceError>) -> Void))
-
-    /// Clears the cache.
-    ///
-    /// - Parameter completion: Returns whether the cache could be clearedor not.
-    func clear(_ completion: ((Result<Data, CacheServiceError>) -> Void)?)
-    
-}
-
 /// Save and load data to memory and disk cache.
 public final class CacheService: CacheServiceProvider {
     
@@ -98,15 +53,10 @@ public final class CacheService: CacheServiceProvider {
                      key: String,
                      completion: ((_ result: Result<Void, CacheServiceError>) -> Void)? = nil) {
         
-        guard let encriptedKey = key.sha256 else {
-            completion?(.failure(.encryptionFailed))
-            return
-        }
-        
         serialQueue.async {
-            self.memory.setObject(data as NSData, forKey: encriptedKey as NSString)
+            self.memory.setObject(data as NSData, forKey: key as NSString)
             do {
-                try data.write(to: self.filePath(key: encriptedKey))
+                try data.write(to: self.filePath(key: key))
                 completion?(.success(()))
             } catch {
                 completion?(.failure(.couldNotSaveData))
@@ -115,24 +65,22 @@ public final class CacheService: CacheServiceProvider {
     }
 
     public func loadData(from key: String,
-                         completion: ((Result<Data, CacheServiceError>) -> Void)) {
+                         completion: @escaping ((Result<Data, CacheServiceError>) -> Void)) {
         
-        guard let encriptedKey = key.sha256 else {
-            completion(.failure(.encryptionFailed))
-            return
-        }
-        
-        if let dataFromMemory = memory.object(forKey: encriptedKey as NSString) {
-            completion(.success(dataFromMemory as Data))
-        } else if let dataFromDisk = getDataFromDisk(for: encriptedKey) {
-            completion(.success(dataFromDisk as Data))
-        } else {
-            completion(.failure(.couldNotLoadData))
+        serialQueue.async { [weak self] in
+            if let dataFromMemory = self?.memory.object(forKey: key as NSString) {
+                completion(.success(dataFromMemory as Data))
+            } else if let dataFromDisk = self?.getDataFromDisk(for: key) {
+                completion(.success(dataFromDisk as Data))
+            } else {
+                completion(.failure(.couldNotLoadData))
+            }
         }
         
     }
     
-    public func clear(_ completion: ((Result<Data, CacheServiceError>) -> Void)? = nil) {
+    public func clear(_ completion: ((_ result: Result<Void, CacheServiceError>) -> Void)? = nil) {
+        
         serialQueue.async {
             self.memory.removeAllObjects()
             do {
@@ -140,6 +88,7 @@ public final class CacheService: CacheServiceProvider {
                 try files.forEach {
                     try self.fileManager.removeItem(at: $0)
                 }
+                completion?(.success(()))
             } catch {
                 completion?(.failure(.raw(error)))
             }
@@ -165,8 +114,8 @@ public final class CacheService: CacheServiceProvider {
         }
     }
     
-    private func getDataFromDisk(for encriptedKey: String) -> Data? {
-        let filePath = self.filePath(key: encriptedKey)
+    private func getDataFromDisk(for key: String) -> Data? {
+        let filePath = self.filePath(key: key)
         guard let nsData = NSData(contentsOf: filePath), self.fileManager.fileExists(atPath: filePath.path) else {
             return nil
         }

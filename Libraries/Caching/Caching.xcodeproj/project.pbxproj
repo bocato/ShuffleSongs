@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E598D7B8234163F200CFAABD /* CacheServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E598D7B7234163F200CFAABD /* CacheServiceTests.swift */; };
+		E598D7BD2341845D00CFAABD /* CacheServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E598D7BC2341845D00CFAABD /* CacheServiceProvider.swift */; };
 		E5D710CB233E94F10026E111 /* Caching.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D710C1233E94F10026E111 /* Caching.framework */; };
-		E5D710D0233E94F10026E111 /* CachingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D710CF233E94F10026E111 /* CachingTests.swift */; };
 		E5D710D2233E94F10026E111 /* Caching.h in Headers */ = {isa = PBXBuildFile; fileRef = E5D710C4233E94F10026E111 /* Caching.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5D710E2233E99D30026E111 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D710E1233E99D30026E111 /* CacheService.swift */; };
-		E5D710E4233E99DE0026E111 /* String+Encription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D710E3233E99DE0026E111 /* String+Encription.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,14 +25,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E598D7B7234163F200CFAABD /* CacheServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheServiceTests.swift; sourceTree = "<group>"; };
+		E598D7BC2341845D00CFAABD /* CacheServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheServiceProvider.swift; sourceTree = "<group>"; };
 		E5D710C1233E94F10026E111 /* Caching.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Caching.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5D710C4233E94F10026E111 /* Caching.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Caching.h; sourceTree = "<group>"; };
 		E5D710C5233E94F10026E111 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5D710CA233E94F10026E111 /* CachingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CachingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5D710CF233E94F10026E111 /* CachingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingTests.swift; sourceTree = "<group>"; };
 		E5D710D1233E94F10026E111 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5D710E1233E99D30026E111 /* CacheService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
-		E5D710E3233E99DE0026E111 /* String+Encription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Encription.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +54,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E598D7B22341607800CFAABD /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				E598D7B6234163E100CFAABD /* Cache */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		E598D7B6234163E100CFAABD /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				E598D7B7234163F200CFAABD /* CacheServiceTests.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		E598D7BB2341844400CFAABD /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				E598D7BC2341845D00CFAABD /* CacheServiceProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
 		E5D710B7233E94F10026E111 = {
 			isa = PBXGroup;
 			children = (
@@ -84,7 +108,7 @@
 		E5D710CE233E94F10026E111 /* CachingTests */ = {
 			isa = PBXGroup;
 			children = (
-				E5D710CF233E94F10026E111 /* CachingTests.swift */,
+				E598D7B22341607800CFAABD /* Tests */,
 				E5D710D1233E94F10026E111 /* Info.plist */,
 			);
 			path = CachingTests;
@@ -93,7 +117,6 @@
 		E5D710DB233E991D0026E111 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				E5D710E0233E99C50026E111 /* Extensions */,
 				E5D710DF233E99C00026E111 /* Cache */,
 			);
 			path = Sources;
@@ -111,17 +134,10 @@
 		E5D710DF233E99C00026E111 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
+				E598D7BB2341844400CFAABD /* Provider */,
 				E5D710E1233E99D30026E111 /* CacheService.swift */,
 			);
 			path = Cache;
-			sourceTree = "<group>";
-		};
-		E5D710E0233E99C50026E111 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				E5D710E3233E99DE0026E111 /* String+Encription.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +205,7 @@
 					};
 					E5D710C9233E94F10026E111 = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
 					};
 				};
 			};
@@ -233,8 +250,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E598D7BD2341845D00CFAABD /* CacheServiceProvider.swift in Sources */,
 				E5D710E2233E99D30026E111 /* CacheService.swift in Sources */,
-				E5D710E4233E99DE0026E111 /* String+Encription.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,7 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5D710D0233E94F10026E111 /* CachingTests.swift in Sources */,
+				E598D7B8234163F200CFAABD /* CacheServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,7 +405,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Caching/Resources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -414,7 +431,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Caching/Resources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -433,6 +450,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YKYJK8YBGT;
 				INFOPLIST_FILE = CachingTests/Info.plist;
@@ -443,6 +461,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bocato.CachingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -452,6 +471,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YKYJK8YBGT;
 				INFOPLIST_FILE = CachingTests/Info.plist;

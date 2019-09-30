@@ -14,7 +14,7 @@ final class MusicListTableViewCellSnapshotTests: FBSnapshotTestCase {
     
     // MARK: - Tests
     
-    func test_cell_shouldPresentLayoutWhenLoading() {
+    func test_cell_shouldPresentCorrectLayoutWhenLoading() {
         recordMode = false
         deviceSizes.forEach { (device, size) in
             // Given
@@ -30,7 +30,7 @@ final class MusicListTableViewCellSnapshotTests: FBSnapshotTestCase {
             let sut = buildSut()
             
             // When
-            configureView(sut, device: device, size: size, viewModel: viewModel)
+            configureView(sut, size: size, viewModel: viewModel)
             
             // Then
             let snapshotName = "music_list_table_view_cell_loading_\(device)"
@@ -54,7 +54,7 @@ final class MusicListTableViewCellSnapshotTests: FBSnapshotTestCase {
             let sut = buildSut()
             
             // When
-            configureView(sut, device: device, size: size, viewModel: viewModel)
+            configureView(sut,size: size, viewModel: viewModel)
             sut.hideLoading()
             let loadingViewWasRemovedExpectation = expectation(description: "loadingViewWasRemovedExpectation")
             DispatchQueue.global().asyncAfter(deadline: .now() + 0.26) {
@@ -86,7 +86,7 @@ final class MusicListTableViewCellSnapshotTests: FBSnapshotTestCase {
         return .init(dataModel: dataModel, imagesService: imagesServiceProviderStub)
     }
     
-    private func configureView(_ sut: MusicListTableViewCell, device: Device, size: CGSize, viewModel: MusicListTableViewCellViewModel) {
+    private func configureView(_ sut: MusicListTableViewCell, size: CGSize, viewModel: MusicListTableViewCellViewModel) {
         sut.frame.size.width = size.width
         sut.configure(with: viewModel)
         sut.layoutIfNeeded()

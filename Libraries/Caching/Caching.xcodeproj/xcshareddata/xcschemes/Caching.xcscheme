@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E5835B3E233CE7C900125140"
-               BuildableName = "ShuffleSongs.app"
-               BlueprintName = "ShuffleSongs"
-               ReferencedContainer = "container:ShuffleSongs.xcodeproj">
+               BlueprintIdentifier = "E5D710C0233E94F10026E111"
+               BuildableName = "Caching.framework"
+               BlueprintName = "Caching"
+               ReferencedContainer = "container:Caching.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -27,14 +27,15 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
       <CodeCoverageTargets>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E5835B3E233CE7C900125140"
-            BuildableName = "ShuffleSongs.app"
-            BlueprintName = "ShuffleSongs"
-            ReferencedContainer = "container:ShuffleSongs.xcodeproj">
+            BlueprintIdentifier = "E5D710C0233E94F10026E111"
+            BuildableName = "Caching.framework"
+            BlueprintName = "Caching"
+            ReferencedContainer = "container:Caching.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
@@ -42,10 +43,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E5835B54233CE7CC00125140"
-               BuildableName = "ShuffleSongsTests.xctest"
-               BlueprintName = "ShuffleSongsTests"
-               ReferencedContainer = "container:ShuffleSongs.xcodeproj">
+               BlueprintIdentifier = "E5D710C9233E94F10026E111"
+               BuildableName = "CachingTests.xctest"
+               BlueprintName = "CachingTests"
+               ReferencedContainer = "container:Caching.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -60,28 +61,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E5835B3E233CE7C900125140"
-            BuildableName = "ShuffleSongs.app"
-            BlueprintName = "ShuffleSongs"
-            ReferencedContainer = "container:ShuffleSongs.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "FB_REFERENCE_IMAGE_DIR"
-            value = "$(SOURCE_ROOT)/$(PROJECT_NAME)Tests/ReferenceImages"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "IMAGE_DIFF_DIR"
-            value = "$(SOURCE_ROOT)/$(PROJECT_NAME)Tests/FailureDiffs"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -89,16 +68,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E5835B3E233CE7C900125140"
-            BuildableName = "ShuffleSongs.app"
-            BlueprintName = "ShuffleSongs"
-            ReferencedContainer = "container:ShuffleSongs.xcodeproj">
+            BlueprintIdentifier = "E5D710C0233E94F10026E111"
+            BuildableName = "Caching.framework"
+            BlueprintName = "Caching"
+            ReferencedContainer = "container:Caching.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

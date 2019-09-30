@@ -14,11 +14,7 @@ import UIKit
 /// when changes to the DesignSystem occours
 struct Metrics {
     
-    private init() {}
-    
     struct Margin {
-        
-        private init() {}
         
         /// 0 points of spacing.
         static let none: CGFloat = 0

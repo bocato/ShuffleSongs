@@ -88,6 +88,8 @@ final class SceneDelegateTests: XCTestCase {
 
 final class CacheServiceProviderSpy: CacheServiceProvider {
     
+    init(fileManager: FileManager, cacheType: CacheType, cacheDirectoryName: String) {}
+    
     init() {}
     
     private(set) var initCalled = false
@@ -116,7 +118,7 @@ final class CacheServiceProviderSpy: CacheServiceProvider {
     }
     
     private(set) var clearCalled = false
-    func clear(_ completion: ((Result<Data, CacheServiceError>) -> Void)?) {
+    func clear(_ completion: ((Result<Void, CacheServiceError>) -> Void)?) {
         clearCalled = true
     }
     
