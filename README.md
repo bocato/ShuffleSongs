@@ -8,6 +8,7 @@
 - MultiProject setup concept
 - XCTests
 - SnapshotTests (FBSnapshotTestCase)
+- Monorepo concept
 
 ## How to Run
 - Got to the `ThirdParty` folder and install testing dependencies with:
