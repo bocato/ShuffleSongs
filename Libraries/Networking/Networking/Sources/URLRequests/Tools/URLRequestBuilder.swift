@@ -8,9 +8,13 @@
 
 import Foundation
 
-protocol URLRequestBuilder {
+public protocol URLRequestBuilder {
     
     // MARK: - Initialization
+    
+    /// Intitializes a builder from an URLRequestProtocol
+    /// - Parameter request: the URLRequest to init the builder
+    init(request: URLRequestProtocol)
     
     /// Initializes the request.
     ///
@@ -62,7 +66,7 @@ protocol URLRequestBuilder {
     func build() throws -> URLRequest
 }
 
-final class URLRequestBuilding: URLRequestBuilder {
+public final class DefaultURLRequestBuilder: URLRequestBuilder {
     
     // MARK: - Properties
     
@@ -74,6 +78,16 @@ final class URLRequestBuilding: URLRequestBuilder {
     private var adapters: [URLRequestAdapter] = []
     
     // MARK: - Initialization
+    
+    /// Intitializes a builder from an URLRequestProtocol
+    /// - Parameter request: the URLRequest to init the builder
+    public init(request: URLRequestProtocol) {
+        self.baseURL = request.baseURL
+        self.path = request.path
+        self.method = request.method
+        self.headers = request.headers
+        self.parameters = request.parameters
+    }
     
     /// Initializes the request.
     ///

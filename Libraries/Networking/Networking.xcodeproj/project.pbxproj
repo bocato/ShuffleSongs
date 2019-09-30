@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E56A027F23421D5800C0F23D /* URLSessionAbstractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A027E23421D5800C0F23D /* URLSessionAbstractions.swift */; };
-		E56A028323421DDD00C0F23D /* URLRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A028223421DDD00C0F23D /* URLRequestBuilderTests.swift */; };
+		E56A028323421DDD00C0F23D /* DefaultURLRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A028223421DDD00C0F23D /* DefaultURLRequestBuilderTests.swift */; };
 		E56A0286234239EE00C0F23D /* URLRequestTokenHolderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A0285234239EE00C0F23D /* URLRequestTokenHolderTests.swift */; };
-		E56A028A23423FE700C0F23D /* SimpleURLRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A028923423FE700C0F23D /* SimpleURLRequestTests.swift */; };
 		E56A028D234242CC00C0F23D /* URLSessionDispatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A028C234242CC00C0F23D /* URLSessionDispatcherTests.swift */; };
 		E5CE42B223344DCA00295277 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CE42A823344DC900295277 /* Networking.framework */; };
 		E5CE42B923344DCA00295277 /* Networking.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CE42AB23344DC900295277 /* Networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -44,9 +43,8 @@
 
 /* Begin PBXFileReference section */
 		E56A027E23421D5800C0F23D /* URLSessionAbstractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionAbstractions.swift; sourceTree = "<group>"; };
-		E56A028223421DDD00C0F23D /* URLRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestBuilderTests.swift; sourceTree = "<group>"; };
+		E56A028223421DDD00C0F23D /* DefaultURLRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultURLRequestBuilderTests.swift; sourceTree = "<group>"; };
 		E56A0285234239EE00C0F23D /* URLRequestTokenHolderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestTokenHolderTests.swift; sourceTree = "<group>"; };
-		E56A028923423FE700C0F23D /* SimpleURLRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleURLRequestTests.swift; sourceTree = "<group>"; };
 		E56A028C234242CC00C0F23D /* URLSessionDispatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDispatcherTests.swift; sourceTree = "<group>"; };
 		E5CE42A823344DC900295277 /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5CE42AB23344DC900295277 /* Networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
@@ -103,7 +101,7 @@
 		E56A028123421DD100C0F23D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				E56A028223421DDD00C0F23D /* URLRequestBuilderTests.swift */,
+				E56A028223421DDD00C0F23D /* DefaultURLRequestBuilderTests.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -116,18 +114,9 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		E56A028723423FB400C0F23D /* Implementations */ = {
-			isa = PBXGroup;
-			children = (
-				E56A028923423FE700C0F23D /* SimpleURLRequestTests.swift */,
-			);
-			path = Implementations;
-			sourceTree = "<group>";
-		};
 		E56A028823423FC300C0F23D /* URLRequests */ = {
 			isa = PBXGroup;
 			children = (
-				E56A028723423FB400C0F23D /* Implementations */,
 				E56A0284234239D700C0F23D /* Models */,
 				E56A028123421DD100C0F23D /* Tools */,
 			);
@@ -442,9 +431,8 @@
 			files = (
 				E5CE430C233450F000295277 /* NSErrorExtensionTests.swift in Sources */,
 				E56A028D234242CC00C0F23D /* URLSessionDispatcherTests.swift in Sources */,
-				E56A028323421DDD00C0F23D /* URLRequestBuilderTests.swift in Sources */,
+				E56A028323421DDD00C0F23D /* DefaultURLRequestBuilderTests.swift in Sources */,
 				E56A0286234239EE00C0F23D /* URLRequestTokenHolderTests.swift in Sources */,
-				E56A028A23423FE700C0F23D /* SimpleURLRequestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

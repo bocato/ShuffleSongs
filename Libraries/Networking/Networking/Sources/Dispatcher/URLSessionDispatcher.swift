@@ -19,14 +19,19 @@ public final class URLSessionDispatcher: URLRequestDispatching {
     // MARK: - Properties
     
     private var session: URLSessionProtocol
+    private var requestBuilderType: URLRequestBuilder.Type
     
     // MARK: - Initialization
     
     /// Initilizes the dispatcher with a session that can be injected.
     ///
     /// - Parameter session: An URLSession.
-    public required init(session: URLSessionProtocol = URLSession.shared) {
+    public required init(
+        session: URLSessionProtocol = URLSession.shared,
+        requestBuilderType: URLRequestBuilder.Type = DefaultURLRequestBuilder.self
+    ) {
         self.session = session
+        self.requestBuilderType = requestBuilderType
     }
     
     // MARK: - Public
@@ -38,7 +43,9 @@ public final class URLSessionDispatcher: URLRequestDispatching {
         
         do {
             
-            let urlRequest = try request.build() as NSURLRequest
+            let urlRequest = try requestBuilderType
+                .init(request: request)
+                .build() as NSURLRequest
             
             let dataTask = session.dataTask(with: urlRequest) { [weak self] (data, urlResponse, error) in
                 let httpResponse = urlResponse as? HTTPURLResponse

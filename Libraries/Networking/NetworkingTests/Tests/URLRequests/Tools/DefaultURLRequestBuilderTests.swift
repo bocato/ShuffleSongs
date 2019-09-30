@@ -9,7 +9,24 @@
 import XCTest
 @testable import Networking
 
-final class URLRequestBuilderTests: XCTestCase {
+final class DefaultURLRequestBuilderTests: XCTestCase {
+    
+    func test_buildingFromRequest_shouldReturnExpectedURLRequest() {
+        // Given
+        guard let url = URL(string: "http://www.someurl.com/") else {
+            XCTFail("Could not create URL.")
+            return
+        }
+        let sut: SimpleURLRequest = .init(url: url)
+        let builder = DefaultURLRequestBuilder(request: sut)
+        
+        // When
+        let request = try? builder.build()
+        
+        // Then
+        XCTAssertNotNil(request, "Expected a valid request.")
+        XCTAssertEqual(url, request?.url, "Expected \(url), but got \(String(describing: request?.url))")
+    }
     
     func test_buildingURLWithBodyParameters_shouldReturnExpectedURLRequest() {
         // Given
@@ -24,7 +41,7 @@ final class URLRequestBuilderTests: XCTestCase {
         let adapter = URLRequestAdapterSpy()
         
         // When
-        let builder = URLRequestBuilder(with: url)
+        let builder = DefaultURLRequestBuilder(with: url)
             .set(method: .get)
             .set(path: path)
             .set(headers: headers)
@@ -65,7 +82,7 @@ final class URLRequestBuilderTests: XCTestCase {
         let expectedAbsoluteStringURL = "http://www.someurl.com/path?bodyParam1=bodyParamValue"
         
         // When
-        let builder = URLRequestBuilder(with: url)
+        let builder = DefaultURLRequestBuilder(with: url)
             .set(method: .get)
             .set(path: path)
             .set(headers: headers)
@@ -95,7 +112,7 @@ final class URLRequestBuilderTests: XCTestCase {
         adapter.shouldThrowError = true
         
         // When
-        let builder = URLRequestBuilder(with: url)
+        let builder = DefaultURLRequestBuilder(with: url)
             .set(method: .get)
             .add(adapter: adapter)
         

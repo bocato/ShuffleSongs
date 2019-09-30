@@ -27,15 +27,3 @@ public protocol URLRequestProtocol {
     var headers: [String: String]? { get }
     
 }
-
-extension URLRequestProtocol {
-    
-    func build() throws -> URLRequest {
-        return try URLRequestBuilding(with: baseURL, path: path)
-            .set(method: method)
-            .set(headers: headers)
-            .set(parameters: parameters)
-            .build()
-    }
-    
-}
