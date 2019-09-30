@@ -26,6 +26,7 @@ final class URLSessionDispatcherTests: XCTestCase {
         sut.execute(request: request) { (result) in
             do {
                 _ = try result.get()
+                XCTFail("`success` was not expected.")
             } catch {
                 errorThrown = error
             }
@@ -37,6 +38,157 @@ final class URLSessionDispatcherTests: XCTestCase {
         XCTAssertNotNil(errorThrown, "An error, should have been thrown.")
         guard case .requestBuilderFailed = errorThrown as? URLRequestError else {
             XCTFail("Invalid error found, expected `URLRequestError.requestBuilderFailed`.")
+            return
+        }
+    }
+    
+    func test_nilHTTPResponse_shouldReturnInvalidHTTPURLResponseError() {
+        // Given
+        guard let url = URL(string: "http://www.someurl.com/") else {
+            XCTFail("Could not create URL.")
+            return
+        }
+        let urlSessionStub = URLSessionStub(
+            data: nil,
+            urlResponse: nil
+        )
+        let sut = URLSessionDispatcher(session: urlSessionStub)
+        let request: SimpleURLRequest = .init(url: url)
+
+        // When
+        let executeRequestExpectation = expectation(description: "executeRequestExpectation")
+        var errorThrown: Error?
+        sut.execute(request: request) { (result) in
+            do {
+                _ = try result.get()
+                XCTFail("`success` was not expected.")
+            } catch {
+                errorThrown = error
+            }
+            executeRequestExpectation.fulfill()
+        }
+        wait(for: [executeRequestExpectation], timeout: 1.0)
+
+        // Then
+        XCTAssertNotNil(errorThrown, "An error, should have been thrown.")
+        guard case .invalidHTTPURLResponse = errorThrown as? URLRequestError else {
+            XCTFail("Invalid error found, expected `URLRequestError.invalidHTTPURLResponse`.")
+            return
+        }
+    }
+    
+    func test_nilData_shouldReturnSuccessWithNilData() {
+        // Given
+        guard let url = URL(string: "http://www.someurl.com/") else {
+            XCTFail("Could not create URL.")
+            return
+        }
+        let urlResponse = HTTPURLResponse(
+            url: url,
+            statusCode: 200,
+            httpVersion: nil,
+            headerFields: nil
+        )
+        let urlSessionStub = URLSessionStub(
+            data: nil,
+            urlResponse: urlResponse
+        )
+        let sut = URLSessionDispatcher(session: urlSessionStub)
+        let request: SimpleURLRequest = .init(url: url)
+
+        // When
+        let executeRequestExpectation = expectation(description: "executeRequestExpectation")
+        var isDataReturnedNil = false
+        sut.execute(request: request) { (result) in
+            do {
+                let data = try result.get()
+                isDataReturnedNil = data == nil
+            } catch {
+                XCTFail("Did not expected: \(error.localizedDescription).")
+            }
+            executeRequestExpectation.fulfill()
+        }
+        wait(for: [executeRequestExpectation], timeout: 1.0)
+
+        // Then
+        XCTAssertTrue(isDataReturnedNil, "Expected to receive `nil` data.")
+    }
+    
+    func test_validData_shouldReturnSuccessWithValidData() {
+        // Given
+        guard let url = URL(string: "http://www.someurl.com/") else {
+            XCTFail("Could not create URL.")
+            return
+        }
+        let urlResponse = HTTPURLResponse(
+            url: url,
+            statusCode: 200,
+            httpVersion: nil,
+            headerFields: nil
+        )
+        let urlSessionStub = URLSessionStub(
+            data: Data(),
+            urlResponse: urlResponse
+        )
+        let sut = URLSessionDispatcher(session: urlSessionStub)
+        let request: SimpleURLRequest = .init(url: url)
+
+        // When
+        let executeRequestExpectation = expectation(description: "executeRequestExpectation")
+        var isDataReturnedValid = false
+        sut.execute(request: request) { (result) in
+            do {
+                let data = try result.get()
+                isDataReturnedValid = data != nil
+            } catch {
+                XCTFail("Did not expected: \(error.localizedDescription).")
+            }
+            executeRequestExpectation.fulfill()
+        }
+        wait(for: [executeRequestExpectation], timeout: 1.0)
+
+        // Then
+        XCTAssertTrue(isDataReturnedValid, "Expected to receive `nil` data.")
+    }
+    
+    func test_200withErrorNotNil_shouldReturnUnknownError() {
+        // Given
+        guard let url = URL(string: "http://www.someurl.com/") else {
+            XCTFail("Could not create URL.")
+            return
+        }
+        let urlResponse = HTTPURLResponse(
+            url: url,
+            statusCode: 0,
+            httpVersion: nil,
+            headerFields: nil
+        )
+        let urlSessionStub = URLSessionStub(
+            data: Data(),
+            urlResponse: urlResponse,
+            error: NSError()
+        )
+        let sut = URLSessionDispatcher(session: urlSessionStub)
+        let request: SimpleURLRequest = .init(url: url)
+
+        // When
+        let executeRequestExpectation = expectation(description: "executeRequestExpectation")
+        var errorThrown: Error?
+        sut.execute(request: request) { (result) in
+            do {
+                _ = try result.get()
+                XCTFail("`success` was not expected.")
+            } catch {
+                errorThrown = error
+            }
+            executeRequestExpectation.fulfill()
+        }
+        wait(for: [executeRequestExpectation], timeout: 1.0)
+
+        // Then
+        XCTAssertNotNil(errorThrown, "An error, should have been thrown.")
+        guard case .unknown = errorThrown as? URLRequestError else {
+            XCTFail("Invalid error found, expected `URLRequestError.unknown`.")
             return
         }
     }
@@ -57,6 +209,36 @@ private final class URLRequestBuilderErrorReturningMock: URLRequestBuilder {
     
     func build() throws -> URLRequest {
         throw NSError()
+    }
+    
+}
+
+private final class URLSessionDataTaskDummy: URLSessionDataTaskProtocol {
+    func resume() {}
+    func cancel() {}
+}
+
+private final class URLSessionStub: URLSessionProtocol {
+    
+    private let dataToReturn: Data?
+    private let urlResponseToReturn: URLResponse?
+    private let errorToReturn: Error?
+    private let dataTaskToReturn: URLSessionDataTaskProtocol
+    init(
+        data: Data? = nil,
+        urlResponse: URLResponse?,
+        error: Error? = nil,
+        dataTask: URLSessionDataTaskProtocol = URLSessionDataTaskDummy()
+    ) {
+        self.dataToReturn = data
+        self.urlResponseToReturn = urlResponse
+        self.errorToReturn = error
+        self.dataTaskToReturn = dataTask
+    }
+    
+    func dataTask(with request: NSURLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
+        completionHandler(dataToReturn, urlResponseToReturn, errorToReturn)
+        return dataTaskToReturn
     }
     
 }

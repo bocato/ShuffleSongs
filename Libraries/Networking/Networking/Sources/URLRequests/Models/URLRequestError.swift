@@ -22,6 +22,7 @@ public enum URLRequestError: Error {
     case unknown
     case requestBuilderFailed
     case withData(Data, Error?)
+    case invalidHTTPURLResponse
     
     public var code: Int {
         switch self {
@@ -35,6 +36,8 @@ public enum URLRequestError: Error {
         case .withData(_, let error):
             let nsError = error as NSError?
             return nsError?.code ?? -3
+        case .invalidHTTPURLResponse:
+            return -4
         }
     }
     
@@ -51,6 +54,8 @@ public enum URLRequestError: Error {
                 return URLRequestError.unknown.rawError
             }
             return NSError(domain: domain, code: code, userInfo: userInfo)
+        case .invalidHTTPURLResponse:
+            return NSError(domain: domain, code: code, description: "The HTTPURLResponse object returned from the `URLDataTask` was `nil`.")
         }
     }
     
