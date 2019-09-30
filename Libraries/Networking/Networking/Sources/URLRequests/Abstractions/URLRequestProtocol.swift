@@ -31,7 +31,7 @@ public protocol URLRequestProtocol {
 extension URLRequestProtocol {
     
     func build() throws -> URLRequest {
-        return try URLRequestBuilder(with: baseURL, path: path)
+        return try URLRequestBuilding(with: baseURL, path: path)
             .set(method: method)
             .set(headers: headers)
             .set(parameters: parameters)

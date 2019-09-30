@@ -8,7 +8,61 @@
 
 import Foundation
 
-final class URLRequestBuilder {
+protocol URLRequestBuilder {
+    
+    // MARK: - Initialization
+    
+    /// Initializes the request.
+    ///
+    /// - Parameters:
+    ///   - baseURL: A base URL.
+    ///   - path: A path for the request.
+    init(with baseURL: URL, path: String?)
+    
+    // MARK: - Builder methods
+    
+    /// Sets the method.
+    ///
+    /// - Parameter method: A HTTPMethod.
+    /// - Returns: Itself, for sugar syntax purposes.
+    @discardableResult
+    func set(method: HTTPMethod) -> Self
+    
+    /// Sets the request path.
+    ///
+    /// - Parameter path: A path.
+    /// - Returns: Itself, for sugar syntax purposes.
+    @discardableResult
+    func set(path: String) -> Self
+    
+    /// Sets the request headers.
+    ///
+    /// - Parameter headers: the headers
+    /// - Returns: Itself, for sugar syntax purposes.
+    @discardableResult
+    func set(headers: [String: String]?) -> Self
+    
+    /// Sets the request parameters.
+    ///
+    /// - Parameter parameters: some parameters
+    /// - Returns: Itself, for sugar syntax purposes.
+    @discardableResult
+    func set(parameters: URLRequestParameters?) -> Self
+    
+    /// Sets an adapter, Ex: OAuthAdapter.
+    ///
+    /// - Parameter adapter: An adapter.
+    /// - Returns: Itself, for sugar syntax purposes.
+    @discardableResult
+    func add(adapter: URLRequestAdapter) -> Self
+    
+    /// Builds an URLRequest as previously defined.
+    ///
+    /// - Returns: A configured URLRequest.
+    func build() throws -> URLRequest
+}
+
+final class URLRequestBuilding: URLRequestBuilder {
     
     // MARK: - Properties
     
