@@ -10,6 +10,7 @@
 import XCTest
 
 final class NSErrorExtensionTests: XCTestCase {
+    
     func test_initNSErrorWithDescription() {
         // Given
         let description = "Some description"
@@ -20,4 +21,5 @@ final class NSErrorExtensionTests: XCTestCase {
         // Then
         XCTAssertEqual(error.localizedDescription, description, "The descriptions are different, when they should be the same.")
     }
+    
 }

@@ -297,12 +297,12 @@ private final class URLRequestBuilderErrorReturningMock: URLRequestBuilder {
     
 }
 
-private final class URLSessionDataTaskDummy: URLSessionDataTaskProtocol {
+final class URLSessionDataTaskDummy: URLSessionDataTaskProtocol {
     func resume() {}
     func cancel() {}
 }
 
-private final class URLSessionStub: URLSessionProtocol {
+final class URLSessionStub: URLSessionProtocol {
     
     private let dataToReturn: Data?
     private let urlResponseToReturn: URLResponse?
