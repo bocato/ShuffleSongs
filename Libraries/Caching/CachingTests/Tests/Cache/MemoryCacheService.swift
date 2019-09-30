@@ -1,5 +1,5 @@
 //
-//  CacheServiceTests.swift
+//  MemoryCacheService.swift
 //  CachingTests
 //
 //  Created by Eduardo Sanches Bocato on 29/09/19.
@@ -9,15 +9,11 @@
 import XCTest
 @testable import Caching
 
-/**
- * These tests are flaky and intermitent, so i'll come back for them later... =(
- */
-
-final class CacheServiceTests: XCTestCase {
+final class MemoryCacheServiceTests: XCTestCase {
 
     // MARK: - Properties
 
-    var sut: CacheService!
+    var sut: MemoryCacheService!
 
     // MARK: - Test Lifecycle
 
@@ -31,7 +27,7 @@ final class CacheServiceTests: XCTestCase {
 
     func test_memoryCache_saveData_shoulSucceed() {
         // Given
-        sut = CacheService(cacheDirectoryName: "CacheService")
+        sut = MemoryCacheService()
         guard let dataToSave = "value".data(using: .utf8) else {
             XCTFail("Could not create `dataToSave`.")
             return
@@ -59,7 +55,7 @@ final class CacheServiceTests: XCTestCase {
 
     func test_memoryCache_loadingDataForValidKey_shouldSucceed() {
         // Given
-        sut = CacheService(cacheDirectoryName: "CacheService")
+        sut = MemoryCacheService()
         guard let dataToSave = "value".data(using: .utf8) else {
             XCTFail("Could not create `dataToSave`.")
             return
@@ -88,7 +84,7 @@ final class CacheServiceTests: XCTestCase {
 
     func test_memoryCache_loadingInvalidData_shouldSucceed() {
         // Given
-        sut = CacheService(cacheDirectoryName: "CacheService")
+        sut = MemoryCacheService()
         let key = "LoadFail-Memory-Tests"
 
         // When
@@ -112,7 +108,7 @@ final class CacheServiceTests: XCTestCase {
 
     func test_memoryCache_clear_shouldSucceed() {
         // Given
-        sut = CacheService(cacheDirectoryName: "CacheService")
+        sut = MemoryCacheService()
         guard let dataToSave = "value".data(using: .utf8) else {
             XCTFail("Could not create `dataToSave`.")
             return

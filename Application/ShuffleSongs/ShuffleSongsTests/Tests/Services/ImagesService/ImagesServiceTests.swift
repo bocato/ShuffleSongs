@@ -187,7 +187,6 @@ private final class URLRequestDispatchingDummy: URLRequestDispatching {
 
 private final class CacheServiceProviderDummy: CacheServiceProvider {
     init() {}
-    init(fileManager: FileManager, cacheDirectoryName: String) {}
     func save(data: Data, key: String, completion: ((Result<Void, CacheServiceError>) -> Void)?) {}
     func loadData(from key: String, completion: ((Result<Data, CacheServiceError>) -> Void)) {}
     func clear(_ completion: ((Result<Void, CacheServiceError>) -> Void)?) {}
@@ -195,18 +194,14 @@ private final class CacheServiceProviderDummy: CacheServiceProvider {
 
 private final class CacheServiceProviderStub: CacheServiceProvider {
     
-    init(fileManager: FileManager, cacheDirectoryName: String) {
-        loadDataResultToReturn = .success(Data())
+    private let loadDataResultToReturn: Result<Data, CacheServiceError>
+    init(loadDataResultToReturn: Result<Data, CacheServiceError>) {
+        self.loadDataResultToReturn =  loadDataResultToReturn
     }
     
     private(set) var saveCalled = false
     func save(data: Data, key: String, completion: ((Result<Void, CacheServiceError>) -> Void)?) {
         saveCalled = true
-    }
-    
-    private let loadDataResultToReturn: Result<Data, CacheServiceError>
-    init(loadDataResultToReturn: Result<Data, CacheServiceError>) {
-        self.loadDataResultToReturn =  loadDataResultToReturn
     }
     
     func loadData(from key: String, completion: ((Result<Data, CacheServiceError>) -> Void)) {

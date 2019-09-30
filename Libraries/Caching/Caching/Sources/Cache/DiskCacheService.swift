@@ -1,18 +1,15 @@
 //
-//  CacheService.swift
-//  ShuffleSongs
+//  DiskCacheService.swift
+//  Caching
 //
-//  Created by Eduardo Sanches Bocato on 27/09/19.
+//  Created by Eduardo Sanches Bocato on 29/09/19.
 //  Copyright © 2019 Bocato. All rights reserved.
 //
 
 import Foundation
 
 /// Save and load data to memory and disk cache.
-public final class CacheService: CacheServiceProvider {
-    
-    /// For getting or loading data in memory.
-    private let memory = NSCache<NSString, NSData>()
+public final class DiskCacheService: CacheServiceProvider {
     
     /// The path url that contains cached files (mp3 and image files).
     private let diskPath: URL
@@ -21,7 +18,7 @@ public final class CacheService: CacheServiceProvider {
     private let fileManager: FileManager
     
     /// Makes sure all operation are executed serially.
-    private let serialQueue = DispatchQueue(label: "CacheService")
+    private let serialQueue: DispatchQueue
     
     // MARK: - Initialization
     
@@ -29,10 +26,15 @@ public final class CacheService: CacheServiceProvider {
     ///
     /// - Parameters:
     ///   - fileManager: The file manager for the service, for checking if file or directory exists in a specified path.
+    ///   - serialQueue: The queue were the operations will run.
     ///   - cacheDirectoryName: The path of the cache directory.
-    public init(fileManager: FileManager = FileManager.default,
-                cacheDirectoryName: String) {
+    public init(
+        fileManager: FileManager = FileManager.default,
+        serialQueue: DispatchQueue = DispatchQueue(label: "DiskCacheService"),
+        cacheDirectoryName: String
+    ) {
         self.fileManager = fileManager
+        self.serialQueue = serialQueue
         do {
             let cachesDirectory = try fileManager.url(
                 for: .cachesDirectory,
@@ -43,46 +45,59 @@ public final class CacheService: CacheServiceProvider {
             diskPath = cachesDirectory.appendingPathComponent(cacheDirectoryName)
             try createDirectoryIfNeeded()
         } catch {
-            fatalError()
+            fatalError("Could not create cache directory because of:\n\(error.localizedDescription)")
         }
     }
     
-    // MARK: - Public functions
+    // MARK: - Saving
     
     public func save(data: Data,
                      key: String,
-                     completion: ((_ result: Result<Void, CacheServiceError>) -> Void)? = nil) {
+                     completion: ((_ result: Result<Void, CacheServiceError>) -> Void)? = nil
+    ) {
         
-        serialQueue.async {
-            self.memory.setObject(data as NSData, forKey: key as NSString)
+        serialQueue.async { [weak self] in
+            
+            guard let self = self else { return }
+            
             do {
                 try data.write(to: self.filePath(key: key))
                 completion?(.success(()))
             } catch {
                 completion?(.failure(.couldNotSaveData))
             }
-        }
-    }
-
-    public func loadData(from key: String,
-                         completion: @escaping ((Result<Data, CacheServiceError>) -> Void)) {
-        
-        serialQueue.async { [weak self] in
-            if let dataFromMemory = self?.memory.object(forKey: key as NSString) {
-                completion(.success(dataFromMemory as Data))
-            } else if let dataFromDisk = self?.getDataFromDisk(for: key) {
-                completion(.success(dataFromDisk as Data))
-            } else {
-                completion(.failure(.couldNotLoadData))
-            }
+            
         }
         
     }
     
-    public func clear(_ completion: ((_ result: Result<Void, CacheServiceError>) -> Void)? = nil) {
+    // MARK: - Data Loading
+    
+    public func loadData(
+        from key: String,
+        completion: @escaping ((Result<Data, CacheServiceError>) -> Void)
+    ) {
         
-        serialQueue.async {
-            self.memory.removeAllObjects()
+        serialQueue.async { [weak self] in
+            
+            guard let self = self else { return }
+            
+            let filePath = self.filePath(key: key)
+            guard let nsData = NSData(contentsOf: filePath), self.fileManager.fileExists(atPath: filePath.path) else {
+                completion(.failure(.couldNotLoadData))
+                return
+            }
+            
+            completion(.success(nsData as Data))
+        }
+        
+    }
+    
+    // MARK: - Cleaning Caches
+    
+    public func clear(_ completion: ((Result<Void, CacheServiceError>) -> Void)? = nil) {
+        serialQueue.async { [weak self] in
+            guard let self = self else { return }
             do {
                 let files = try self.fileManager.contentsOfDirectory(at: self.diskPath, includingPropertiesForKeys: nil, options: [])
                 try files.forEach {
@@ -114,12 +129,4 @@ public final class CacheService: CacheServiceProvider {
         }
     }
     
-    private func getDataFromDisk(for key: String) -> Data? {
-        let filePath = self.filePath(key: key)
-        guard let nsData = NSData(contentsOf: filePath), self.fileManager.fileExists(atPath: filePath.path) else {
-            return nil
-        }
-        return nsData as Data
-    }
-
 }

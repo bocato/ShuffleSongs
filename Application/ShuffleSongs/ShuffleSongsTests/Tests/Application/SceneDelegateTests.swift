@@ -70,14 +70,14 @@ final class SceneDelegateTests: XCTestCase {
             return
         }
         let imagesServiceMirror = Mirror(reflecting: imagesService)
-        let cacheService = imagesServiceMirror.firstChild(of: CacheService.self)
+        let cacheService = imagesServiceMirror.firstChild(of: MemoryCacheService.self)
 
         // Then
         XCTAssertNotNil(modalHelper, "A `ModalHelper` should have been provided.")
         XCTAssertNotNil(artistLookupService, "An `ArtistLookupService` should have been provided.")
         XCTAssertTrue(artistLookupService?.dispatcher is URLSessionDispatcher, "`artistLookupService.dispatcher` should be an URLSessionDispatcher.")
         XCTAssertTrue(imagesService.dispatcher is URLSessionDispatcher, "`imagesService.dispatcher` should be an URLSessionDispatcher.")
-        XCTAssertNotNil(cacheService, "A `CacheService` should have been provided.")
+        XCTAssertNotNil(cacheService, "A `MemoryCacheService` should have been provided.")
         XCTAssertNotNil(viewModel.viewStateRenderer, "The `viewStateRenderer` should not be nil.")
         XCTAssertNotNil(viewModel.viewModelBinder, "The `viewModelBinder` should not be nil.")
     }
@@ -89,15 +89,6 @@ final class SceneDelegateTests: XCTestCase {
 final class CacheServiceProviderSpy: CacheServiceProvider {
     
     init() {}
-    
-    private(set) var initCalled = false
-    private(set) var fileManagerPassed: FileManager?
-    private(set) var cacheDirectoryNamePassed: String?
-    init(fileManager: FileManager, cacheDirectoryName: String) {
-        initCalled = true
-        fileManagerPassed = fileManager
-        cacheDirectoryNamePassed = cacheDirectoryName
-    }
     
     private(set) var saveCalled = false
     private(set) var dataPassed: Data?

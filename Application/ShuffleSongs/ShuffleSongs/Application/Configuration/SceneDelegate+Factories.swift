@@ -21,7 +21,7 @@ extension SceneDelegate: MusicListConfigurator {
         
         let fetchShuffledMusicListUseCase = FetchShuffledMusicListUseCase(artistLookupService: artistLookupService)
         
-        let cacheService = CacheService(cacheDirectoryName: "ShuffleSongsArtwork")
+        let cacheService = MemoryCacheService()
         cache = cacheService
         
         let imagesService = ImagesService(
