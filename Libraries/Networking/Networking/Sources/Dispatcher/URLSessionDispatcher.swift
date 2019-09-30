@@ -36,6 +36,7 @@ public final class URLSessionDispatcher: URLRequestDispatching {
     
     // MARK: - Public
     
+    @discardableResult
     public func execute(request: URLRequestProtocol,
                         completion: @escaping (Result<Data?, URLRequestError>) -> Void) -> URLRequestToken? {
         

@@ -17,5 +17,6 @@ public protocol URLRequestDispatching {
     ///   - request: The request to be executed.
     ///   - completion: The request's callback.
     /// - Returns: A token that allows us manipulate the task if needed.
+    @discardableResult
     func execute(request: URLRequestProtocol, completion: @escaping (_ response: Result<Data?, URLRequestError>) -> Void) -> URLRequestToken?
 }
