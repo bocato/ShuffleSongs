@@ -57,6 +57,7 @@ extension CodableSerializing {
         } catch {
             completion(.failure(.serializationError(error)))
         }
+        
     }
     
 }

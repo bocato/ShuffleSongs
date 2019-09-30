@@ -24,7 +24,7 @@ public protocol URLRequestProtocol {
     var parameters: URLRequestParameters? { get }
     
     /// Defines the list of headers we want to pass along with each request.
-    var headers: [String: Any]? { get }
+    var headers: [String: String]? { get }
     
 }
 

@@ -16,7 +16,7 @@ public struct SimpleURLRequest: URLRequestProtocol {
     public var path: String? = nil
     public var method: HTTPMethod
     public var parameters: URLRequestParameters? = nil
-    public var headers: [String : Any]? = nil
+    public var headers: [String : String]? = nil
     
     public init(url: URL,
          method: HTTPMethod = .get) {

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E56A027F23421D5800C0F23D /* URLSessionAbstractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A027E23421D5800C0F23D /* URLSessionAbstractions.swift */; };
+		E56A028323421DDD00C0F23D /* URLRequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A028223421DDD00C0F23D /* URLRequestBuilderTests.swift */; };
+		E56A0286234239EE00C0F23D /* URLRequestTokenHolderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A0285234239EE00C0F23D /* URLRequestTokenHolderTests.swift */; };
 		E5CE42B223344DCA00295277 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CE42A823344DC900295277 /* Networking.framework */; };
 		E5CE42B923344DCA00295277 /* Networking.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CE42AB23344DC900295277 /* Networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5CE42EE23344F5800295277 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE42ED23344F5800295277 /* NetworkingService.swift */; };
@@ -38,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E56A027E23421D5800C0F23D /* URLSessionAbstractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionAbstractions.swift; sourceTree = "<group>"; };
+		E56A028223421DDD00C0F23D /* URLRequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestBuilderTests.swift; sourceTree = "<group>"; };
+		E56A0285234239EE00C0F23D /* URLRequestTokenHolderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestTokenHolderTests.swift; sourceTree = "<group>"; };
 		E5CE42A823344DC900295277 /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5CE42AB23344DC900295277 /* Networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
 		E5CE42AC23344DC900295277 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +86,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E56A027D23421CA400C0F23D /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				E5CE430A233450AC00295277 /* Extensions */,
+				E56A028023421DC900C0F23D /* Service */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		E56A028023421DC900C0F23D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E56A0284234239D700C0F23D /* Models */,
+				E56A028123421DD100C0F23D /* Tools */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		E56A028123421DD100C0F23D /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				E56A028223421DDD00C0F23D /* URLRequestBuilderTests.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		E56A0284234239D700C0F23D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E56A0285234239EE00C0F23D /* URLRequestTokenHolderTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E5CE429E23344DC900295277 = {
 			isa = PBXGroup;
 			children = (
@@ -110,7 +150,7 @@
 		E5CE42B523344DCA00295277 /* NetworkingTests */ = {
 			isa = PBXGroup;
 			children = (
-				E5CE430A233450AC00295277 /* Extensions */,
+				E56A027D23421CA400C0F23D /* Tests */,
 				E5CE42B823344DCA00295277 /* Info.plist */,
 			);
 			path = NetworkingTests;
@@ -186,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				E5CE42ED23344F5800295277 /* NetworkingService.swift */,
+				E56A027E23421D5800C0F23D /* URLSessionAbstractions.swift */,
 			);
 			path = Abstractions;
 			sourceTree = "<group>";
@@ -365,6 +406,7 @@
 				E5CE42FD23344FC400295277 /* URLRequestError.swift in Sources */,
 				E5CE42F823344FBE00295277 /* SimpleURLRequest.swift in Sources */,
 				E5CE42FE23344FC400295277 /* URLRequestToken.swift in Sources */,
+				E56A027F23421D5800C0F23D /* URLSessionAbstractions.swift in Sources */,
 				E5CE42FF23344FC400295277 /* URLRequestParameters.swift in Sources */,
 				E5CE42F623344F8500295277 /* URLRequestAdapter.swift in Sources */,
 				E5CE430023344FC400295277 /* HTTPMethod.swift in Sources */,
@@ -377,6 +419,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5CE430C233450F000295277 /* NSErrorExtensionTests.swift in Sources */,
+				E56A028323421DDD00C0F23D /* URLRequestBuilderTests.swift in Sources */,
+				E56A0286234239EE00C0F23D /* URLRequestTokenHolderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,14 +18,14 @@ public final class URLSessionDispatcher: URLRequestDispatching {
     
     // MARK: - Properties
     
-    private var session: URLSession
+    private var session: URLSessionProtocol
     
     // MARK: - Initialization
     
     /// Initilizes the dispatcher with a session that can be injected.
     ///
     /// - Parameter session: An URLSession.
-    public required init(session: URLSession = URLSession.shared) {
+    public required init(session: URLSessionProtocol = URLSession.shared) {
         self.session = session
     }
     
@@ -37,7 +37,9 @@ public final class URLSessionDispatcher: URLRequestDispatching {
         var urlRequestToken: URLRequestToken?
         
         do {
-            let urlRequest = try request.build()
+            
+            let urlRequest = try request.build() as NSURLRequest
+            
             let dataTask = session.dataTask(with: urlRequest) { [weak self] (data, urlResponse, error) in
                 let httpResponse = urlResponse as? HTTPURLResponse
                 let dataTaskResponse = DataTaskResponse(data: data,

@@ -43,7 +43,7 @@ enum ArtistLookupRequest: URLRequestProtocol {
         }
     }
     
-    var headers: [String : Any]? {
+    var headers: [String : String]? {
         return ["content-type": "application/json"]
     }
     

@@ -18,14 +18,14 @@ final class URLRequestTokenHolder: URLRequestToken {
     
     // MARK: - Properties
     
-    private weak var task: URLSessionDataTask?
+    private weak var task: URLSessionDataTaskProtocol?
     
     // MARK: - Initialization
     
     /// Initializer
     ///
     /// - Parameter task: An URLSessionDataTask that can be canceled.
-    init(task: URLSessionDataTask) {
+    init(task: URLSessionDataTaskProtocol) {
         self.task = task
     }
     

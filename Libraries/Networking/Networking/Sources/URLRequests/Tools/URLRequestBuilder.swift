@@ -15,7 +15,7 @@ final class URLRequestBuilder {
     private var baseURL: URL
     private var path: String?
     private var method: HTTPMethod = .get
-    private var headers: [String: Any]?
+    private var headers: [String: String]?
     private var parameters: URLRequestParameters?
     private var adapters: [URLRequestAdapter] = []
     
@@ -27,7 +27,7 @@ final class URLRequestBuilder {
     ///   - baseURL: A base URL.
     ///   - path: A path for the request.
     public init(with baseURL: URL,
-                path: String?) {
+                path: String? = nil) {
         self.baseURL = baseURL
         self.path = path
     }
@@ -59,7 +59,7 @@ final class URLRequestBuilder {
     /// - Parameter headers: the headers
     /// - Returns: Itself, for sugar syntax purposes.
     @discardableResult
-    public func set(headers: [String: Any]?) -> Self {
+    public func set(headers: [String: String]?) -> Self {
         self.headers = headers
         return self
     }
@@ -79,8 +79,7 @@ final class URLRequestBuilder {
     /// - Parameter adapter: An adapter.
     /// - Returns: Itself, for sugar syntax purposes.
     @discardableResult
-    public func add(adapter: URLRequestAdapter?) -> Self {
-        guard let adapter = adapter else { return self }
+    public func add(adapter: URLRequestAdapter) -> Self {
         adapters.append(adapter)
         return self
     }
@@ -102,19 +101,12 @@ final class URLRequestBuilder {
         urlRequest.httpMethod = method.name
         setupRequest(&urlRequest, with: parameters)
         
-        headers?
-            .compactMapValues { $0 as? String }
-            .forEach {
-                urlRequest.addValue($0.value, forHTTPHeaderField: $0.key)
+        headers?.forEach {
+            urlRequest.addValue($0.value, forHTTPHeaderField: $0.key)
         }
         
-        do {
-            try adapters.forEach {
-                urlRequest = try $0.adapt(urlRequest)
-            }
-            
-        } catch {
-            throw error
+        try adapters.forEach {
+            urlRequest = try $0.adapt(urlRequest)
         }
         
         return urlRequest
@@ -123,24 +115,30 @@ final class URLRequestBuilder {
     // MARK: - Private Functions
     
     private func setupRequest(_ request: inout URLRequest, with parameters: URLRequestParameters?) {
-        
-        guard let parameters = parameters else { return }
-        
-        switch parameters {
-        case .body(let bodyParameters):
-            guard let bodyParameters = bodyParameters,
-                let payload = try? JSONSerialization.data(withJSONObject: bodyParameters, options: []) else { return }
+        if let parameters = parameters {
+            switch parameters {
+            case .body(let bodyParameters):
+                configureBodyParameters(bodyParameters, for: &request)
+            case .url(let urlParameters):
+                configureURLParameters(urlParameters, for: &request)
+            }
+        }
+    }
+    
+    private func configureBodyParameters(_ parameters: [String: Any]?, for request: inout URLRequest) {
+        if let bodyParameters = parameters,
+            let payload = try? JSONSerialization.data(withJSONObject: bodyParameters, options: []) {
             request.httpBody = payload
-        case .url(let urlParameters):
-            
-            guard let urlParameters = urlParameters,
-                let url = request.url,
-                var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else { return }
-            
+        }
+    }
+    
+    private func configureURLParameters(_ parameters: [String: String]?, for request: inout URLRequest) {
+        if let urlParameters = parameters,
+            let url = request.url,
+            var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) {
             urlComponents.queryItems = urlParameters.map { URLQueryItem(name: $0.key, value: $0.value) }
             request.url = urlComponents.url
         }
-        
     }
     
 }
