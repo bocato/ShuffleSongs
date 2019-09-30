@@ -16,6 +16,7 @@ private let domain = "URLRequestError"
 /// - unknown: Unknown error.
 /// - requestBuilderFailed: The request builder failed.
 /// - withData: There is an error and it has a payload.
+/// - invalidHTTPURLResponse: The HTTPURLResponse object returned from the `URLDataTask` was `nil`.
 public enum URLRequestError: Error {
     
     case raw(Error)
@@ -26,14 +27,14 @@ public enum URLRequestError: Error {
     
     public var code: Int {
         switch self {
-        case .raw(let error):
+        case let .raw(error):
             let nsError = error as NSError
             return nsError.code
         case .unknown:
             return -1
         case .requestBuilderFailed:
             return -2
-        case .withData(_, let error):
+        case let .withData(_, error):
             let nsError = error as NSError?
             return nsError?.code ?? -3
         case .invalidHTTPURLResponse:
@@ -41,21 +42,41 @@ public enum URLRequestError: Error {
         }
     }
     
+    public var localizedDescription: String {
+        switch self {
+        case let .raw(error):
+            return error.localizedDescription
+        case .unknown:
+            return "Unknown error."
+        case .requestBuilderFailed:
+            return "The request builder failed."
+        case let .withData(_, error):
+            return error?.localizedDescription ??
+            "You should check the `errorData key on the `userInfo` of `rawError` property."
+        case .invalidHTTPURLResponse:
+            return "The HTTPURLResponse object returned from the `URLDataTask` was `nil`."
+        }
+    }
+    
     public var rawError: NSError {
         switch self {
-        case .raw(let error):
+        case let .raw(error):
             return error as NSError
         case .unknown:
-            return NSError(domain: domain, code: code, description: "Unknown error.")
+            return NSError(domain: domain, code: code, description: localizedDescription)
         case .requestBuilderFailed:
-            return NSError(domain: domain, code: code, description: "The request builder failed.")
-        case .withData(let data, _):
-            guard let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []), let userInfo = jsonObject as? [String: Any] else {
+            return NSError(domain: domain, code: code, description: localizedDescription)
+        case let .withData(data, originalError):
+            guard let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []), let errorData = jsonObject as? [String: Any] else {
                 return URLRequestError.unknown.rawError
             }
+            let userInfo: [String: Any] = [
+                "originalError": originalError ?? "",
+                "errorData": errorData
+            ]
             return NSError(domain: domain, code: code, userInfo: userInfo)
         case .invalidHTTPURLResponse:
-            return NSError(domain: domain, code: code, description: "The HTTPURLResponse object returned from the `URLDataTask` was `nil`.")
+            return NSError(domain: domain, code: code, description: localizedDescription)
         }
     }
     

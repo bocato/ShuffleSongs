@@ -29,7 +29,7 @@ public enum NetworkingError: Error {
             return 10
         case .unexpected:
             return 11
-        case .urlRequest(let requestError):
+        case let .urlRequest(requestError):
             return requestError.code
         case .serializationError:
             return 12

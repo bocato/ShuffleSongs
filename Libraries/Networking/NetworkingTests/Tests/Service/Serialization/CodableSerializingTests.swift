@@ -134,7 +134,7 @@ final class CodableSerializingTests: XCTestCase {
 
 private final class SomeCodableSerializingThing: CodableSerializing {}
 
-private struct SomeResponse: Codable, Equatable {
+struct SomeResponse: Codable, Equatable {
     let value: String
     static func == (lhs: SomeResponse, rhs: SomeResponse) -> Bool {
         return lhs.value == rhs.value

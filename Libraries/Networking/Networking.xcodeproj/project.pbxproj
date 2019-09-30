@@ -13,6 +13,7 @@
 		E56A028D234242CC00C0F23D /* URLSessionDispatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A028C234242CC00C0F23D /* URLSessionDispatcherTests.swift */; };
 		E56A029323428CDF00C0F23D /* CodableSerializingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A029223428CDF00C0F23D /* CodableSerializingTests.swift */; };
 		E56A0295234295D200C0F23D /* CodableRequestingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A0294234295D200C0F23D /* CodableRequestingTests.swift */; };
+		E56A029A23429FF700C0F23D /* URLRequestErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A029923429FF700C0F23D /* URLRequestErrorTests.swift */; };
 		E5CE42B223344DCA00295277 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CE42A823344DC900295277 /* Networking.framework */; };
 		E5CE42B923344DCA00295277 /* Networking.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CE42AB23344DC900295277 /* Networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5CE42EE23344F5800295277 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE42ED23344F5800295277 /* NetworkingService.swift */; };
@@ -50,6 +51,7 @@
 		E56A028C234242CC00C0F23D /* URLSessionDispatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDispatcherTests.swift; sourceTree = "<group>"; };
 		E56A029223428CDF00C0F23D /* CodableSerializingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableSerializingTests.swift; sourceTree = "<group>"; };
 		E56A0294234295D200C0F23D /* CodableRequestingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableRequestingTests.swift; sourceTree = "<group>"; };
+		E56A029923429FF700C0F23D /* URLRequestErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestErrorTests.swift; sourceTree = "<group>"; };
 		E5CE42A823344DC900295277 /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5CE42AB23344DC900295277 /* Networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
 		E5CE42AC23344DC900295277 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				E56A0285234239EE00C0F23D /* URLRequestTokenHolderTests.swift */,
+				E56A029923429FF700C0F23D /* URLRequestErrorTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				E5CE430C233450F000295277 /* NSErrorExtensionTests.swift in Sources */,
 				E56A0295234295D200C0F23D /* CodableRequestingTests.swift in Sources */,
 				E56A028D234242CC00C0F23D /* URLSessionDispatcherTests.swift in Sources */,
+				E56A029A23429FF700C0F23D /* URLRequestErrorTests.swift in Sources */,
 				E56A028323421DDD00C0F23D /* DefaultURLRequestBuilderTests.swift in Sources */,
 				E56A0286234239EE00C0F23D /* URLRequestTokenHolderTests.swift in Sources */,
 				E56A029323428CDF00C0F23D /* CodableSerializingTests.swift in Sources */,
