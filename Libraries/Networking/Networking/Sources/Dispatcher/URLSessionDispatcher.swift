@@ -88,7 +88,7 @@ public final class URLSessionDispatcher: URLRequestDispatching {
         
         let statusCode = dataTaskResponse.httpResponse.statusCode
         
-        if !(200...299 ~= statusCode) {
+        if (200...299 ~= statusCode) == false {
             
             guard dataTaskResponse.error == nil else {
                 return .unknown
