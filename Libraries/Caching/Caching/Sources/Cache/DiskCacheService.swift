@@ -32,21 +32,17 @@ public final class DiskCacheService: CacheServiceProvider {
         fileManager: FileManager = FileManager.default,
         serialQueue: DispatchQueue = DispatchQueue(label: "DiskCacheService"),
         cacheDirectoryName: String
-    ) {
+    ) throws {
         self.fileManager = fileManager
         self.serialQueue = serialQueue
-        do {
-            let cachesDirectory = try fileManager.url(
-                for: .cachesDirectory,
-                in: .userDomainMask,
-                appropriateFor: nil,
-                create: true
-            )
-            diskPath = cachesDirectory.appendingPathComponent(cacheDirectoryName)
-            try createDirectoryIfNeeded()
-        } catch {
-            fatalError("Could not create cache directory because of:\n\(error.localizedDescription)")
-        }
+        let cachesDirectory = try fileManager.url(
+            for: .cachesDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: true
+        )
+        diskPath = cachesDirectory.appendingPathComponent(cacheDirectoryName)
+        try createDirectoryIfNeeded()
     }
     
     // MARK: - Saving

@@ -1,19 +1,19 @@
 //
-//  MemoryCacheService.swift
+//  DiskCacheServiceTests.swift
 //  CachingTests
 //
-//  Created by Eduardo Sanches Bocato on 29/09/19.
+//  Created by Eduardo Sanches Bocato on 30/09/19.
 //  Copyright © 2019 Bocato. All rights reserved.
 //
 
 import XCTest
 @testable import Caching
 
-final class MemoryCacheServiceTests: XCTestCase {
+final class DiskCacheServiceTests: XCTestCase {
 
     // MARK: - Properties
 
-    var sut: MemoryCacheService!
+    var sut: DiskCacheService!
 
     // MARK: - Test Lifecycle
 
@@ -25,14 +25,18 @@ final class MemoryCacheServiceTests: XCTestCase {
 
     // MARK: - Tests
 
-    func test_memoryCache_saveData_shoulSucceed() {
+    func test_diskCache_saveData_shoulSucceed() {
         // Given
-        sut = MemoryCacheService()
+        guard let diskCache = try? DiskCacheService(cacheDirectoryName: "DiskCache") else {
+            XCTFail("Could not create DiskCacheService.")
+            return
+        }
+        sut = diskCache
         guard let dataToSave = "value".data(using: .utf8) else {
             XCTFail("Could not create `dataToSave`.")
             return
         }
-        let key = "Save-Memory-Tests"
+        let key = "Save-Disk-Tests"
 
         // When
         let saveDataExpectation = expectation(description: "saveDataExpectation")
@@ -53,14 +57,18 @@ final class MemoryCacheServiceTests: XCTestCase {
         XCTAssertTrue(savingSucceeded, "Expected to succeed, but \(errorThrown.debugDescription)) was thrown.")
     }
 
-    func test_memoryCache_loadingDataForValidKey_shouldSucceed() {
+    func test_diskCache_loadingDataForValidKey_shouldSucceed() {
         // Given
-        sut = MemoryCacheService()
+        guard let diskCache = try? DiskCacheService(cacheDirectoryName: "DiskCache") else {
+            XCTFail("Could not create DiskCacheService.")
+            return
+        }
+        sut = diskCache
         guard let dataToSave = "value".data(using: .utf8) else {
             XCTFail("Could not create `dataToSave`.")
             return
         }
-        let key = "Load-Memory-Tests"
+        let key = "Load-Disk-Tests"
         sut.save(data: dataToSave, key: key)
 
         // When
@@ -82,10 +90,14 @@ final class MemoryCacheServiceTests: XCTestCase {
         XCTAssertNotNil(dataLoaded, "Expected some data, but \(errorThrown.debugDescription)) was thrown.")
     }
 
-    func test_memoryCache_loadingInvalidData_shouldSucceed() {
+    func test_diskCache_loadingInvalidData_shouldSucceed() {
         // Given
-        sut = MemoryCacheService()
-        let key = "LoadFail-Memory-Tests"
+        guard let diskCache = try? DiskCacheService(cacheDirectoryName: "DiskCache") else {
+            XCTFail("Could not create DiskCacheService.")
+            return
+        }
+        sut = diskCache
+        let key = "LoadFail-Disk-Tests"
 
         // When
         let loadDataExpectation = expectation(description: "loadDataExpectation")
@@ -106,14 +118,18 @@ final class MemoryCacheServiceTests: XCTestCase {
         XCTAssertNil(dataLoaded, "Expected some data, but \(errorThrown.debugDescription)) was thrown.")
     }
 
-    func test_memoryCache_clear_shouldSucceed() {
+    func test_diskCache_clear_shouldSucceed() {
         // Given
-        sut = MemoryCacheService()
+        guard let diskCache = try? DiskCacheService(cacheDirectoryName: "DiskCache") else {
+            XCTFail("Could not create DiskCacheService.")
+            return
+        }
+        sut = diskCache
         guard let dataToSave = "value".data(using: .utf8) else {
             XCTFail("Could not create `dataToSave`.")
             return
         }
-        let key = "Clear-Memory-Tests"
+        let key = "Clear-Disk-Tests"
         sut.save(data: dataToSave, key: key)
         sut.clear()
 
