@@ -88,8 +88,6 @@ final class SceneDelegateTests: XCTestCase {
 
 final class CacheServiceProviderSpy: CacheServiceProvider {
     
-    init(fileManager: FileManager, cacheType: CacheType, cacheDirectoryName: String) {}
-    
     init() {}
     
     private(set) var initCalled = false
