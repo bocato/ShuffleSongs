@@ -67,13 +67,16 @@ public enum URLRequestError: Error {
         case .requestBuilderFailed:
             return NSError(domain: domain, code: code, description: localizedDescription)
         case let .withData(data, originalError):
-            guard let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []), let errorData = jsonObject as? [String: Any] else {
+            guard let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []), let errorJSON = jsonObject as? [String: Any] else {
+                if let originalError = originalError as NSError? {
+                    return originalError
+                }
                 return URLRequestError.unknown.rawError
             }
-            let userInfo: [String: Any] = [
-                "originalError": originalError ?? "",
-                "errorData": errorData
-            ]
+            var userInfo: [String: Any] = ["errorJSON": errorJSON]
+            if let originalError = originalError {
+                userInfo["originalError"] = originalError
+            }
             return NSError(domain: domain, code: code, userInfo: userInfo)
         case .invalidHTTPURLResponse:
             return NSError(domain: domain, code: code, description: localizedDescription)
