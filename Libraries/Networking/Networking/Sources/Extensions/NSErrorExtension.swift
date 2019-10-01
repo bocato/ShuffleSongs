@@ -21,10 +21,3 @@ extension NSError {
     }
     
 }
-
-
-//  Networking
-//
-//  Created by Eduardo Sanches Bocato on 27/09/19.
-//  Copyright © 2019 Bocato. All rights reserved.
-//
