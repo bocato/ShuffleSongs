@@ -15,7 +15,7 @@ final class URLRequestErrorTests: XCTestCase {
     
     func test_raw_error() {
         // Given
-        let rawError = NSError(domain: "NetworkingError", code: 123, description: "description")
+        let rawError = NSError(domain: "URLRequestError", code: 123, description: "description")
         
         // When
         let sut = URLRequestError.raw(rawError).rawError
@@ -68,6 +68,71 @@ final class URLRequestErrorTests: XCTestCase {
         let sut = URLRequestError.withData(errorData, originalError).rawError
         
         // Then
+        XCTAssertNotNil(sut, "Expected error but got nil.")
+        XCTAssertEqual(expectedError, sut, "Expected \(expectedError), but got \(sut).")
+    }
+    
+    func test_withData_andErrorNil_onJsonSerialization() {
+        // Given
+        guard let errorData = """
+        {"someValue": "value" .}
+        """.data(using: .utf8) else {
+            XCTFail("Could not create `errorData`.")
+            return
+        }
+        let expectedError = NSError(
+            domain: "URLRequestError",
+            code: -3,
+            description: "You should check the `errorData key on the `userInfo` of `rawError` property."
+        ).localizedDescription
+        
+        // When
+        let sut = URLRequestError.withData(errorData, nil).localizedDescription
+        
+        // Then
+        XCTAssertEqual(expectedError, sut, "Expected \(expectedError), but got \(sut).")
+    }
+    
+    func test_withData_andErrorOnJsonSerialization() {
+        // Given
+        guard let errorData = """
+        {"someValue": "value" .}
+        """.data(using: .utf8) else {
+            XCTFail("Could not create `errorData`.")
+            return
+        }
+        let originalError = NSError(domain: "URLRequestError", code: -3, description: "description")
+        let expectedError = NSError(
+            domain: "URLRequestError",
+            code: -3,
+            description: URLRequestError.withData(errorData, originalError).localizedDescription
+        )
+        
+        // When
+        let sut = URLRequestError.withData(errorData, originalError).rawError
+        
+        // Then
+        XCTAssertEqual(expectedError, sut, "Expected \(expectedError), but got \(sut).")
+    }
+    
+    func test_withData_andUnknownErrorOnJsonSerialization() {
+        // Given
+        guard let errorData = """
+        {"someValue": "value" .}
+        """.data(using: .utf8) else {
+            XCTFail("Could not create `errorData`.")
+            return
+        }
+        let expectedError = NSError(
+            domain: "URLRequestError",
+            code: -1,
+            description: URLRequestError.unknown.localizedDescription
+        )
+        
+        // When
+        let sut = URLRequestError.withData(errorData, nil).rawError
+        
+        // Then
         XCTAssertEqual(expectedError, sut, "Expected \(expectedError), but got \(sut).")
     }
     
@@ -93,13 +158,14 @@ final class URLRequestErrorTests: XCTestCase {
     }
     
     func test_invalidHTTPURLResponse_errorCode() {
-        
         // Given
-        let expectedCode = -4
-        let sut: URLRequestError = .invalidHTTPURLResponse
+        let expectedError = NSError(domain: "URLRequestError", code: -4, description: "The HTTPURLResponse object returned from the `URLDataTask` was `nil`.")
         
-        // When / Then
-        XCTAssertEqual(expectedCode, sut.code, "Expected \(expectedCode), but got \(sut.code).")
+        // When
+        let sut = URLRequestError.invalidHTTPURLResponse.rawError
+        
+        // Then
+        XCTAssertEqual(expectedError, sut, "Expected \(expectedError), but got \(sut).")
     }
     
 }
