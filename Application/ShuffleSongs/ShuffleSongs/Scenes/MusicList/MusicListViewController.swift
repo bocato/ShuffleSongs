@@ -53,6 +53,9 @@ final class MusicListViewController: UIViewController, CustomViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.onViewDidLoad()
+        
+        let testLint = URL(string: "coisa")!
+        
     }
     
     override func loadView() {
