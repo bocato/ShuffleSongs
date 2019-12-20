@@ -55,6 +55,7 @@ final class MusicListViewController: UIViewController, CustomViewController {
         viewModel.onViewDidLoad()
         
         let testLint = URL(string: "coisa")!
+        let testLint2 = URL(string: "otacoisa")!
         
     }
     
